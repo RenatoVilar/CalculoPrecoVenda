@@ -8,88 +8,213 @@
         Title="Cálculo do Preço de Venda" Width="1360" Height="768" 
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
-    <Grid Margin="5">
-        <Grid.RowDefinitions>
+    <StackPanel Margin="5">
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>-->
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,10">
-            
-            <GroupBox Name="grpFornecedor" Header="Localidade do Fornecedor" Height="210" Width="300" Margin="10,0,100,0">
+        <Label Content="Cálculo de Preço de Venda" FontFamily="SegoeUI" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="5" Grid.Row="0" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,5,5" >
+
+            <GroupBox Name="grpFornecedor" Header="Fornecedor" Height="240" Width="300" Margin="10,0,20,0">
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                     <RadioButton x:Name="radForEstrangeiro" Content="Estrangeiro"  IsChecked="True"/>
                     <RadioButton x:Name="radForNacional" Content="Nacional"  IsChecked="False"/>
                     <RadioButton x:Name="radForZfm" Content="ZFM"  IsChecked="False"/>
                     <RadioButton x:Name="radProducaoPropria" Content="Produção Própria"  IsChecked="False"/>
+                    <Label Content="Situação Especial" Margin="10,5,0,0"/>
                     <Line Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="300" Margin="5"/>
                     <CheckBox x:Name="chkMicroempresa" Content="Microempresa" IsChecked="False" Margin="10,0,0,0"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Name="Produto" Header="Origem do Produto" Height="210" Width="300" Margin="0,0,100,0">
+            <GroupBox Name="grpProduto" Header="Produto" Height="240" Width="300" Margin="0,0,20,0">
                 <StackPanel>
                     <RadioButton x:Name="radProdEstrangeiro" Content="Estrangeiro"  IsChecked="True"/>
                     <RadioButton x:Name="radProdNacional" Content="Nacional"  IsChecked="False"/>
+                    <Label Content="Situação Especial" Margin="10,5,0,0"/>
                     <Line Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="300" Margin="5"/>
-                    <CheckBox Name="chkItensFcp" Content="Item da FCP" IsChecked="False" Margin="10,5,0,0"/>
+                    <CheckBox Name="chkItensFcp" Content="Item com FCP" IsChecked="False" Margin="10,5,0,0"/>
                     <CheckBox Name="chkCorredor" Content="Corredor de Importação" IsChecked="False" Margin="10,5,0,0"/>
                     <Label Content="Tipo Especial" Margin="10,5,0,0"/>
-                    <Line Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="300" Margin="5,0,0,0"/>
+                    <Line Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="300" Margin="5"/>
                     <CheckBox x:Name="chkMotores" Content="Motores" IsChecked="False" Margin="10,0,0,0"/>
                     <CheckBox x:Name="chkPecas" Content="Peças" IsChecked="False" Margin="10,0,0,0"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox x:Name="grpCliente" Header="Localização do Ciente" Height="210" Width="500" Margin="0,0,100,0" >
+            <GroupBox x:Name="grpCliente" Header="Ciente" Height="240" Width="670" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="145*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="UF:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"/>
-                        <ComboBox Name="lstUF" Margin="10,2,30,2"  Grid.Row="0" Grid.Column="1"/>
-                        <CheckBox Name="chkClienteZfm" Content="Venda na ZFM" IsEnabled="False" Grid.Row="0" Grid.Column="2" Margin="10,5,0,0"/>
-                        <RadioButton Name="radPessoaJurídica" Content="Pessoa Jurídica" IsChecked="False" Grid.Row="1" Grid.Column="1" Margin="10,10,0,0"/>    
-                        <RadioButton Name="radPessoaFisica" Content="Pessoa Física" IsChecked="True" Grid.Row="1" Grid.Column="2" Margin="10,10,0,0"/>
-                        <CheckBox Name="chkContribuinte" Content="PJ Não Contribuinte / Órgão Público" IsEnabled="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10,0,0" />
-                    
+                    <Label Content="UF:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="0,6"/>
+                    <ComboBox Name="lstUF" Margin="10,2,30,2"  Grid.Row="0" Grid.Column="1"/>
+                    <CheckBox Name="chkClienteZfm" Content="Venda na ZFM" IsEnabled="False" Grid.Row="0" Grid.Column="2" Margin="10,5,0,0" Grid.ColumnSpan="3"/>
+                    <RadioButton Name="radPessoaJurídica" Content="Pessoa Jurídica" IsChecked="False" Grid.Row="1" Grid.Column="1" Margin="10,10,0,0"/>
+                    <RadioButton Name="radPessoaFisica" Content="Pessoa Física" IsChecked="True" Grid.Row="1" Grid.Column="2" Margin="10,10,0,0" Grid.ColumnSpan="3"/>
+                    <CheckBox Name="chkContribuinte" Content="PJ Não Contribuinte / Órgão Público" IsEnabled="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Margin="10,10,0,0" />
+                    <Label Content="Items da FCP" Margin="10,0,0,0" Grid.Row="3" Grid.Column="1"/>
+                    <TextBox Name="txtItemsFcp" BorderThickness="2" Margin="10,0,0,0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"/>
                 </Grid>
             </GroupBox>
-            
         </StackPanel>
-        
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
 
-            <GroupBox Name="grpMicroempresa" Header="Situação" Height="80" Width="300" Margin="10,0,100,0">
-             
-            </GroupBox>
-
-            <GroupBox Name="grpTipoProduto" Header="Tipo Especial" Height="80" Width="300" Margin="0,0,100,0">
-                <StackPanel Orientation="Horizontal">
-                    
-                </StackPanel>
-            </GroupBox>
-
-            <GroupBox Name="grpTextoFcp" Header="Itens da FCP" Height="80" Width="500" Margin="0,0,100,0">
-                
-            </GroupBox>
-            
-        </StackPanel>
-        
-        <Grid Grid.Row="2">
+        <Grid  Margin="5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Name="grpCusto" Header="Custos" Width="500" Height="430" Margin="10,0,20,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
+                      VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid Margin="5,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Valor da Nota" VerticalAlignment="Center"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="(-) ICMS"  VerticalAlignment="Center"/>
+                    <Line  Grid.Row="2" Grid.Column="2" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="150" />
+                    <Label Grid.Row="2" Grid.Column="0" Content="(=) Valor Líquido"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="(+) Frete" VerticalAlignment="Center"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="(+) Outras Despesas"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="(+) Pis Importação"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="(+) Cofins Importação"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="(+) Capatazia"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="8" Grid.Column="0" Content="(+) Contr FTI"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="9" Grid.Column="0" Content="(+) IOF Cartão"  VerticalAlignment="Center"/>
+                    <Line  Grid.Row="10" Grid.Column="3" Stroke="DarkBlue" StrokeThickness="3"/>
+                    <Label Grid.Row="10" Grid.Column="0" Content="Custo de Reposição"  VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtValorNF" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Name="txtIcms"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Name="txtValorLiquido"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" Name="txtFrete"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="4" Grid.Column="2" Name="txtOutrasDespesas"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="2" Name="txtPisImp"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="6" Grid.Column="2" Name="txtCofinsImp"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="7" Grid.Column="2" Name="txtCapatazia" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="8" Grid.Column="2" Name="txtContrFti"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="9" Grid.Column="2" Name="txtIofCartao"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="10" Grid.Column="2" Name="txtCustoReposicao" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="txtPercentIcms"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtPercentPis"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" Name="txtPercentCofins" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" Name="txtPercentCapatazia"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" Name="txtPercentFti"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="9" Grid.Column="1" Name="txtPercentIof"  VerticalAlignment="Center" Margin="5,0"/>
+                </Grid>
+            </GroupBox>
 
+            <GroupBox Name="grpPrecoVenda" Header="Preço Sugerido" Width="790" Height="300" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="(-) Custo de Reposição"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="(-) ICMS Sobre Venda"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="(-) Impostos Federais"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="(-) Despesas Operacionais"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="(=) Lucro Líquido"  VerticalAlignment="Center"/>
+                    
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0"/>
+                    
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0"/>
+                    
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="txtCustoReposicao1" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Name="txtCustoReposicao2" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="3" Name="txtCustoReposicao3" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="4" Name="txtCustoReposicao4" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="5" Name="txtCustoReposicao5" VerticalAlignment="Center" Margin="5,0"/>
+
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="txtIcmsVendas1" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" Name="txtIcmsVendas2" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="3" Name="txtIcmsVendas3" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="4" Name="txtIcmsVendas4" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="5" Name="txtIcmsVendas5" VerticalAlignment="Center" Margin="5,0"/>
+
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="txtImpostosFed1" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="4" Grid.Column="2" Name="txtImpostosFed2" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="4" Grid.Column="3" Name="txtImpostosFed3" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="4" Grid.Column="4" Name="txtImpostosFed4" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="4" Grid.Column="5" Name="txtImpostosFed5" VerticalAlignment="Center" Margin="5,0"/>
+
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtDesOperacinais1" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="2" Name="txtDesOperacinais2" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="3" Name="txtDesOperacinais3" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="4" Name="txtDesOperacinais4" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="5" Name="txtDesOperacinais5" VerticalAlignment="Center" Margin="5,0"/>
+
+                    <TextBox Grid.Row="6" Grid.Column="1" Name="txtLucro1" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="6" Grid.Column="2" Name="txtLucro2" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="6" Grid.Column="3" Name="txtLucro3" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="6" Grid.Column="4" Name="txtLucro4" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="6" Grid.Column="5" Name="txtLucro5" VerticalAlignment="Center" Margin="5,0"/>
+
+
+                </Grid>
+            </GroupBox>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="5">
+                <Button Content="Teste" Width="100" Height="30"/>
+
+
+            </StackPanel>
+           
         </Grid>
-    </Grid>
+    </StackPanel>
 </Window>
