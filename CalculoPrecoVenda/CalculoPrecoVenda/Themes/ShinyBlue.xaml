@@ -1572,6 +1572,7 @@
         <Setter Property="Template" Value="{DynamicResource TextBoxTemplate}" />
         <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource ShadeBrush}"/>
+        <Setter Property="TextAlignment" Value="Right"/>
     </Style>
     
     <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}">

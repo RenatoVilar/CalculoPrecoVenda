@@ -24,5 +24,26 @@ namespace CalculoPrecoVenda
         {
             InitializeComponent();
         }
+
+        private void btnImpostosFederais_Click(object sender, RoutedEventArgs e)
+        {
+            frmImpostosFederais frm = new frmImpostosFederais();
+            frm.ShowDialog();
+            frm.Close();
+        }
+
+        private void btnIcms_Click_1(object sender, RoutedEventArgs e)
+        {
+            frmCalculoICMS frm = new frmCalculoICMS();
+            frm.ShowDialog();
+            frm.Close();
+        }
+
+        private void btnDespOp_Click_2(object sender, RoutedEventArgs e)
+        {
+            frmDespesasOperacionais frm = new frmDespesasOperacionais();
+            frm.ShowDialog();
+            frm.Close();
+        }
     }
 }

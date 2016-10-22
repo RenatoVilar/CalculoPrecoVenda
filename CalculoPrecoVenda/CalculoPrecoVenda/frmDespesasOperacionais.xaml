@@ -1,0 +1,62 @@
+﻿<Window x:Class="CalculoPrecoVenda.frmDespesasOperacionais"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculoPrecoVenda"
+        mc:Ignorable="d"
+        Title="Despesas Operacionais" Width="850" Height="400" 
+        WindowStartupLocation="CenterScreen">
+    <StackPanel Margin="10" HorizontalAlignment="Center">
+        <GroupBox Name="grpPrecoVenda" Header="Despesas Operacionais" Width="800" Height="300" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido"  VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido"  VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Base de Cálculo"  VerticalAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Desp Operacionais"  VerticalAlignment="Center"/>
+
+                <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0"/>
+                <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0"/>
+                <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0"/>
+                <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0"/>
+                <TextBox Grid.Row="0" Grid.Column="6" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0"/>
+
+                <TextBox Grid.Row="1" Grid.Column="2" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="6" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="2" Grid.Column="2" Name="txtBaseCalculo1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="3" Name="txtBaseCalculo2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Name="txtBaseCalculo3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="5" Name="txtBaseCalculo4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="6" Name="txtBaseCalculo5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="3" Grid.Column="1" Name="txtAliquotaDespOp" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Name="txtDespesasOp1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Name="txtDespesasOp2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="4" Name="txtDespesasOp3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="5" Name="txtDespesasOp4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="6" Name="txtDespesasOp5" VerticalAlignment="Center" Margin="5,0"/>
+            </Grid>
+        </GroupBox>
+        <Button Name="btnFechar" Content="Fechar"  Width="100" Height="35" HorizontalAlignment="Right" Margin="10" Click="btnFechar_Click"/>
+    </StackPanel>
+</Window>
