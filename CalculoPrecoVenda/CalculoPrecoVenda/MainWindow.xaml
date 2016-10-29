@@ -142,7 +142,9 @@
                     <Label Grid.Row="9" Grid.Column="0" Content="(+) IOF Cartão"  VerticalAlignment="Center"/>
                     <Line  Grid.Row="10" Grid.Column="2" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="150"/>
                     <Label Grid.Row="10" Grid.Column="0" Content="Custo de Reposição"  VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtValorNF" VerticalAlignment="Center" Margin="5,0" Text="{Binding ElementName=txtValorNF, Path=Text, Converter={StaticResource myNumberFormatter}, ConverterParameter='c'}"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtValorNF" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding ElementName=txtValorNF, Path=Text, Converter={StaticResource myNumberFormatter}, ConverterParameter='c'}" 
+                             PreviewTextInput="NumberValidationTextBox"/>
                     <TextBox Grid.Row="1" Grid.Column="2" Name="txtIcms"  VerticalAlignment="Center" Margin="5,0"/>
                     <TextBox Grid.Row="2" Grid.Column="2" Name="txtValorLiquido"  VerticalAlignment="Center" Margin="5,0"/>
                     <TextBox Grid.Row="3" Grid.Column="2" Name="txtFrete"  VerticalAlignment="Center" Margin="5,0"/>
