@@ -1,0 +1,46 @@
+﻿<Window x:Class="CalculoPrecoVenda.View.frmUnidadeFederada"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculoPrecoVenda.View"
+        mc:Ignorable="d"
+        Title="Cadastro de UFs" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
+
+    <StackPanel Margin="10" >
+        <GroupBox Name="CadastroUF" Header="UF" Width="750" Height="400">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="157*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Código :"  VerticalAlignment="Center" Margin="0,5"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Sigla :"  VerticalAlignment="Center" Margin="0,5"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Nome da UF :"  VerticalAlignment="Center" Margin="0,5"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Al. ICMS Interna :"  VerticalAlignment="Center" Margin="0,5"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Al. FCP :"  VerticalAlignment="Center" Margin="0,5"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Itens da FCP :"  VerticalAlignment="Top" Margin="0,5"/>
+
+            <TextBox Grid.Row="0" Grid.Column="1" Name="txtCodigoUf" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="txtSiglaUf" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="txtNomeUf" Width="300" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlIcmsInterna" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Name="txtAlFco" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="150" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="2"/>
+
+        </Grid>
+        </GroupBox>
+    </StackPanel>
+</Window>

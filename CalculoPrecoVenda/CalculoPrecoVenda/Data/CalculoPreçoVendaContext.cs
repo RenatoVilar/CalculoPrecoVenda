@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 namespace CalculoPrecoVenda
 {
     public class CalculoPreçoVendaContext : DbContext

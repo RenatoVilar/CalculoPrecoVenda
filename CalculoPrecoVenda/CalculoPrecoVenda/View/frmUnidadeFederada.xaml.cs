@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace CalculoPrecoVenda.View
 {
     /// <summary>
-    /// Interaction logic for frmDespesasOperacionais.xaml
+    /// Interaction logic for frmUnidadeFederada.xaml
     /// </summary>
-    public partial class frmDespesasOperacionais : Window
+    public partial class frmUnidadeFederada : Window
     {
-        public frmDespesasOperacionais()
+        public frmUnidadeFederada()
         {
             InitializeComponent();
-        }
-
-        private void btnFechar_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

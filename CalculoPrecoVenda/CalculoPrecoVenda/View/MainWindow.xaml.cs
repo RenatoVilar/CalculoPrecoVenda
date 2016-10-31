@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using CalculoPrecoVenda.View;
 
-namespace CalculoPrecoVenda
+namespace CalculoPrecoVenda.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -51,6 +40,25 @@ namespace CalculoPrecoVenda
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void btnCadastroUf_Click(object sender, RoutedEventArgs e)
+        {
+            frmUnidadeFederada frm = new frmUnidadeFederada();
+            frm.ShowDialog();
+            frm.Close();
+        }
+
+        private void btnCadastroNcm_Click(object sender, RoutedEventArgs e)
+        {
+            frmNcm frm = new frmNcm();
+            frm.ShowDialog();
+            frm.Close();
+        }
+
+        private void btnSobre_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

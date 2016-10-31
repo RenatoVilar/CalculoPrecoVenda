@@ -104,6 +104,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\frmNcm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\frmUnidadeFederada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +128,12 @@
     </Compile>
     <Compile Include="View\frmImpostosFederais.xaml.cs">
       <DependentUpon>frmImpostosFederais.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmNcm.xaml.cs">
+      <DependentUpon>frmNcm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmUnidadeFederada.xaml.cs">
+      <DependentUpon>frmUnidadeFederada.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -195,6 +209,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>CalculoPrecoVendaDB.mdf</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVVMFramework\MVVMFramework.csproj">
+      <Project>{6167d5b1-e0f3-4353-be6a-f4c632e86a45}</Project>
+      <Name>MVVMFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
