@@ -19,13 +19,13 @@
 
             <GroupBox Name="grpFornecedor" Header="Fornecedor" Height="240" Width="250" Margin="10,0,20,0">
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <RadioButton x:Name="radForEstrangeiro" Content="Estrangeiro"  IsChecked="True"/>
-                    <RadioButton x:Name="radForNacional" Content="Nacional"  IsChecked="False"/>
-                    <RadioButton x:Name="radForZfm" Content="ZFM"  IsChecked="False"/>
-                    <RadioButton x:Name="radProducaoPropria" Content="Produção Própria"  IsChecked="False"/>
+                    <RadioButton x:Name="radForEstrangeiro" Content="Estrangeiro"/>
+                    <RadioButton x:Name="radForNacional" Content="Nacional"/>
+                    <RadioButton x:Name="radForZfm" Content="ZFM"/>
+                    <RadioButton x:Name="radProducaoPropria" Content="Produção Própria"/>
                     <Label Content="Situação Especial" Margin="10,5,0,0"/>
                     <Line Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="220" Margin="5"/>
-                    <CheckBox x:Name="chkMicroempresa" Content="Microempresa" IsChecked="False" Margin="10,0,0,0"/>
+                    <CheckBox x:Name="chkMicroempresa" Content="Microempresa" Margin="10,0,0,0"/>
                 </StackPanel>
             </GroupBox>
 
@@ -46,19 +46,19 @@
                         <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
                     
-                    <RadioButton Grid.Row="0" Grid.Column="0" x:Name="radProdEstrangeiro" Content="Estrangeiro"  IsChecked="True" Margin="10,5,0,0"/>
-                    <RadioButton Grid.Row="1" Grid.Column="0" x:Name="radProdNacional" Content="Nacional"  IsChecked="False" Margin="10,5,0,0"/>
+                    <RadioButton Grid.Row="0" Grid.Column="0" x:Name="radProdEstrangeiro" Content="Estrangeiro" Margin="10,5,0,0"/>
+                    <RadioButton Grid.Row="1" Grid.Column="0" x:Name="radProdNacional" Content="Nacional" Margin="10,5,0,0"/>
 
                     <Label Grid.Row="3" Grid.Column="0" Content="Tipo Especial" Margin="10,5,0,5"/>
                     <Line Grid.Row="4" Grid.Column="0" Stroke="DarkBlue" StrokeThickness="2" X1="0" X2="130"/>
-                    <CheckBox Grid.Row="4" Grid.Column="0" x:Name="chkMotores" Content="Motores" IsChecked="False" Margin="10,5,0,0"/>
-                    <CheckBox Grid.Row="5" Grid.Column="0" x:Name="chkPecas" Content="Peças" IsChecked="False" Margin="10,5,0,0"/>
+                    <CheckBox Grid.Row="4" Grid.Column="0" x:Name="chkMotores" Content="Motores" Margin="10,5,0,0"/>
+                    <CheckBox Grid.Row="5" Grid.Column="0" x:Name="chkPecas" Content="Peças" Margin="10,5,0,0"/>
                     
                     <Label Grid.Row="3" Grid.Column="1" Content="Situação Especial" Margin="10,5,0,5"/>
                     <Line Grid.Row="4" Grid.Column="1" Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="200"/>
-                    <CheckBox Grid.Row="4" Grid.Column="1" Name="chkItensFcp" Content="Item com FCP" IsChecked="False" Margin="10,5,0,0"/>
-                    <CheckBox Grid.Row="5" Grid.Column="1" Name="chkCorredor" Content="Corredor de Importação" IsChecked="False" Margin="10,5,0,0"/>
-                    <CheckBox Grid.Row="6" Grid.Column="1" Name="chkImportadoZfm" Content="Importado para ZFM" IsChecked="False" Margin="10,5,0,0"/>
+                    <CheckBox Grid.Row="4" Grid.Column="1" Name="chkItensFcp" Content="Item com FCP" Margin="10,5,0,0"/>
+                    <CheckBox Grid.Row="5" Grid.Column="1" Name="chkCorredor" Content="Corredor de Importação" Margin="10,5,0,0"/>
+                    <CheckBox Grid.Row="6" Grid.Column="1" Name="chkImportadoZfm" Content="Importado para ZFM" Margin="10,5,0,0"/>
                     
                     <Label Grid.Row="0" Grid.Column="1" Content="NCM" VerticalAlignment="Center"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Name="txtNcm" BorderThickness="2" Margin="0,0,10,0" />
@@ -91,7 +91,7 @@
                     <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="radPessoaJurídica" Content="Pessoa Jurídica" IsChecked="False" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     <RadioButton Grid.Row="1" Grid.Column="2" Name="radPessoaFisica" Content="Pessoa Física" IsChecked="True" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Name="chkContribuinte" Content="PJ Não Contribuinte / Órgão Público" IsEnabled="False" VerticalAlignment="Center" Margin="10,0,0,0" />
-                    <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Items com FCP na UF" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Content="Items com FCP na UF selecioanda" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Name="txtItemsFcp" BorderThickness="2" Margin="10,5,0,0"/>
                 </Grid>
             </GroupBox>
@@ -191,11 +191,16 @@
                     <Label Grid.Row="5" Grid.Column="0" Content="(-) Despesas Operacionais"  VerticalAlignment="Center"/>
                     <Label Grid.Row="6" Grid.Column="0" Content="(=) Lucro Líquido"  VerticalAlignment="Center"/>
 
-                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0" 
+                             Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro1, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0" 
+                             Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro2, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0" 
+                             Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro3, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0" 
+                             Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro4, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0" 
+                             Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro5, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
 
                     <TextBox Grid.Row="1" Grid.Column="1" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
                     <TextBox Grid.Row="1" Grid.Column="2" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
@@ -239,7 +244,7 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                 <Button Name="btnImpostosFederais" Content="Impostos Federais" Width="120" Height="35" VerticalAlignment="Top" Margin="0,30,10,0" Click="btnImpostosFederais_Click"/>
                 <Button Name="btnIcms" Content="ICMS sobre a Venda" Width="120" Height="35" VerticalAlignment="Top" Margin="20,30,10,0" Click="btnIcms_Click_1"/>
-                <Button Name="btnDespOp" Content="Despesas Operacionias" Width="120" Height="35" VerticalAlignment="Top" Margin="20,30,10,0" Click="btnDespOp_Click_2"/>
+                <Button Name="btnDespOp" Content="Desp Operacionias" Width="120" Height="35" VerticalAlignment="Top" Margin="20,30,10,0" Click="btnDespOp_Click_2"/>
                 <Button Name="btnCálcular" Content="CALCULAR" Width="120" Height="35" VerticalAlignment="Top" Margin="240,30,10,0"/>
 
             </StackPanel>

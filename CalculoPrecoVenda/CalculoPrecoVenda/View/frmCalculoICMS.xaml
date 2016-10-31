@@ -1,0 +1,109 @@
+﻿<Window x:Class="CalculoPrecoVenda.frmCalculoICMS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculoPrecoVenda"
+        mc:Ignorable="d"
+        Title="Cálculo do ICMS" Width="850" Height="430" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:NumberFormatter x:Key="myNumberFormatter"/>
+    </Window.Resources>
+    <StackPanel Margin="10" HorizontalAlignment="Center">
+        <GroupBox Name="grpPrecoVenda" Header="Cálculo de ICMS" Width="800" Height="330" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido"  VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido"  VerticalAlignment="Center" />
+                <Line  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="850" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Base de Cálculo ICMS"  VerticalAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="(A) ICMS"  VerticalAlignment="Center"/>
+                <Line  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="850"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Base de Cálculo DIFAL"  VerticalAlignment="Center"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="(B) DIFAL"  VerticalAlignment="Center"/>
+                <Label Grid.Row="6" Grid.Column="0" Content="(C) FCP"  VerticalAlignment="Center"/>
+                <Line  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="850"/>
+                <Label Grid.Row="7" Grid.Column="0" Content="(A+B+C) Total ICMS"  VerticalAlignment="Center"/>
+                
+                <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro1, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro2, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro3, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro4, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="6" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro5, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+
+                <TextBox Grid.Row="1" Grid.Column="2" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="6" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="2" Grid.Column="2" Name="txtBaseCalculoIcms1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="3" Name="txtBaseCalculoIcms2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Name="txtBaseCalculoIcms3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="5" Name="txtBaseCalculoIcms4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="6" Name="txtBaseCalculoIcms5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="3" Grid.Column="1" Name="txtAliquotaIcms" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Name="txtIcms1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Name="txtIcms2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="4" Name="txtIcms3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="5" Name="txtIcms4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="6" Name="txtIcms5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="4" Grid.Column="2" Name="txtBaseCalculoIcmsDifal1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="3" Name="txtBaseCalculoIcmsDifal2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="4" Name="txtBaseCalculoIcmsDifal3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="5" Name="txtBaseCalculoIcmsDifal4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="6" Name="txtBaseCalculoIcmsDifal5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="5" Grid.Column="1" Name="txtAliquotaDifal" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Name="txtDifal1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="3" Name="txtDifal2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="4" Name="txtDifal3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="5" Name="txtDifal4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="6" Name="txtDifal5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="6" Grid.Column="1" Name="txtAliquotaFcp" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="6" Grid.Column="2" Name="txtFcp1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="6" Grid.Column="3" Name="txtFcp2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="6" Grid.Column="4" Name="txtFcp3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="6" Grid.Column="5" Name="txtFcp4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="6" Grid.Column="6" Name="txtFcp5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="7" Grid.Column="2" Name="txtTotalIcms1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="7" Grid.Column="3" Name="txtTotalIcms2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="7" Grid.Column="4" Name="txtTotalIcms3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="7" Grid.Column="5" Name="txtTotalIcms4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="7" Grid.Column="6" Name="txtTotalIcms5" VerticalAlignment="Center" Margin="5,0"/>
+
+
+            </Grid>
+        </GroupBox>
+        <Button Name="btnFechar" Content="Fechar"  Width="100" Height="35" HorizontalAlignment="Right" Margin="10" Click="btnFechar_Click"/>
+    </StackPanel>
+</Window>
