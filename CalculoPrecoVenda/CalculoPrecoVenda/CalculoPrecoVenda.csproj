@@ -104,6 +104,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\frmLocalizarNcm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\frmLocalizarUnidadeFederada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\frmNcm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +128,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\LocalizarNCMViewModel.cs" />
     <Compile Include="View\frmCalculoICMS.xaml.cs">
       <DependentUpon>frmCalculoICMS.xaml</DependentUpon>
     </Compile>
@@ -128,6 +137,12 @@
     </Compile>
     <Compile Include="View\frmImpostosFederais.xaml.cs">
       <DependentUpon>frmImpostosFederais.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLocalizarNcm.xaml.cs">
+      <DependentUpon>frmLocalizarNcm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLocalizarUnidadeFederada.xaml.cs">
+      <DependentUpon>frmLocalizarUnidadeFederada.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\frmNcm.xaml.cs">
       <DependentUpon>frmNcm.xaml</DependentUpon>
@@ -183,9 +198,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\find.ico" />
   </ItemGroup>

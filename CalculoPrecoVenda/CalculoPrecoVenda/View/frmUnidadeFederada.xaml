@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda.View"
         mc:Ignorable="d"
-        Title="Cadastro de UFs" Height="450" Width="800"
+        Title="Cadastro de UFs" Height="500" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
 
     <StackPanel Margin="10" >
-        <GroupBox Name="CadastroUF" Header="UF" Width="750" Height="400">
+        <GroupBox Name="CadastroUF" Header="UF" Height="380" Width="750" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
@@ -22,8 +22,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="157*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Content="Código :"  VerticalAlignment="Center" Margin="0,5"/>
@@ -39,8 +38,15 @@
             <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlIcmsInterna" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" Grid.ColumnSpan="2"/>
             <TextBox Grid.Row="4" Grid.Column="1" Name="txtAlFco" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
             <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="150" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="2"/>
-
         </Grid>
         </GroupBox>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Name="btNovo" Content="Novo" Width="120" Height="35" VerticalAlignment="Top" Margin="10,20,10,0" />
+            <Button Name="btnLocalizar" Content="Localizar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnLocalizar_Click" />
+            <Button Name="btnAlterar" Content="Alterar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" />
+            <Button Name="btnExcluir" Content="Excluir" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0"/>
+            <Button Name="Salvar" Content="Salvar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0"/>
+        </StackPanel>
+
     </StackPanel>
 </Window>

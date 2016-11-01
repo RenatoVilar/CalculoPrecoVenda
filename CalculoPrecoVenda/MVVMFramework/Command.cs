@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace MVVMFramework
 {
-    class Command : ICommand
+    public class Command : ICommand
     {
         Action commandAction;
         bool canExecute;

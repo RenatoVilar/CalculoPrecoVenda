@@ -23,5 +23,12 @@ namespace CalculoPrecoVenda.View
         {
             InitializeComponent();
         }
+
+        private void btnLocalizar_Click(object sender, RoutedEventArgs e)
+        {
+            frmLocalizarUnidadeFederada frm = new frmLocalizarUnidadeFederada();
+            frm.ShowDialog();
+            frm.Close();
+        }
     }
 }

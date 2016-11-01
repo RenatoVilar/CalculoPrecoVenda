@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MVVMFramework
 {
-    class Bindable : INotifyDataErrorInfo, INotifyPropertyChanged
+    public class Bindable : INotifyDataErrorInfo, INotifyPropertyChanged
     {
         Dictionary<string, List<string>> errors = new Dictionary<string, List<string>>();
 

@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace CalculoPrecoVenda.View
 {
     /// <summary>
-    /// Interaction logic for frmNcm.xaml
+    /// Interaction logic for frmLocalizarUnidadeFederada.xaml
     /// </summary>
-    public partial class frmNcm : Window
+    public partial class frmLocalizarUnidadeFederada : Window
     {
-        public frmNcm()
+        public frmLocalizarUnidadeFederada()
         {
             InitializeComponent();
-        }
-
-        private void btnLocalizar_Click(object sender, RoutedEventArgs e)
-        {
-            frmLocalizarNcm frm = new frmLocalizarNcm();
-            frm.ShowDialog();
-            frm.Close();
         }
     }
 }
