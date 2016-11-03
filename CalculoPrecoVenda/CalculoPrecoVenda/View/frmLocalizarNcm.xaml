@@ -4,22 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda.View"
+        xmlns:vm="clr-namespace:CalculoPrecoVenda.ViewModel"
         mc:Ignorable="d"
         Title="Localizar NCM" Height="350" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Padding="2"/>
+        <TextBox Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Padding="2"/>
         <Button Grid.Row="0" Grid.Column="1" Content="Pesquisar" Command="{Binding PesquisarCommand}" Padding="2" Width="65" Margin="5,0,0,0"/>
+        <!--<DataGrid Grid.Row="1" Grid.ColumnSpan="2"
+                  ItemsSource="{Binding Ncms}"
+                  SelectionMode="Single">
+        </DataGrid>-->
 
-            <ListBox Name="listNcm" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5,0,0"/>
+        <ListBox Name="listNcm" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5,0,0" ItemsSource="{Binding Ncms}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

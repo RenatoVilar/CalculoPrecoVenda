@@ -18,9 +18,9 @@ namespace CalculoPrecoVenda
 
         }
 
-        private DbSet<UnidadeFederada> UFs { get; set; }
+        public virtual DbSet<UnidadeFederada> UFs { get; set; }
 
-        public DbSet<Ncm> Ncms { get; set; }
+        public virtual DbSet<Ncm> Ncms { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

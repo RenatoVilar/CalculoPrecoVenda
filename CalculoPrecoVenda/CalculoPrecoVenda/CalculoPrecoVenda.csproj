@@ -215,15 +215,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\CalculoPrecoVendaDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\CalculoPrecoVendaDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>CalculoPrecoVendaDB.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MVVMFramework\MVVMFramework.csproj">
       <Project>{6167d5b1-e0f3-4353-be6a-f4c632e86a45}</Project>
       <Name>MVVMFramework</Name>
