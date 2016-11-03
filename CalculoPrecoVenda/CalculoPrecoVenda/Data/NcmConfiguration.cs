@@ -12,6 +12,7 @@ namespace CalculoPrecoVenda.Data
     {
         public NcmConfiguration()
         {
+            ToTable("Ncms");
             HasKey(n => n.NcmId);
 
             Property(u => u.CodNcm)

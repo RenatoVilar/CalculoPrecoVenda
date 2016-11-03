@@ -84,6 +84,10 @@
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
     <Compile Include="Data\NcmConfiguration.cs" />
     <Compile Include="Data\UnidadeFederadaConfiguration.cs" />
+    <Compile Include="Migrations\201611031341080_Initial.cs" />
+    <Compile Include="Migrations\201611031341080_Initial.Designer.cs">
+      <DependentUpon>201611031341080_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ncm.cs" />
     <Compile Include="Model\UnidadeFederada.cs" />
@@ -129,6 +133,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\LocalizarNCMViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\NcmViewModel.cs" />
     <Compile Include="View\frmCalculoICMS.xaml.cs">
       <DependentUpon>frmCalculoICMS.xaml</DependentUpon>
     </Compile>
@@ -178,6 +184,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201611031341080_Initial.resx">
+      <DependentUpon>201611031341080_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

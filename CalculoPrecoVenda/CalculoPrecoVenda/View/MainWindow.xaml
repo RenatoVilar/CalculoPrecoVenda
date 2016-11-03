@@ -110,7 +110,7 @@
             </Grid.ColumnDefinitions>
             <GroupBox Name="grpCusto" Header="Custos" Width="500" Height="430" Margin="10,0,20,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
                       VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Grid Margin="5,0,0,0">
+                <Grid Margin="5,0,0,0" Height="396" VerticalAlignment="Bottom">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="35"/>
@@ -144,10 +144,15 @@
                     <Line  Grid.Row="10" Grid.Column="2" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="150"/>
                     <Label Grid.Row="10" Grid.Column="0" Content="Custo de Reposição"  VerticalAlignment="Center"/>
                     <TextBox Grid.Row="0" Grid.Column="2" Name="txtValorNF" VerticalAlignment="Center" Margin="5,0" 
-                             Text="{Binding ElementName=txtValorNF, Path=Text, Converter={StaticResource myNumberFormatter}, ConverterParameter='c'}" 
+                             Text="{Binding TxtValorNF, Mode=TwoWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='c'}" 
                              PreviewTextInput="NumberValidationTextBox"/>
-                    <TextBox Grid.Row="1" Grid.Column="2" Name="txtIcms"  VerticalAlignment="Center" Margin="5,0"/>
-                    <TextBox Grid.Row="2" Grid.Column="2" Name="txtValorLiquido"  VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Name="txtIcms"  VerticalAlignment="Center" Margin="5,0"
+                             Text="{Binding TxtIcms, Mode=TwoWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='c'}"
+                             PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Name="txtValorLiquido"  VerticalAlignment="Center" Margin="5,0"
+                             Text="{Binding ValorLiquido, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='c'}"
+                             PreviewTextInput="NumberValidationTextBox"/>
+                    
                     <TextBox Grid.Row="3" Grid.Column="2" Name="txtFrete"  VerticalAlignment="Center" Margin="5,0"/>
                     <TextBox Grid.Row="4" Grid.Column="2" Name="txtOutrasDespesas"  VerticalAlignment="Center" Margin="5,0"/>
                     <TextBox Grid.Row="5" Grid.Column="2" Name="txtPisImp"  VerticalAlignment="Center" Margin="5,0"/>

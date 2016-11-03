@@ -25,10 +25,21 @@ namespace CalculoPrecoVenda.ViewModel
 
         public Command PesquisarCommand { get; set; }
 
+        private string textoPesquisa;
+
+        public string TextoPesquisa
+        {
+            get { return textoPesquisa; }
+            set { SetValue(ref textoPesquisa, value); }
+        }
+
+
         void Pesquisar()
         {
             ObservableCollection<Ncm> _ncms = new ObservableCollection<Ncm>();
-            var ncms = from n in ctx.Ncms select n;
+            var ncms = from n in ctx.Ncms
+                       where n.NomeNcm.Contains(TextoPesquisa)
+                       select n;
 
             foreach (Ncm ncm in ncms)
             {
@@ -37,7 +48,7 @@ namespace CalculoPrecoVenda.ViewModel
             Ncms = _ncms;
             OnPropertyChanged("Ncms");
 
-            MessageBox.Show(Ncms.Count.ToString());
+           
 
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculoPrecoVenda.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace CalculoPrecoVenda.View
         public frmNcm()
         {
             InitializeComponent();
+            this.DataContext = new NcmViewModel();
         }
 
         private void btnLocalizar_Click(object sender, RoutedEventArgs e)

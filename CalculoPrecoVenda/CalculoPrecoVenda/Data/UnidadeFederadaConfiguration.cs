@@ -12,6 +12,7 @@ namespace CalculoPrecoVenda.Data
     {
         public UnidadeFederadaConfiguration()
         {
+            ToTable("Ufs");
             HasKey(u => u.UnidadeFederadaId);
 
             Property(u => u.NomeUf)
