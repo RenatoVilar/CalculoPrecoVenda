@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,8 +18,9 @@ namespace CalculoPrecoVenda
             : base("CalculoPrecoVendaDb")
         {
             //AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
-            //AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\Users\Renato.ALEGRANAUTICA\Documents\Visual Studio 2015\Projects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
-            AppDomain.CurrentDomain.SetData("DataDirectory", @"E:\VSProjects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
+            AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\Users\Renato.ALEGRANAUTICA\Documents\Visual Studio 2015\Projects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
+            //AppDomain.CurrentDomain.SetData("DataDirectory", @"E:\VSProjects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
+            //AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             Database.SetInitializer<CalculoPreçoVendaContext>(new CreateDatabaseIfNotExists<CalculoPreçoVendaContext>());
 
         }

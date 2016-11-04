@@ -30,7 +30,6 @@ namespace CalculoPrecoVenda.ViewModel
         public Command SelecionarCommand { get; set; }
 
         private string textoPesquisa;
-
         public string TextoPesquisa
         {
             get { return textoPesquisa; }
@@ -38,7 +37,6 @@ namespace CalculoPrecoVenda.ViewModel
         }
 
         private Ncm ncm;
-
         public Ncm Ncm
         {
             get { return ncm; }
@@ -60,6 +58,14 @@ namespace CalculoPrecoVenda.ViewModel
             }
         }
 
+        private List<Ncm> selectedNcm;
+        public List<Ncm> SelectedNcm
+        {
+            get { return selectedNcm; }
+            set { SetValue(ref selectedNcm, value); }
+        }
+
+
         void Pesquisar()
         {
             ObservableCollection<Ncm> _ncms = new ObservableCollection<Ncm>();
@@ -79,6 +85,20 @@ namespace CalculoPrecoVenda.ViewModel
         void Selecionar()
         {
             NcmViewModel frm = new NcmViewModel(Ncm);
+
+            List<Ncm> _selectedNcm = new List<Ncm>();
+
+            var query = from n in ctx.Ncms
+                        where n.NcmId == selectedIndex
+                        select n;
+
+            foreach (Ncm ncm in query)
+            {
+                _selectedNcm.Add(ncm);
+            }
+
         }
+           
     }
+    
 }

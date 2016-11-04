@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda.View"
         xmlns:vm="clr-namespace:CalculoPrecoVenda.ViewModel"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Localizar NCM" Height="350" Width="800"
         WindowStartupLocation="CenterScreen">
@@ -25,7 +26,7 @@
                   AutoGenerateColumns="False"
                   HeadersVisibility="Column"
                   ItemsSource="{Binding Ncms}"
-                  SelectedItem="{Binding SelectedIndex, Mode=TwoWay}"
+                  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                   SelectionMode="Single"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
@@ -42,6 +43,12 @@
                 <DataGridTextColumn Binding="{Binding ImpImportacao, StringFormat=N}" MinWidth="50" Header="II" />
                 <DataGridTextColumn Binding="{Binding Ipi, StringFormat=N}" MinWidth="50" Header="IPI" />
             </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelecionarCommand}" 
+                    CommandParameter="{Binding Path=SelectedIndex, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="FontWeight" Value="Bold"/>
@@ -58,7 +65,7 @@
             </DataGrid.CellStyle>
 
         </DataGrid>
-        <Button Grid.Row="2" Name="btnOK" Content="OK" Command="{Binding SelecionarCommand}" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnOK_Click"/>
+        <Button Grid.Row="2" Name="btnOK" Content="OK" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnOK_Click"/>
 
         <!--<ListBox Name="listNcm" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5,0,0" ItemsSource="{Binding Ncms}">
             <ListBox.ItemTemplate>

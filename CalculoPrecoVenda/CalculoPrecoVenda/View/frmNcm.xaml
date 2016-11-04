@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
     <StackPanel Margin="10" >
-        <GroupBox Name="CadastroNcm" Header="NCM" Height="220" Width="750" >
+        <GroupBox Name="gpbCadastroNcm" Header="NCM" Height="220" Width="750">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35"/>
@@ -29,8 +29,8 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="Al. II :"  VerticalAlignment="Center" Margin="0,5"/>
                 <Label Grid.Row="4" Grid.Column="0" Content="Al. IPI :"  VerticalAlignment="Center" Margin="0,5"/>
            
-                <TextBox Grid.Row="0" Grid.Column="1" Name="txtCodigoNcm" Text="{Binding Path=Ncm.NcmId}" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Name="txtNcm" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="txtCodigoNcm" Text="{Binding Path=Ncm.NcmId, UpdateSourceTrigger=PropertyChanged}" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Name="txtNcm" Width="100" Text="{Binding CodNcm, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="2"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Name="txtDescricaoNcm" VerticalAlignment="Center"  Margin="10,6,0,7" Grid.ColumnSpan="2"/>
                 <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlII" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" Grid.ColumnSpan="2"/>
                 <TextBox Grid.Row="4" Grid.Column="1" Name="txtAlIpi" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>

@@ -37,15 +37,24 @@ namespace CalculoPrecoVenda.View
             frm.ShowDialog();
             if (frm.codigo != 0)
             {
-                Ncm ncm = new Ncm();
-                
-                this.DataContext = from n in ctx.Ncms
-                                   where n.NcmId == frm.codigo
-                                   select n;
-                
+                List<Ncm> _selectedNcm = new List<Ncm>();
+
+                var query = from n in ctx.Ncms
+                            where n.NcmId == frm.codigo
+                            select n;
+
+                foreach (Ncm ncm in query)
+                {
+                    _selectedNcm.Add(ncm);
+                }
+
+                gpbCadastroNcm.DataContext = _selectedNcm;
+
             }
 
-            frm.Close();
+
+
+              
         }
     }
 }

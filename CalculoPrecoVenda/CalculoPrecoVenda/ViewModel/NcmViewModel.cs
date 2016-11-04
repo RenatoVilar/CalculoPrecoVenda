@@ -35,6 +35,8 @@ namespace CalculoPrecoVenda.ViewModel
             set { SetValue(ref ncm, value); }
         }
 
+        
+
        
 
         
