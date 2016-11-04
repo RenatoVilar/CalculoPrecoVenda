@@ -21,6 +21,12 @@ namespace CalculoPrecoVenda.ViewModel
 
         }
 
+        public NcmViewModel(Ncm ncm)
+            :base()
+        {
+            Ncm = ncm;
+        }
+
         private Ncm ncm;
 
         public Ncm Ncm
@@ -29,20 +35,7 @@ namespace CalculoPrecoVenda.ViewModel
             set { SetValue(ref ncm, value); }
         }
 
-        private int selectedIndex;
-        public int SelectedIndex
-        {
-            get { return selectedIndex; }
-            set
-            {
-                SetValue(ref selectedIndex, value);
-
-                if (selectedIndex >= 0)
-                {
-                    Ncm = Ncms[selectedIndex];
-                }
-            }
-        }
+       
 
         
 

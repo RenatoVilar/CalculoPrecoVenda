@@ -16,7 +16,8 @@ namespace CalculoPrecoVenda
             : base("CalculoPrecoVendaDb")
         {
             //AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
-            AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\Users\Renato.ALEGRANAUTICA\Documents\Visual Studio 2015\Projects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
+            //AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\Users\Renato.ALEGRANAUTICA\Documents\Visual Studio 2015\Projects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
+            AppDomain.CurrentDomain.SetData("DataDirectory", @"E:\VSProjects\CalculoPrecoVenda\CalculoPrecoVenda\CalculoPrecoVenda\Data");
             Database.SetInitializer<CalculoPreçoVendaContext>(new CreateDatabaseIfNotExists<CalculoPreçoVendaContext>());
 
         }

@@ -21,9 +21,13 @@ namespace CalculoPrecoVenda.ViewModel
             : base()
         {
             PesquisarCommand = new Command(Pesquisar);
+            SelecionarCommand = new Command(Selecionar);
+
         }
 
         public Command PesquisarCommand { get; set; }
+
+        public Command SelecionarCommand { get; set; }
 
         private string textoPesquisa;
 
@@ -33,6 +37,28 @@ namespace CalculoPrecoVenda.ViewModel
             set { SetValue(ref textoPesquisa, value); }
         }
 
+        private Ncm ncm;
+
+        public Ncm Ncm
+        {
+            get { return ncm; }
+            set { SetValue(ref ncm, value); }
+        }
+
+        private int selectedIndex;
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                SetValue(ref selectedIndex, value);
+
+                if (selectedIndex >= 0)
+                {
+                    Ncm = Ncms[selectedIndex];
+                }
+            }
+        }
 
         void Pesquisar()
         {
@@ -45,12 +71,14 @@ namespace CalculoPrecoVenda.ViewModel
             {
                 _ncms.Add(ncm);
             }
+
             Ncms = _ncms;
             OnPropertyChanged("Ncms");
+        }
 
-           
-
-
+        void Selecionar()
+        {
+            NcmViewModel frm = new NcmViewModel(Ncm);
         }
     }
 }

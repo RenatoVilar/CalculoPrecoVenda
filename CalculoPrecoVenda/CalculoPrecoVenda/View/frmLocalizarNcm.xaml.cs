@@ -1,4 +1,5 @@
-﻿using CalculoPrecoVenda.ViewModel;
+﻿using CalculoPrecoVenda.Model;
+using CalculoPrecoVenda.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,17 @@ namespace CalculoPrecoVenda.View
         {
             InitializeComponent();
             this.DataContext = new LocalizarNCMViewModel();
+        }
+
+        public int codigo = 0;
+
+        private void btnOK_Click(object sender, RoutedEventArgs e)
+        {
+            if (dtgNcm.SelectedIndex >= 0)
+            {
+                codigo = dtgNcm.SelectedIndex;
+                Close();
+            }
         }
     }
 }

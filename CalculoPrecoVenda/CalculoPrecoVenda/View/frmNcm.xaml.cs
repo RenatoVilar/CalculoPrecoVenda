@@ -1,4 +1,5 @@
-﻿using CalculoPrecoVenda.ViewModel;
+﻿using CalculoPrecoVenda.Model;
+using CalculoPrecoVenda.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace CalculoPrecoVenda.View
     /// </summary>
     public partial class frmNcm : Window
     {
+        CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
+
+        //public Ncm Ncm { get; set; }
+
         public frmNcm()
         {
             InitializeComponent();
@@ -30,6 +35,16 @@ namespace CalculoPrecoVenda.View
         {
             frmLocalizarNcm frm = new frmLocalizarNcm();
             frm.ShowDialog();
+            if (frm.codigo != 0)
+            {
+                Ncm ncm = new Ncm();
+                
+                this.DataContext = from n in ctx.Ncms
+                                   where n.NcmId == frm.codigo
+                                   select n;
+                
+            }
+
             frm.Close();
         }
     }

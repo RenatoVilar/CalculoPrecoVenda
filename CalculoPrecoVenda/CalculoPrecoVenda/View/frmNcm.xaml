@@ -29,7 +29,7 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="Al. II :"  VerticalAlignment="Center" Margin="0,5"/>
                 <Label Grid.Row="4" Grid.Column="0" Content="Al. IPI :"  VerticalAlignment="Center" Margin="0,5"/>
            
-                <TextBox Grid.Row="0" Grid.Column="1" Name="txtCodigoNcm" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="txtCodigoNcm" Text="{Binding Path=Ncm.NcmId}" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Name="txtNcm" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="2"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Name="txtDescricaoNcm" VerticalAlignment="Center"  Margin="10,6,0,7" Grid.ColumnSpan="2"/>
                 <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlII" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" Grid.ColumnSpan="2"/>
