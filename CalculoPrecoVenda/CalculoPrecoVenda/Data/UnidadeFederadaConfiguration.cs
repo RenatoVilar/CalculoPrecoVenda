@@ -13,13 +13,13 @@ namespace CalculoPrecoVenda.Data
         public UnidadeFederadaConfiguration()
         {
             ToTable("Ufs");
-            HasKey(u => u.UnidadeFederadaId);
+            HasKey(u => u.UfId);
 
             Property(u => u.NomeUf)
                 .IsRequired()
                 .HasMaxLength(30);
 
-            Property(u => u.Sigla)
+            Property(u => u.SiglaUf)
                 .IsRequired()
                 .HasMaxLength(2);
 

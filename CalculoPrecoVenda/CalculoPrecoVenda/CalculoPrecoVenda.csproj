@@ -85,12 +85,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationServices\IWindowsService.cs" />
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
     <Compile Include="Data\NcmConfiguration.cs" />
     <Compile Include="Data\UnidadeFederadaConfiguration.cs" />
-    <Compile Include="Migrations\201611031341080_Initial.cs" />
-    <Compile Include="Migrations\201611031341080_Initial.Designer.cs">
-      <DependentUpon>201611031341080_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611051438455_Initial.cs" />
+    <Compile Include="Migrations\201611051438455_Initial.Designer.cs">
+      <DependentUpon>201611051438455_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ncm.cs" />
@@ -188,8 +189,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201611031341080_Initial.resx">
-      <DependentUpon>201611031341080_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611051438455_Initial.resx">
+      <DependentUpon>201611051438455_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

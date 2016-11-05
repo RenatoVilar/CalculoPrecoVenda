@@ -24,7 +24,6 @@ namespace CalculoPrecoVenda.View
         public frmLocalizarNcm()
         {
             InitializeComponent();
-            this.DataContext = new LocalizarNCMViewModel();
         }
 
         public int codigo = 0;

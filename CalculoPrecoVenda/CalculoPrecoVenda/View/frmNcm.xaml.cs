@@ -1,5 +1,7 @@
-﻿using CalculoPrecoVenda.Model;
+﻿using CalculoPrecoVenda.ApplicationServices;
+using CalculoPrecoVenda.Model;
 using CalculoPrecoVenda.ViewModel;
+using MVVMFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +16,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CalculoPrecoVenda.View
+namespace CalculoPrecoVenda.View 
 {
     /// <summary>
     /// Interaction logic for frmNcm.xaml
     /// </summary>
-    public partial class frmNcm : Window
+    public partial class frmNcm : Window, IWindowsService
     {
         CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
 
@@ -29,6 +31,35 @@ namespace CalculoPrecoVenda.View
         {
             InitializeComponent();
             this.DataContext = new NcmViewModel();
+        }
+
+        public void CloseWindow()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmDelete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmSabe()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PutFocusOnForm()
+        {
+            txtCodNcm.Focus();
+        }
+
+        public void UpdateBindings()
+        {
+            txtNcmId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            txtCodNcm.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            txtNomeNcm.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            txtImpImportacao.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            txtIpi.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void btnLocalizar_Click(object sender, RoutedEventArgs e)
@@ -49,12 +80,11 @@ namespace CalculoPrecoVenda.View
                 }
 
                 gpbCadastroNcm.DataContext = _selectedNcm;
+               
 
             }
-
-
-
-              
         }
+
+        
     }
 }

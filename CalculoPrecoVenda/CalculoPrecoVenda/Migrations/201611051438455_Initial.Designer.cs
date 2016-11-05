@@ -13,7 +13,7 @@ namespace CalculoPrecoVenda.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611031341080_Initial"; }
+            get { return "201611051438455_Initial"; }
         }
         
         string IMigrationMetadata.Source

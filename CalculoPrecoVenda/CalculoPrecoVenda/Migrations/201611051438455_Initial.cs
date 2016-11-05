@@ -14,8 +14,8 @@ namespace CalculoPrecoVenda.Migrations
                         NcmId = c.Int(nullable: false, identity: true),
                         CodNcm = c.String(nullable: false, maxLength: 10, unicode: false),
                         NomeNcm = c.String(nullable: false, maxLength: 150, unicode: false),
-                        ImpImportacao = c.Double(nullable: false),
-                        Ipi = c.Double(nullable: false),
+                        ImpImportacao = c.Double(),
+                        Ipi = c.Double(),
                     })
                 .PrimaryKey(t => t.NcmId);
             
@@ -23,14 +23,14 @@ namespace CalculoPrecoVenda.Migrations
                 "dbo.Ufs",
                 c => new
                     {
-                        UnidadeFederadaId = c.Int(nullable: false, identity: true),
+                        UfId = c.Int(nullable: false, identity: true),
                         NomeUf = c.String(nullable: false, maxLength: 30, unicode: false),
-                        Sigla = c.String(nullable: false, maxLength: 2, unicode: false),
+                        SiglaUf = c.String(nullable: false, maxLength: 2, unicode: false),
                         AliquotaInterna = c.Double(nullable: false),
                         AliquotaFcp = c.Double(nullable: false),
                         ItensFcp = c.String(nullable: false, maxLength: 300, unicode: false),
                     })
-                .PrimaryKey(t => t.UnidadeFederadaId);
+                .PrimaryKey(t => t.UfId);
             
         }
         
