@@ -10,54 +10,61 @@ namespace CalculoPrecoVenda.Model
     public class Ncm : Bindable
     {
         private int ncmId;
+        private string codNcm;
+        private string nomeNCm;
+        private double? impImportacao;
+        private double? ipi;
+
         public int NcmId
         {
             get { return ncmId; }
             set { SetValue(ref ncmId, value); }
         }
 
-        private string codNcm;
         public string CodNcm
         {
             get { return codNcm; }
             set
             {
                 SetValue(ref codNcm, value);
-                if (string.IsNullOrEmpty(codNcm))
+
+                if (string.IsNullOrEmpty(codNcm) || codNcm.Length < 8)
                 {
-                    AddError("O código da NCM deve ser preenchido!");
+                    AddError("O código da NCM deve conter 8 digitos!");
+                }
+                else
+                {
+                    RemoveErrors();
                 }
             }
-
         }
-
-        private string nomeNcm;
         public string NomeNcm
         {
-            get { return nomeNcm; }
+            get { return nomeNCm; }
             set
             {
-                SetValue(ref nomeNcm, value);
-                if (string.IsNullOrEmpty(nomeNcm))
+                SetValue(ref nomeNCm, value);
+                if (string.IsNullOrEmpty(nomeNCm))
                 {
-                    AddError("A descrição da NCM deve ser preenchida!");
+                    AddError("A descrição da NCM não pode ficar em branco");
+                }
+                else
+                {
+                    RemoveErrors();
                 }
             }
         }
-
-        private double? impImportacao;
+        
         public double? ImpImportacao
         {
-            get { return ImpImportacao; }
+            get { return impImportacao; }
             set { SetValue(ref impImportacao, value); }
         }
-
-        private double? ipi;
+        
         public double? Ipi
         {
             get { return ipi; }
             set { SetValue(ref ipi, value); }
         }
-
     }
 }

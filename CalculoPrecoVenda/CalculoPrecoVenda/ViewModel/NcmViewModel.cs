@@ -12,55 +12,53 @@ namespace CalculoPrecoVenda.ViewModel
 {
     class NcmViewModel : Bindable
     {
-        CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
+        //CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
 
-        public IWindowsService WindowsService { get; set; }
-        public ObservableCollection<Ncm> Ncms { get; set; }
+        //public IWindowsService WindowsService { get; set; }
+        //public ObservableCollection<Ncm> Ncms { get; set; }
 
-        public NcmViewModel()
-        {
-            NovoCommand = new Command(Novo);
-            SalvarCommand = new Command(Salvar);
-        }
+        //public NcmViewModel()
+        //{
+        //    NovoCommand = new Command(Novo);
+        //    SalvarCommand = new Command(Salvar);
+        //}
 
-        private Ncm ncm;
+        //private Ncm ncm;
 
-        public Ncm Ncm
-        {
-            get { return ncm; }
-            set { SetValue(ref ncm, value); }
-        }
+        //public Ncm Ncm
+        //{
+        //    get { return ncm; }
+        //    set { SetValue(ref ncm, value); }
+        //}
 
 
-        public Command NovoCommand { get; set; }
+        //public Command NovoCommand { get; set; }
 
-        public Command SalvarCommand { get; set; }
+        //public Command SalvarCommand { get; set; }
 
-        void Novo()
-        {
-            Ncm = new Ncm();
+        //void Novo()
+        //{
+        //    Ncm = new Ncm();
 
-            Ncm.ErrorsChanged += Ncm_ErrorsChanged;
+        //    Ncm.ErrorsChanged += Ncm_ErrorsChanged;
 
-            if (WindowsService != null)
-            {
-                WindowsService.UpdateBindings();
-                WindowsService.PutFocusOnForm();
-            }
-            
-        }
+        //    if (WindowsService != null)
+        //    {
+        //        WindowsService.UpdateBindings();
+        //        WindowsService.PutFocusOnForm();
+        //    }
 
-        private void Ncm_ErrorsChanged(object sender, System.ComponentModel.DataErrorsChangedEventArgs e)
-        {
-            
-        }
+        //}
 
-        void Salvar()
-        {
-            var n = new Ncm
-            {
-                Ncm
-            }
-        }
+        //private void Ncm_ErrorsChanged(object sender, System.ComponentModel.DataErrorsChangedEventArgs e)
+        //{
+
+        //}
+
+        //void Salvar()
+        //{
+
+        //}
+
     }
 }

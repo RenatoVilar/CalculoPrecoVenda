@@ -4,29 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda.View"
+        xmlns:nf="clr-namespace:CalculoPrecoVenda"
         xmlns:vm="clr-namespace:CalculoPrecoVenda.ViewModel"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Localizar NCM" Height="350" Width="800"
-        WindowStartupLocation="CenterScreen">
-    <Grid Margin="5">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.Resources>
+        <nf:NumberFormatter x:Key="myNumberFormatter"/>
+    </Window.Resources>
+
+<Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding TextoPesquisa, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="2"/>
-        <Button Grid.Row="0" Grid.Column="1" Content="Pesquisar" Command="{Binding PesquisarCommand}" Padding="2" Width="65" Margin="5,0,0,0"/>
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="2"
+        <ComboBox Name="cboLocalizarNCM" Grid.Row="0" Grid.Column="0" MinWidth="150" Padding="2" Margin="0,0,5,0"/>
+        <TextBox Name="txtPesquisa" Grid.Row="0" Grid.Column="1" FontSize="14" TextAlignment="Left" />
+        <Button Name="btnPesquisar" Grid.Row="0" Grid.Column="2" Content="Pesquisar" Width="65" Margin="5,0,0,0" Click="btnPesquisar_Click" />
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="3"
                   AutoGenerateColumns="False"
                   HeadersVisibility="Column"
-                  ItemsSource="{Binding Ncms}"
-                  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                   SelectionMode="Single"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
@@ -38,43 +43,27 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding NcmId}" MinWidth="100" Header="Cod" />
-                <DataGridTextColumn Binding="{Binding CodNcm}" MinWidth="100" Header="NCM" />
-                <DataGridTextColumn Binding="{Binding NomeNcm}" MinWidth="300" Header="Nome NCM " />
-                <DataGridTextColumn Binding="{Binding ImpImportacao, StringFormat=N}" MinWidth="50" Header="II" />
-                <DataGridTextColumn Binding="{Binding Ipi, StringFormat=N}" MinWidth="50" Header="IPI" />
+                <DataGridTextColumn Binding="{Binding CodNcm}" MinWidth="175" Header="NCM" />
+                <DataGridTextColumn Binding="{Binding NomeNcm}" MinWidth="400" Header="Nome NCM " />
+                <DataGridTextColumn Binding="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" MinWidth="50" Header="II" />
+                <DataGridTextColumn Binding="{Binding Ipi, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" MinWidth="50" Header="IPI" />
             </DataGrid.Columns>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding SelecionarCommand}" 
-                    CommandParameter="{Binding Path=SelectedIndex, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontSize" Value="14"/>
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.CellStyle>
                 <Style x:Name="Cell" TargetType="{x:Type DataGridCell}">
-                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontSize" Value="14"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 </Style>
             </DataGrid.CellStyle>
 
         </DataGrid>
-        <Button Grid.Row="2" Name="btnOK" Content="OK" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnOK_Click"/>
-
-        <!--<ListBox Name="listNcm" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5,0,0" ItemsSource="{Binding Ncms}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
-    </Grid>
+        <Button Grid.Row="2" Grid.Column="1" Name="btnSelecionar" Content="Selecionar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnOK_Click"/>
+            </Grid>
 </Window>
