@@ -46,7 +46,7 @@ namespace CalculoPrecoVenda.View
         private void btnNovo_Click(object sender, RoutedEventArgs e)
         {
             ncm = new Ncm();
-            ncm.ErrorsChanged += OnErrorChanged;
+           
             gridNcm.DataContext = ncm;
 
             operacao = "Novo";
@@ -59,11 +59,6 @@ namespace CalculoPrecoVenda.View
 
             AlterarBotoes(2);
             
-        }
-
-        private void OnErrorChanged(object sender, DataErrorsChangedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void btnLocalizar_Click(object sender, RoutedEventArgs e)
@@ -94,6 +89,12 @@ namespace CalculoPrecoVenda.View
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
             var ncms = ctx.Ncms.ToList<Ncm>();
+
+            if (string.IsNullOrEmpty(txtNomeNcm.Text))
+            {
+                MessageBox.Show("A descrição da NCM não pode ficar em branco!");
+                return;
+            }
 
             if (operacao == "Novo")
             {

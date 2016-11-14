@@ -50,11 +50,9 @@
                             <Binding.ValidationRules>
                                 <nf:ValueIsNotNull ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
-                            
                         </Binding>
                     </TextBox.Text>
-                </TextBox> 
-                    
+                </TextBox>
                 <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,7,0,6" 
                          Name="txtImpImportacao" Text="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                 <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,6,0,7" Padding="2"
