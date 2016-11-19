@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda.View"
         xmlns:nf="clr-namespace:CalculoPrecoVenda"
-        xmlns:vm="clr-namespace:CalculoPrecoVenda.ViewModel"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Localizar NCM" Height="350" Width="800"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <nf:NumberFormatter x:Key="myNumberFormatter"/>
+        <Style x:Key="CellRightAlign">
+            <Setter Property="Control.HorizontalAlignment" Value="Right"/>
+        </Style>
     </Window.Resources>
 
-<Grid Margin="5">
+
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -39,14 +42,16 @@
                   AlternationCount="2"
                   RowBackground="Aqua"
                   AlternatingRowBackground="White"
-                  Name="dtgNcm">          
+                  Name="dtgNcm">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding NcmId}" MinWidth="100" Header="Cod" />
-                <DataGridTextColumn Binding="{Binding CodNcm}" MinWidth="175" Header="NCM" />
-                <DataGridTextColumn Binding="{Binding NomeNcm}" MinWidth="400" Header="Nome NCM " />
-                <DataGridTextColumn Binding="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" MinWidth="50" Header="II" />
-                <DataGridTextColumn Binding="{Binding Ipi, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" MinWidth="50" Header="IPI" />
+                <DataGridTextColumn Binding="{Binding NcmId}" Width="50" Header="Cod" />
+                <DataGridTextColumn Binding="{Binding CodNcm}" Width="115" Header="NCM" />
+                <DataGridTextColumn Binding="{Binding NomeNcm}" Width="490" Header="Nome NCM " />
+                <DataGridTextColumn Binding="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
+                                    Width="50" Header="II" CellStyle="{StaticResource CellRightAlign}"/>
+                <DataGridTextColumn Binding="{Binding Ipi, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
+                                    Width="50" Header="IPI" CellStyle="{StaticResource CellRightAlign}"/>
             </DataGrid.Columns>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -64,6 +69,7 @@
             </DataGrid.CellStyle>
 
         </DataGrid>
-        <Button Grid.Row="2" Grid.Column="1" Name="btnSelecionar" Content="Selecionar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnOK_Click"/>
-            </Grid>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnOK_Click"
+                Name="btnSelecionar" Content="Selecionar"/>
+    </Grid>
 </Window>

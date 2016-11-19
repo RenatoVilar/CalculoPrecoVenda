@@ -1,18 +1,7 @@
 ﻿using CalculoPrecoVenda.Model;
-using CalculoPrecoVenda.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CalculoPrecoVenda.View
 {
@@ -21,7 +10,7 @@ namespace CalculoPrecoVenda.View
     /// </summary>
     public partial class frmLocalizarNcm : Window
     {
-        CalculoPreçoVendaContext ctx;
+        CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
 
         public Ncm selectedNcm;
         public frmLocalizarNcm()
@@ -34,7 +23,8 @@ namespace CalculoPrecoVenda.View
 
         private void btnPesquisar_Click(object sender, RoutedEventArgs e)
         {
-            ctx = new CalculoPreçoVendaContext();
+
+            List<Ncm> ncms = new List<Ncm>();
 
             int indexCboBox = cboLocalizarNCM.SelectedIndex;
 
@@ -44,9 +34,8 @@ namespace CalculoPrecoVenda.View
                             where n.CodNcm.Contains(txtPesquisa.Text)
                             select n;
 
-                var ncms = query.ToList();
-
-                dtgNcm.ItemsSource = ncms;
+                ncms = query.ToList();
+               
             }
             else if (indexCboBox == 1)
             {
@@ -54,10 +43,16 @@ namespace CalculoPrecoVenda.View
                             where n.NomeNcm.Contains(txtPesquisa.Text)
                             select n;
 
-                var ncms = query.ToList();
-
-                dtgNcm.ItemsSource = ncms;
+                ncms = query.ToList();
+                
             }
+
+            if (ncms.Count == 0)
+            {
+                MessageBox.Show("Nenhum item encontrado!");
+            }
+
+            dtgNcm.ItemsSource = ncms;
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)

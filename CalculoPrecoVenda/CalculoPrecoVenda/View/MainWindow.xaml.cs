@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using CalculoPrecoVenda.View;
-using CalculoPrecoVenda.ViewModel;
 
 namespace CalculoPrecoVenda.View
 {
@@ -14,7 +13,7 @@ namespace CalculoPrecoVenda.View
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
+           
         }
 
         private void btnImpostosFederais_Click(object sender, RoutedEventArgs e)

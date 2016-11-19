@@ -85,7 +85,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApplicationServices\IWindowsService.cs" />
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
     <Compile Include="Data\NcmConfiguration.cs" />
     <Compile Include="Data\UnidadeFederadaConfiguration.cs" />
@@ -138,9 +137,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ValueIsNotNull.cs" />
-    <Compile Include="ViewModel\LocalizarNCMViewModel.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\NcmViewModel.cs" />
     <Compile Include="View\frmCalculoICMS.xaml.cs">
       <DependentUpon>frmCalculoICMS.xaml</DependentUpon>
     </Compile>
@@ -228,12 +224,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MVVMFramework\MVVMFramework.csproj">
-      <Project>{6167d5b1-e0f3-4353-be6a-f4c632e86a45}</Project>
-      <Name>MVVMFramework</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

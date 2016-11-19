@@ -4,23 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda.View"
+        xmlns:nf="clr-namespace:CalculoPrecoVenda"
         mc:Ignorable="d"
         Title="Cadastro de UFs" Height="500" Width="800"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <nf:NumberFormatter x:Key="myNumberFormatter"/>
+        <nf:ValueIsNotNull x:Key="valueIsNotNull"/>
+    </Window.Resources>
+
 
     <StackPanel Margin="10" >
-        <GroupBox Name="CadastroUF" Header="UF" Height="380" Width="750" >
-        <Grid>
+        <GroupBox Name="gpbCadastroUF" Header="UF" Height="380" Width="750" >
+        <Grid Name="grdCadastroUF">
             <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -31,21 +38,30 @@
             <Label Grid.Row="3" Grid.Column="0" Content="Al. ICMS Interna :"  VerticalAlignment="Center" Margin="0,5"/>
             <Label Grid.Row="4" Grid.Column="0" Content="Al. FCP :"  VerticalAlignment="Center" Margin="0,5"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Itens da FCP :"  VerticalAlignment="Top" Margin="0,5"/>
+            <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="10,5"/>
+            <Label Grid.Row="4" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="10,5"/>
 
-            <TextBox Grid.Row="0" Grid.Column="1" Name="txtCodigoUf" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="txtSiglaUf" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="2"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Name="txtNomeUf" Width="300" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlIcmsInterna" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" Grid.ColumnSpan="2"/>
-            <TextBox Grid.Row="4" Grid.Column="1" Name="txtAlFco" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"/>
-            <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="150" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="txtUfId" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"
+                     Text="{Binding UfId, Mode=OneWay}" IsEnabled="False" TextAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="txtSiglaUf" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="2"
+                     Text="{Binding SiglaUf}" TextAlignment="Center" MaxLength="2" PreviewTextInput="LetterValidationTextBox"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="txtNomeUf" Width="300" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2"
+                     Text="{Binding NomeUf}" TextAlignment="Left"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlIcmsInterna" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" 
+                     Text="{Binding AliquotaInterna, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Name="txtAlFcp" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" 
+                     Text="{Binding AliquotaFcp, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="130" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="2"
+                     Text="{Binding ItensFcp}" TextAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap"/>
         </Grid>
         </GroupBox>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Name="btNovo" Content="Novo" Width="120" Height="35" VerticalAlignment="Top" Margin="10,20,10,0" />
-            <Button Name="btnLocalizar" Content="Localizar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" Click="btnLocalizar_Click" />
-            <Button Name="btnAlterar" Content="Alterar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0" />
-            <Button Name="btnExcluir" Content="Excluir" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0"/>
-            <Button Name="Salvar" Content="Salvar" Width="120" Height="35" VerticalAlignment="Top" Margin="20,20,10,0"/>
+            <Button Name="btnNovo" Content="Novo" Width="100" Height="35" VerticalAlignment="Top" Margin="10,10,10,0" Click="btnNovo_Click" />
+            <Button Name="btnLocalizar" Content="Localizar" Width="100" Height="35" VerticalAlignment="Top" Margin="20,10,10,0" Click="btnLocalizar_Click" />
+            <Button Name="btnAlterar" Content="Alterar" Width="100" Height="35" VerticalAlignment="Top" Margin="20,10,10,0" Click="btnAlterar_Click" />
+            <Button Name="btnExcluir" Content="Excluir" Width="100" Height="35" VerticalAlignment="Top" Margin="20,10,10,0" Click="btnExcluir_Click"/>
+            <Button Name="btnSalvar" Content="Salvar" Width="100" Height="35" VerticalAlignment="Top" Margin="20,10,10,0" Click="btnSalvar_Click"/>
+            <Button Name="btnCancelar" Content="Cancelar" Width="100" Height="35" VerticalAlignment="Top" Margin="20,10,10,0" Click="btnCancelar_Click" />
         </StackPanel>
 
     </StackPanel>

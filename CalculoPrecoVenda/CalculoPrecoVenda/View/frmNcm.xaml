@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Cadastro NCM" Height="350" Width="800"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanMinimize" Loaded="Window_Loaded" Initialized="Window_Initialized">
+        ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <Window.Resources>
         <nf:NumberFormatter x:Key="myNumberFormatter"/>
         <nf:ValueIsNotNull x:Key="valueIsNotNull"/>
@@ -40,19 +40,11 @@
                 <Label Grid.Row="4" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="10,5"/>
 
                 <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="100"  Margin="10,6,0,7" Grid.ColumnSpan="2" 
-                         Name="txtNcmId" Text="{Binding NcmId, Mode=OneWay}" IsEnabled="False" />
+                         Name="txtNcmId" Text="{Binding NcmId, Mode=OneWay}" IsEnabled="False"/>
                 <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Right" Width="100" Margin="10,7,0,6" Grid.ColumnSpan="2" 
-                         Name="txtCodNcm" Text="{Binding CodNcm, NotifyOnValidationError=True}" Validation.Error="OnValidationError"/>
+                         Name="txtCodNcm" Text="{Binding CodNcm}" MaxLength="8" PreviewTextInput="NumberValidationTextBox"/>
                 <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2" 
-                         Name="txtNomeNcm">
-                    <TextBox.Text>
-                        <Binding Path="NomeNcm" NotifyOnValidationError="True">
-                            <Binding.ValidationRules>
-                                <nf:ValueIsNotNull ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                         Name="txtNomeNcm" Text="{Binding NomeNcm}"/>
                 <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,7,0,6" 
                          Name="txtImpImportacao" Text="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                 <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,6,0,7" Padding="2"

@@ -1,24 +1,12 @@
-﻿using CalculoPrecoVenda.ApplicationServices;
-using CalculoPrecoVenda.Model;
-using CalculoPrecoVenda.ViewModel;
-using MVVMFramework;
+﻿using CalculoPrecoVenda.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 
-namespace CalculoPrecoVenda.View 
+namespace CalculoPrecoVenda.View
 {
     /// <summary>
     /// Interaction logic for frmNcm.xaml
@@ -36,7 +24,6 @@ namespace CalculoPrecoVenda.View
             InitializeComponent();
             
         }
-        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             AlterarBotoes(1);
@@ -50,12 +37,6 @@ namespace CalculoPrecoVenda.View
             gridNcm.DataContext = ncm;
 
             operacao = "Novo";
-
-            ncm.ErrorsChanged += (s, a) =>
-            {
-                INotifyDataErrorInfo info = s as INotifyDataErrorInfo;
-                btnSalvar.IsEnabled = !info.HasErrors;
-            };
 
             AlterarBotoes(2);
             
@@ -71,6 +52,7 @@ namespace CalculoPrecoVenda.View
             AlterarBotoes(3);
 
             ncm = frm.selectedNcm;
+            gpbCadastroNcm.IsEnabled = false;
 
             gridNcm.DataContext = ncm;
         }
@@ -83,6 +65,23 @@ namespace CalculoPrecoVenda.View
 
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
         {
+            int ncmId = Convert.ToInt32(txtNcmId.Text);
+
+            MessageBoxResult result = MessageBox.Show("Deseja Excluir o registro", "Aviso", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                ncm = ctx.Ncms.Find(ncmId);
+                ctx.Ncms.Remove(ncm);
+                ctx.SaveChanges(); 
+            }
+
+            txtCodNcm.Clear();
+            txtImpImportacao.Clear();
+            txtIpi.Clear();
+            txtNcmId.Clear();
+            txtNomeNcm.Clear();
+            AlterarBotoes(1);
 
         }
 
@@ -101,36 +100,44 @@ namespace CalculoPrecoVenda.View
                 ctx.Ncms.Add(new Ncm()
                 {
                     CodNcm = txtCodNcm.Text,
-                    NomeNcm = txtNomeNcm.Text,
+                    NomeNcm = txtNomeNcm.Text.ToUpper(),
                     ImpImportacao = Convert.ToDouble(txtImpImportacao.Text),
                     Ipi = Convert.ToDouble(txtIpi.Text)
                 });
 
                 ctx.SaveChanges();
 
-                MessageBox.Show(String.Format($"Cadastro efetuado com sucesso!\n NCM {txtCodNcm.Text} - {txtNomeNcm.Text}"));
+                MessageBox.Show(String.Format($"Cadastro efetuado com sucesso!\n NCM {txtCodNcm.Text.ToUpper()} - {txtNomeNcm.Text.ToUpper()}"));
             }
             else
             {
                 Ncm ncmToUpdate = ncms.Where(n => n.NcmId == Convert.ToInt32(txtNcmId.Text)).FirstOrDefault<Ncm>();
                 ncmToUpdate.CodNcm = txtCodNcm.Text;
-                ncmToUpdate.NomeNcm = txtNomeNcm.Text;
+                ncmToUpdate.NomeNcm = txtNomeNcm.Text.ToUpper();
                 ncmToUpdate.ImpImportacao = Convert.ToDouble(txtImpImportacao.Text);
                 ncmToUpdate.Ipi = Convert.ToDouble(txtIpi.Text);
 
                 ctx.SaveChanges();
 
-                MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n NCM {txtCodNcm.Text} - {txtNomeNcm.Text}"));
+                MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n NCM {txtCodNcm.Text.ToUpper()} - {txtNomeNcm.Text.ToUpper()}"));
             }
 
-            LimparTela(this);
+            txtCodNcm.Clear();
+            txtImpImportacao.Clear();
+            txtIpi.Clear();
+            txtNcmId.Clear();
+            txtNomeNcm.Clear();
             AlterarBotoes(1);
             
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            LimparTela(this);
+            txtCodNcm.Clear();
+            txtImpImportacao.Clear();
+            txtIpi.Clear();
+            txtNcmId.Clear();
+            txtNomeNcm.Clear();
             AlterarBotoes(1);
         }
 
@@ -165,38 +172,10 @@ namespace CalculoPrecoVenda.View
 
         }
 
-        public void LimparTela(Control controles)
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            //foreach (Control ctrl in this.Controls)
-            //{
-            //    if (ctrl is TextBox)
-            //    {
-            //        ((TextBox)ctrl).Text = String.Empty;
-            //    }
-            //    if (ctrl is CheckBox)
-            //    {
-            //        ((CheckBox)ctrl).IsChecked = false;
-            //    }
-            //    if (ctrl is ComboBox)
-            //    {
-            //        ((ComboBox)ctrl).SelectedIndex = -1;
-            //    }
-            //    else if (ctrl.Controls.Count > 0)
-            //    {
-            //        LimparTela(ctrl);
-            //    }
-            //}
-        }
-
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            //gpbCadastroNcm.DataContext = selectedNcm;
-        }
-
-        private void OnValidationError(object sender, ValidationErrorEventArgs args)
-        {
-            string error = args.Error.ErrorContent.ToString();
-            MessageBox.Show(this, error, "Erro de validação", MessageBoxButton.OK, MessageBoxImage.Error);
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
