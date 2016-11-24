@@ -3,31 +3,40 @@
   <Profiles />
   <Settings>
     <Setting Name="Irpj" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.02</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="Csll" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.03</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="Pis" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.0065</Value>
+      <Value Profile="(Default)">0.65</Value>
     </Setting>
     <Setting Name="Cofins" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.03</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="Lucro1" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Lucro2" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.05</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="Lucro3" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.1</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="Lucro4" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.15</Value>
+      <Value Profile="(Default)">15</Value>
     </Setting>
     <Setting Name="Lucro5" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.2</Value>
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Capatazia" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Fti" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Uea" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

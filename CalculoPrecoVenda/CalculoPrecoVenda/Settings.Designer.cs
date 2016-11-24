@@ -25,7 +25,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.02")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public float Irpj {
             get {
                 return ((float)(this["Irpj"]));
@@ -37,7 +37,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.03")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public float Csll {
             get {
                 return ((float)(this["Csll"]));
@@ -49,7 +49,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0065")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.65")]
         public float Pis {
             get {
                 return ((float)(this["Pis"]));
@@ -61,7 +61,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.03")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public float Cofins {
             get {
                 return ((float)(this["Cofins"]));
@@ -85,7 +85,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.05")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public float Lucro2 {
             get {
                 return ((float)(this["Lucro2"]));
@@ -97,7 +97,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public float Lucro3 {
             get {
                 return ((float)(this["Lucro3"]));
@@ -109,7 +109,7 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.15")]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
         public float Lucro4 {
             get {
                 return ((float)(this["Lucro4"]));
@@ -121,13 +121,49 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public float Lucro5 {
             get {
                 return ((float)(this["Lucro5"]));
             }
             set {
                 this["Lucro5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Capatazia {
+            get {
+                return ((string)(this["Capatazia"]));
+            }
+            set {
+                this["Capatazia"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Fti {
+            get {
+                return ((string)(this["Fti"]));
+            }
+            set {
+                this["Fti"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string Uea {
+            get {
+                return ((string)(this["Uea"]));
+            }
+            set {
+                this["Uea"] = value;
             }
         }
     }

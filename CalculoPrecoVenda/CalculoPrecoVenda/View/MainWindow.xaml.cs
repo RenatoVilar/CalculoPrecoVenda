@@ -2,6 +2,11 @@
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using CalculoPrecoVenda.View;
+using CalculoPrecoVenda.Model;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
+using System;
 
 namespace CalculoPrecoVenda.View
 {
@@ -10,10 +15,18 @@ namespace CalculoPrecoVenda.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+
+        CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
+        List<UnidadeFederada> listaUf = new List<UnidadeFederada>();
+
+        private Ncm ncm;
+
+       
         public MainWindow()
         {
             InitializeComponent();
-           
+
         }
 
         private void btnImpostosFederais_Click(object sender, RoutedEventArgs e)
@@ -60,6 +73,59 @@ namespace CalculoPrecoVenda.View
         private void btnSobre_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnPesquisarNcm_Click(object sender, RoutedEventArgs e)
+        {
+            ncm = new Ncm();
+
+            frmLocalizarNcm frm = new frmLocalizarNcm();
+            frm.ShowDialog();
+
+            ncm = frm.selectedNcm;
+
+            txtNcm.DataContext = ncm;
+            txbNomeNcm.DataContext = ncm;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            PrecoReposicao precoReposicao = new PrecoReposicao();
+
+            var query = from n in ctx.UFs
+                        select n;
+
+            foreach (var item in query)
+            {
+                listaUf.Add(item);
+            }
+
+            cbolistaUf.DataContext = listaUf;
+            cbolistaUfForn.DataContext = listaUf;
+            grdPrecoReposicao.DataContext = precoReposicao;
+
+            cbolistaUfForn.SelectedIndex = 1;
+            
+            radForZfm.IsChecked = true;
+            radProdEstrangeiro.IsChecked = true;
+            radPessoaJurídica.IsChecked = true;
+        }
+
+        private void txtValorNF_LostFocus(object sender, RoutedEventArgs e)
+        {
+            
+
+           
+        }
+
+        private void txtValorNF_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+                        
+        }
+
+        private void cbolistaUfForn_DropDownClosed(object sender, System.EventArgs e)
+        {
+            
         }
     }
 }

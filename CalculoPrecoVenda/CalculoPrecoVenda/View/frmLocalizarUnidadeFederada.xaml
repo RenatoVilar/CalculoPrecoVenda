@@ -45,9 +45,11 @@
                 <DataGridTextColumn Binding="{Binding SiglaUf}" Width="50" Header="UF" />
                 <DataGridTextColumn Binding="{Binding NomeUf}" Width="400" Header="Nome UF " />
                 <DataGridTextColumn Binding="{Binding AliquotaInterna, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
-                                    Width="80" Header="Al. ICMS" CellStyle="{StaticResource CellRightAlign}"/>
+                                    Width="90" Header="Al. Interna" CellStyle="{StaticResource CellRightAlign}"/>
+                <DataGridTextColumn Binding="{Binding AliquotaInterestadual, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
+                                    Width="90" Header="Al. Interestadual" CellStyle="{StaticResource CellRightAlign}"/>
                 <DataGridTextColumn Binding="{Binding AliquotaFcp, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
-                                    Width="80" Header="Al. FCP" CellStyle="{StaticResource CellRightAlign}"/>
+                                    Width="90" Header="Al. FCP" CellStyle="{StaticResource CellRightAlign}"/>
                 <DataGridTextColumn Binding="{Binding ItensFcp}" Width="120" Header="Itens FCP" />
                                     
             </DataGrid.Columns>

@@ -73,13 +73,7 @@ namespace CalculoPrecoVenda.View
                 ctx.SaveChanges();
             }
 
-            txtUfId.Clear();
-            txtNomeUf.Clear();
-            txtSiglaUf.Clear();
-            txtItensFcp.Clear();
-            txtAlIcmsInterna.Clear();
-            txtAlFcp.Clear();
-
+            LimparTela();
             AlterarBotoes(1);
         }
 
@@ -105,6 +99,12 @@ namespace CalculoPrecoVenda.View
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtAlIcmsInterestadual.Text) || txtAlIcmsInterna.Text == "0,00")
+            {
+                MessageBox.Show("Informe a alíquota interna!");
+                return;
+            }
+
             if (operacao == "Novo")
             {
                 ctx.UFs.Add(new UnidadeFederada()
@@ -112,6 +112,7 @@ namespace CalculoPrecoVenda.View
                     NomeUf = txtNomeUf.Text.ToUpper(),
                     SiglaUf = txtSiglaUf.Text.ToUpper(),
                     AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text),
+                    AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text),
                     AliquotaFcp = Convert.ToDouble(txtAlFcp.Text),
                     ItensFcp = txtItensFcp.Text
 
@@ -127,6 +128,7 @@ namespace CalculoPrecoVenda.View
                 ufToUpdate.NomeUf = txtNomeUf.Text.ToUpper();
                 ufToUpdate.SiglaUf = txtSiglaUf.Text.ToUpper();
                 ufToUpdate.AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text);
+                ufToUpdate.AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text);
                 ufToUpdate.AliquotaFcp = Convert.ToDouble(txtAlFcp.Text);
                 ufToUpdate.ItensFcp = txtItensFcp.Text;
 
@@ -135,25 +137,13 @@ namespace CalculoPrecoVenda.View
                 MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n UF {txtSiglaUf.Text.ToUpper()} - {txtNomeUf.Text.ToUpper()}"));
             }
 
-            txtUfId.Clear();
-            txtNomeUf.Clear();
-            txtSiglaUf.Clear();
-            txtItensFcp.Clear();
-            txtAlIcmsInterna.Clear();
-            txtAlFcp.Clear();
-
+            LimparTela();
             AlterarBotoes(1);
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            txtUfId.Clear();
-            txtNomeUf.Clear();
-            txtSiglaUf.Clear();
-            txtItensFcp.Clear();
-            txtAlIcmsInterna.Clear();
-            txtAlFcp.Clear();
-
+            LimparTela();
             AlterarBotoes(1);
         }
 
@@ -191,6 +181,17 @@ namespace CalculoPrecoVenda.View
         {
             Regex regex = new Regex("[^a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void LimparTela()
+        {
+            txtUfId.Clear();
+            txtNomeUf.Clear();
+            txtSiglaUf.Clear();
+            txtAlIcmsInterna.Clear();
+            txtAlIcmsInterestadual.Clear();
+            txtAlFcp.Clear();
+            txtItensFcp.Clear();
         }
 
 
