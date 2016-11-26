@@ -35,7 +35,7 @@
     <Setting Name="Fti" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Uea" Type="System.String" Scope="User">
+    <Setting Name="Iof" Type="System.String" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>

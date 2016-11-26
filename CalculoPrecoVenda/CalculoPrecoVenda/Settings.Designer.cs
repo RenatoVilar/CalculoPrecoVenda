@@ -158,12 +158,12 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public string Uea {
+        public string Iof {
             get {
-                return ((string)(this["Uea"]));
+                return ((string)(this["Iof"]));
             }
             set {
-                this["Uea"] = value;
+                this["Iof"] = value;
             }
         }
     }

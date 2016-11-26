@@ -86,9 +86,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CalcPrecoRepo.cs" />
+    <Compile Include="CofinsConverter.cs" />
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
     <Compile Include="Data\NcmConfiguration.cs" />
     <Compile Include="Data\UnidadeFederadaConfiguration.cs" />
+    <Compile Include="IcmsConverter.cs" />
     <Compile Include="Migrations\201611051438455_Initial.cs" />
     <Compile Include="Migrations\201611051438455_Initial.Designer.cs">
       <DependentUpon>201611051438455_Initial.cs</DependentUpon>
@@ -103,6 +105,7 @@
     <Compile Include="Model\PrecoReposicao.cs" />
     <Compile Include="Model\UnidadeFederada.cs" />
     <Compile Include="MultiplyConverter.cs" />
+    <Compile Include="PisConverter.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
