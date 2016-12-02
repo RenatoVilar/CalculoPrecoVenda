@@ -9,17 +9,37 @@ namespace CalculoPrecoVenda
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            decimal result;
-
-            if ((string)values[0] == "" || (string)values[1] == "")
+            double result = 0;
+            if (values == null )
             {
-                return values;
+                return result;
             }
 
-            decimal valorNf = System.Convert.ToDecimal(values[0]);
-            decimal percentual = System.Convert.ToDecimal(values[1]);
-        
-            result = valorNf * (percentual / 100);
+            for (int i = 0; i < values.Length-1; i++)
+            {
+                if ((string)values[i] == "")
+                {
+                    values[i] = "0,00";
+                }
+
+                double sum = System.Convert.ToDouble(values[i]);
+                result += sum;
+            }
+
+            //if ((string)values[0] == "" || (string)values[1] == "")
+            //{
+            //    return values;
+            //}
+
+            //decimal valorNf = System.Convert.ToDecimal(values[0]);
+            //decimal valorFrete = System.Convert.ToDecimal(values[1]);
+            //decimal percentual = System.Convert.ToDecimal(values[2]);
+
+            //result = (valorNf + valorFrete) * (percentual / 100);
+
+            double percentual = System.Convert.ToDouble(values[values.Length - 1]) / 100;
+
+            result = result * percentual;
 
             return System.Convert.ToDecimal(result).ToString(parameter as string);
         }

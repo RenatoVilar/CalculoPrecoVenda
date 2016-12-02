@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculoPrecoVenda"
         mc:Ignorable="d"
-        Title="Despesas Operacionais" Width="850" Height="400" 
+        Title="Despesas Operacionais" Width="950" Height="430" 
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:NumberFormatter x:Key="myNumberFormatter"/>
     </Window.Resources>
     <StackPanel Margin="10" HorizontalAlignment="Center">
-        <GroupBox Name="grpPrecoVenda" Header="Despesas Operacionais" Width="800" Height="300">
+        <GroupBox Name="grpPrecoVenda" Header="Despesas Operacionais" Width="900" Height="330">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35"/>
@@ -22,66 +22,93 @@
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="70"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="125"/>
+                    <ColumnDefinition Width="125"/>
+                    <ColumnDefinition Width="125"/>
+                    <ColumnDefinition Width="125"/>
+                    <ColumnDefinition Width="125"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido"  VerticalAlignment="Center"/>
-                <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido"  VerticalAlignment="Center"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Base de Cálculo"  VerticalAlignment="Center"/>
-                <Label Grid.Row="3" Grid.Column="0" Content="Desp Operacionais"  VerticalAlignment="Center"/>
-                <Label Grid.Row="4" Grid.Column="0" Content="Comissões"  VerticalAlignment="Center"/>
-                <Label Grid.Row="5" Grid.Column="0" Content="Total Desp OP"  VerticalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido" VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Base de Cálculo" VerticalAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Desp Operacionais" VerticalAlignment="Center"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Comissões" VerticalAlignment="Center"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="Total Desp Operacionais" VerticalAlignment="Center" />
 
-                <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0"
-                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro1, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0"
-                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro2, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0"
-                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro3, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0"
-                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro4, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="6" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0"
-                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro5, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
+                <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            Margin="2">
+                    <TextBox Name="txtPercLucro1" Width="70" Height="25"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro1, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                    <Label Content="%" Margin="5,0"/>
+                </StackPanel>
 
-                <TextBox Grid.Row="1" Grid.Column="2" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="1" Grid.Column="6" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0"/>
+                <StackPanel Grid.Row="0" Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            Margin="2">
+                    <TextBox Name="txtPercLucro2" Width="70" Height="25"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro2, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                    <Label Content="%" Margin="5,0"/>
+                </StackPanel>
 
-                <TextBox Grid.Row="2" Grid.Column="2" Name="txtBaseCalculo1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="3" Name="txtBaseCalculo2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="4" Name="txtBaseCalculo3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="5" Name="txtBaseCalculo4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="6" Name="txtBaseCalculo5" VerticalAlignment="Center" Margin="5,0"/>
+                <StackPanel Grid.Row="0" Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            Margin="2">
+                    <TextBox Name="txtPercLucro3" Width="70" Height="25"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro3, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                    <Label Content="%" Margin="5,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="6" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            Margin="2">
+                    <TextBox Name="txtPercLucro4" Width="70" Height="25"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro4, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                    <Label Content="%" Margin="5,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            Margin="2">
+                    <TextBox Name="txtPercLucro5" Width="70" Height="25"
+                         Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro5, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                    <Label Content="%" Margin="5,0"/>
+                </StackPanel>
+
+                <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="6" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="1" Grid.Column="7" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="2" Grid.Column="3" Name="txtBaseCalculo1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Name="txtBaseCalculo2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="5" Name="txtBaseCalculo3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="6" Name="txtBaseCalculo4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="2" Grid.Column="7" Name="txtBaseCalculo5" VerticalAlignment="Center" Margin="5,0"/>
 
                 <TextBox Grid.Row="3" Grid.Column="1" Name="txtAliquotaDespOp" VerticalAlignment="Center" Margin="5,0"
                          Text="{Binding Source={StaticResource Settings}, Path=Default.DespOp, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="3" Grid.Column="2" Name="txtDespesasOp1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="3" Name="txtDespesasOp2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="4" Name="txtDespesasOp3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="5" Name="txtDespesasOp4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="6" Name="txtDespesasOp5" VerticalAlignment="Center" Margin="5,0"/>
+                <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Name="txtDespesasOp1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="4" Name="txtDespesasOp2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="5" Name="txtDespesasOp3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="6" Name="txtDespesasOp4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="3" Grid.Column="7" Name="txtDespesasOp5" VerticalAlignment="Center" Margin="5,0"/>
 
                 <TextBox Grid.Row="4" Grid.Column="1" Name="txtAliquotaComissoes" VerticalAlignment="Center" Margin="5,0"
                          Text="{Binding Source={StaticResource Settings}, Path=Default.Comissoes, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='p'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="4" Grid.Column="2" Name="txtComissoes1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="3" Name="txtComissoes2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="4" Name="txtComissoes3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="5" Name="txtComissoes4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="6" Name="txtComissoes5" VerticalAlignment="Center" Margin="5,0"/>
+                <Label Grid.Row="4" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="3" Name="txtComissoes1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="4" Name="txtComissoes2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="5" Name="txtComissoes3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="6" Name="txtComissoes4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="4" Grid.Column="7" Name="txtComissoes5" VerticalAlignment="Center" Margin="5,0"/>
 
-                <TextBox Grid.Row="5" Grid.Column="2" Name="txtTotalDespOp1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="3" Name="txtTotalDespOp2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="4" Name="txtTotalDespOp3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="5" Name="txtTotalDespOp4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="6" Name="txtTotalDespOp5" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="3" Name="txtTotalDespOp1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="4" Name="txtTotalDespOp2" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="5" Name="txtTotalDespOp3" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="6" Name="txtTotalDespOp4" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="7" Name="txtTotalDespOp5" VerticalAlignment="Center" Margin="5,0"/>
 
 
             </Grid>

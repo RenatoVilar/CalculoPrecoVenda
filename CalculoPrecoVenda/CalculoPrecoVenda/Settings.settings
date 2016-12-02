@@ -29,14 +29,23 @@
     <Setting Name="Lucro5" Type="System.Single" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="Capatazia" Type="System.String" Scope="User">
+    <Setting Name="Capatazia" Type="System.Single" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Fti" Type="System.String" Scope="User">
+    <Setting Name="Fti" Type="System.Single" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Iof" Type="System.String" Scope="User">
+    <Setting Name="Iof" Type="System.Single" Scope="User">
       <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="IcmsMicro" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="IcmsInterImp" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="IcmsZonaFranca" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">7</Value>
     </Setting>
   </Settings>
 </SettingsFile>

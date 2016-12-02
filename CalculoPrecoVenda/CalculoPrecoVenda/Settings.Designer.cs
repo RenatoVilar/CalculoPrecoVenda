@@ -134,9 +134,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public string Capatazia {
+        public float Capatazia {
             get {
-                return ((string)(this["Capatazia"]));
+                return ((float)(this["Capatazia"]));
             }
             set {
                 this["Capatazia"] = value;
@@ -146,9 +146,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public string Fti {
+        public float Fti {
             get {
-                return ((string)(this["Fti"]));
+                return ((float)(this["Fti"]));
             }
             set {
                 this["Fti"] = value;
@@ -158,12 +158,48 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public string Iof {
+        public float Iof {
             get {
-                return ((string)(this["Iof"]));
+                return ((float)(this["Iof"]));
             }
             set {
                 this["Iof"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float IcmsMicro {
+            get {
+                return ((float)(this["IcmsMicro"]));
+            }
+            set {
+                this["IcmsMicro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public float IcmsInterImp {
+            get {
+                return ((float)(this["IcmsInterImp"]));
+            }
+            set {
+                this["IcmsInterImp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public float IcmsZonaFranca {
+            get {
+                return ((float)(this["IcmsZonaFranca"]));
+            }
+            set {
+                this["IcmsZonaFranca"] = value;
             }
         }
     }

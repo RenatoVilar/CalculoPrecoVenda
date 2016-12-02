@@ -34,10 +34,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Content="Código :"  VerticalAlignment="Center" Margin="0,5"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="NCM :"  VerticalAlignment="Center" Margin="0,5"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="Descrição :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="3" Grid.Column="0" Content="Al. II :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="4" Grid.Column="0" Content="Al. IPI :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="10,5"/>
-                <Label Grid.Row="4" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="10,5"/>
+                
 
                 <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="100"  Margin="10,6,0,7" Grid.ColumnSpan="2" 
                          Name="txtNcmId" Text="{Binding NcmId, Mode=OneWay}" IsEnabled="False"/>
@@ -45,10 +42,26 @@
                          Name="txtCodNcm" Text="{Binding CodNcm}" MaxLength="8" PreviewTextInput="NumberValidationTextBox"/>
                 <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="2" 
                          Name="txtNomeNcm" Text="{Binding NomeNcm}"/>
-                <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,7,0,6" 
+                
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+                    
+                    <Label Content="Al. II :"  VerticalAlignment="Center" Margin="0,5"/>
+                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,7,0,6" 
                          Name="txtImpImportacao" Text="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
-                <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,6,0,7" Padding="2"
+                    <Label Content="%" VerticalAlignment="Center" Margin="10,5"/>
+
+                    <Label Content="Al. IPI :"  VerticalAlignment="Center" Margin="0,5"/>
+                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,6,0,7" Padding="2"
                          Name="txtIpi" Text="{Binding Ipi, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                    <Label Content="%" VerticalAlignment="Center" Margin="10,5"/>
+
+                    <Label Content="MVA Subst Tribut :"  VerticalAlignment="Center" Margin="0,5"/>
+                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,6,0,7" Padding="2"
+                         Name="txtSubstTribut" Text="{Binding SubstTribut, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                    <Label Content="%" VerticalAlignment="Center" Margin="10,5"/>
+
+
+                </StackPanel>
 
             </Grid>
         </GroupBox>

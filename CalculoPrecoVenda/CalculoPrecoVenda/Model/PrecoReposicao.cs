@@ -17,7 +17,7 @@ namespace CalculoPrecoVenda.Model
         public decimal CofinsImportacao { get; set; }
         public decimal Capatazia { get; set; }
         public decimal ContrFti { get; set; }
-        public decimal ContrUea { get; set; }
+        public decimal Iof { get; set; }
         public decimal IiSuspenso { get; set; }
         public decimal IpiSuspenso { get; set; }
         public decimal CustoReposicao { get; set; }

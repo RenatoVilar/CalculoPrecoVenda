@@ -16,7 +16,7 @@ namespace CalculoPrecoVenda
 
             if ((string)values[0] == "" || (string)values[1] == "")
             {
-                return values;
+                return string.Empty;
             }
 
             decimal valorNf = System.Convert.ToDecimal(values[0]);

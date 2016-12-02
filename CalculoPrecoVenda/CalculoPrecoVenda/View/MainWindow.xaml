@@ -17,6 +17,10 @@
         <local:CofinsConverter x:Key="myCofinsConverter"/>
         <local:IcmsConverter x:Key="myIcmsConverter"/>
 
+        <Storyboard x:Key="flashAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" AutoReverse="True" Duration="0:0:1.0" RepeatBehavior="Forever" />
+        </Storyboard>
+        
     </Window.Resources>
 
     <StackPanel Margin="5">
@@ -38,7 +42,7 @@
             </GroupBox>
 
             <GroupBox Name="grpProduto" Header="Produto" Height="240" Width="520" Margin="0,0,20,0">
-                <Grid>
+                <Grid Margin="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -51,31 +55,29 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="250"/>
-                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <RadioButton Grid.Row="0" Grid.Column="0" x:Name="radProdEstrangeiro" Content="Estrangeiro" Margin="10,5,0,0" Checked="radProdEstrangeiro_Checked"/>
                     <RadioButton Grid.Row="1" Grid.Column="0" x:Name="radProdNacional" Content="Nacional" Margin="10,5,0,0" Checked="radProdNacional_Checked"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" Content="Tipo Especial" Margin="10,5,0,5"/>
-                    <Line Grid.Row="4" Grid.Column="0" Stroke="DarkBlue" StrokeThickness="2" X1="0" X2="130"/>
-                    <CheckBox Grid.Row="4" Grid.Column="0" x:Name="chkMotores" Content="Motores" Margin="10,5,0,0" Checked="chkMotores_Checked"/>
-                    <CheckBox Grid.Row="5" Grid.Column="0" x:Name="chkPecas" Content="Peças" Margin="10,5,0,0" Checked="chkPecas_Checked"/>
-                    <CheckBox Grid.Row="6" Grid.Column="0" x:Name="chkPpb" Content="PPB" Margin="10,5,0,0" Checked="chkPecas_Checked"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Tipo Especial" Margin="10,5,0,5"/>
+                    <Line Grid.Row="3" Grid.Column="0" Stroke="DarkBlue" StrokeThickness="2" X1="0" X2="130"/>
+                    <CheckBox Grid.Row="3" Grid.Column="0" x:Name="chkMotores" Content="Motores" Margin="10,5,0,0" Checked="chkMotores_Checked"/>
+                    <CheckBox Grid.Row="4" Grid.Column="0" x:Name="chkPecas" Content="Peças" Margin="10,5,0,0" Checked="chkPecas_Checked"/>
+                    <CheckBox Grid.Row="5" Grid.Column="0" x:Name="chkPpb" Content="PPB" Margin="10,5,0,0" Checked="chkPecas_Checked"/>
 
-                    <Label Grid.Row="3" Grid.Column="1" Content="Situação Especial" Margin="10,5,0,5"/>
-                    <Line Grid.Row="4" Grid.Column="1" Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="200"/>
-                    <CheckBox Grid.Row="4" Grid.Column="1" Name="chkItensFcp" Content="Item com FCP" Margin="10,5,0,0"/>
-                    <CheckBox Grid.Row="5" Grid.Column="1" Name="chkCorredor" Content="Corredor de Importação" Margin="10,5,0,0" Checked="chkCorredor_Checked"/>
-                    <CheckBox Grid.Row="6" Grid.Column="1" Name="chkImportadoZfm" Content="Importado para ZFM" Margin="10,5,0,0" Checked="chkImportadoZfm_Checked"/>
+                    <Label Grid.Row="2" Grid.Column="1" Content="Situação Especial" Margin="10,5,0,5"/>
+                    <Line Grid.Row="3" Grid.Column="1" Stroke="DarkBlue" StrokeThickness="2" X1="5" X2="200"/>
+                    <CheckBox Grid.Row="3" Grid.Column="1" Name="chkItensFcp" Content="Item com FCP" Margin="10,5,0,0"/>
+                    <CheckBox Grid.Row="4" Grid.Column="1" Name="chkCorredor" Content="Corredor de Importação" Margin="10,5,0,0" Checked="chkCorredor_Checked"/>
+                    <CheckBox Grid.Row="5" Grid.Column="1" Name="chkImportadoZfm" Content="Importado para ZFM" Margin="10,5,0,0" Checked="chkImportadoZfm_Checked"/>
+                    <CheckBox Grid.Row="6" Grid.Column="1" Name="chkSubstTribut" Content="Substituição Tributária" Margin="10,5,0,0" />
 
-                    <Label Grid.Row="0" Grid.Column="1" Content="NCM" VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Name="txtNcm" Text="{Binding CodNcm}" BorderThickness="2" Margin="0,0,10,0" />
-                    <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding NomeNcm}" Foreground="Black" FontSize="20" Name="txbNomeNcm" VerticalAlignment="Center"/>
-                    <Button Grid.Row="1" Grid.Column="2" Name="btnPesquisarNcm" Height="29" VerticalAlignment="Top" Click="btnPesquisarNcm_Click">
-                        <StackPanel>
-                            <Image Source="Images/find.ico" Stretch="None"/>
-                        </StackPanel>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtNcm" Text="{Binding CodNcm}" BorderThickness="2" Margin="0,0,10,0" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding NomeNcm}" Foreground="Black" FontSize="20" Name="txbNomeNcm" VerticalAlignment="Center"/>
+                    <Button Grid.Row="0" Grid.Column="2" Name="btnPesquisarNcm" Height="30" Width="50" VerticalAlignment="Center" 
+                            Content="NCM" Click="btnPesquisarNcm_Click">
                     </Button>
                 </Grid>
             </GroupBox>
@@ -121,7 +123,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Name="grpCusto" Header="Custos" Width="510" Height="500" Margin="10,0,20,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
+            <GroupBox Name="grpCusto" Header="Custos" Width="410" Height="500" Margin="10,0,20,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
                       VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Grid Margin="5,5,0,0" Name="grdPrecoReposicao" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
@@ -141,22 +143,24 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="80" />
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="125"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    
+                    <!--<Labels>-->
                     <Label Grid.Row="0" Grid.Column="0" Content="Valor da Nota" VerticalAlignment="Center"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="(-) ICMS"  VerticalAlignment="Center"/>
                     <Line  Grid.Row="2" Grid.Column="3" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="150" />
                     <Label Grid.Row="2" Grid.Column="0" Content="(=) Valor Líquido"  VerticalAlignment="Center"/>
                     <Label Grid.Row="3" Grid.Column="0" Content="(+) Frete" VerticalAlignment="Center"/>
                     <Label Grid.Row="4" Grid.Column="0" Content="(+) Outras Despesas"  VerticalAlignment="Center"/>
-                    <Label Grid.Row="5" Grid.Column="0" Content="(+) Pis Importação"  VerticalAlignment="Center"/>
-                    <Label Grid.Row="6" Grid.Column="0" Content="(+) Cofins Importação"  VerticalAlignment="Center"/>
-                    <Label Grid.Row="7" Grid.Column="0" Content="(+) Capatazia"  VerticalAlignment="Center"/>
-                    <Label Grid.Row="8" Grid.Column="0" Content="(+) Contr FTI"  VerticalAlignment="Center"/>
-                    <Label Grid.Row="9" Grid.Column="0" Content="(+) IOF Cartão"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="(+) Subs Tributária"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="(+) Pis Importação"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="(+) Cofins Importação"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="8" Grid.Column="0" Content="(+) Capatazia"  VerticalAlignment="Center"/>
+                    <Label Grid.Row="9" Grid.Column="0" Content="(+) Contr FTI"  VerticalAlignment="Center"/>
                     <Label Grid.Row="10" Grid.Column="0" Content="(+) II Suspenso"  VerticalAlignment="Center"/>
                     <Label Grid.Row="11" Grid.Column="0" Content="(+) IPI Suspenso"  VerticalAlignment="Center"/>
                     <Line  Grid.Row="12" Grid.Column="3" Stroke="DarkBlue" StrokeThickness="3" X1="0" X2="150"/>
@@ -171,101 +175,106 @@
                     <Label Grid.Row="10" Grid.Column="2" Content="%"  VerticalAlignment="Center" Margin="5,0"/>
                     <Label Grid.Row="11" Grid.Column="2" Content="%"  VerticalAlignment="Center" Margin="5,0"/>
 
-                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtValorNF" VerticalAlignment="Center" Margin="5,0" 
-                             Text="{Binding ValorNota, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox" 
-                             LostFocus="txtValorNF_LostFocus" TextChanged="txtValorNF_TextChanged"/>
-                    <TextBox Grid.Row="1" Grid.Column="3" Name="txtIcms"  VerticalAlignment="Center" Margin="5,0">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource myIcmsConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorNF"/>
-                                <Binding Path="Text" ElementName="txtPercentIcms"/>
-                                <Binding Path="IsChecked" ElementName="chkPpb"/>
-                            </MultiBinding>
-                        </TextBox.Text>
+                    <!--<TextBox com Percentuais>-->
+
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="txtPercentIcms"  VerticalAlignment="Center" Margin="5,0" 
+                             PreviewTextInput="NumberValidationTextBox">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Rectangle Stroke="Red" StrokeThickness="1" >
+                                        <Rectangle.Style>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Visibility" Value="Hidden" />
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=chkMicroempresa}" Value="True"/>
+                                                            <Condition Binding="{Binding Text, ElementName=txtPercentIcms}" Value=""/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                        <MultiDataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="flash" Storyboard="{StaticResource flashAnimation}" />
+                                                        </MultiDataTrigger.EnterActions>
+                                                        <MultiDataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="flash"/>
+                                                        </MultiDataTrigger.ExitActions>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Rectangle.Style>
+                                    </Rectangle>
+                                    
+                                    <TextBox  >
+                                        <TextBox.Style>
+                                            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                                <Setter Property="Text" Value="{Binding ElementName=cbolistaUfForn, Path=SelectedItem.AliquotaInterestadual, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkMicroempresa}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                        <Setter Property="Text" Value="{Binding Source={StaticResource Settings}, Path=IcmsMicro, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" />
+                                                    </DataTrigger>
+
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radProdEstrangeiro}" Value="True"/>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radForNacional}" Value="True"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Text" Value="{Binding Source={StaticResource Settings}, Path=IcmsInterImp, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                                    </MultiDataTrigger>
+
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radProdEstrangeiro}" Value="True"/>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=chkImportadoZfm}" Value="True"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Text" Value="{Binding Source={StaticResource Settings}, Path=IcmsZonaFranca, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                                    </MultiDataTrigger>
+
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radProdEstrangeiro}" Value="True"/>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radForEstrangeiro}" Value="True"/>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=chkImportadoZfm}" Value="True"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Text" Value="{Binding ElementName=cbolistaUfForn, Path=SelectedItem.AliquotaInterestadual, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                                    </MultiDataTrigger>
+
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radProdEstrangeiro}" Value="True"/>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=radForNacional}" Value="True"/>
+                                                            <Condition Binding="{Binding SelectedValue, ElementName=cbolistaUfForn}" Value="AM"/>
+                                                            <Condition Binding="{Binding IsChecked, ElementName=chkImportadoZfm}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Text" Value="{Binding ElementName=cbolistaUfForn, Path=SelectedItem.AliquotaInterestadual, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+
+                                </Grid>
+                            </ControlTemplate>
+                        </TextBox.Template>
                     </TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="3" Name="txtValorLiquido"  VerticalAlignment="Center" Margin="5,7,5,2">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource myMinusConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorNF"/>
-                                <Binding Path="Text" ElementName="txtIcms"/>
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <TextBox Grid.Row="3" Grid.Column="3" Name="txtFrete"  VerticalAlignment="Center" Margin="5,0"
-                             Text="{Binding Frete, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
-                    <TextBox Grid.Row="4" Grid.Column="3" Name="txtOutrasDespesas"  VerticalAlignment="Center" Margin="5,0"
-                             Text="{Binding OutrasDespesas, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
-                    <TextBox Grid.Row="5" Grid.Column="3" Name="txtPisImp"  VerticalAlignment="Center" Margin="5,0">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorNF"/>
-                                <Binding Path="Text" ElementName="txtPercentPis"/>
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <TextBox Grid.Row="6" Grid.Column="3" Name="txtCofinsImp"  VerticalAlignment="Center" Margin="5,0">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorNF"/>
-                                <Binding Path="Text" ElementName="txtPercentCofins"/>
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <TextBox Grid.Row="7" Grid.Column="3" Name="txtCapatazia" VerticalAlignment="Center" Margin="5,0">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorNF"/>
-                                <Binding Path="Text" ElementName="txtPercentCapatazia"/>
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <TextBox Grid.Row="8" Grid.Column="3" Name="txtContrFti"  VerticalAlignment="Center" Margin="5,0">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorNF"/>
-                                <Binding Path="Text" ElementName="txtPercentCapatazia"/>
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <!--Text="{Binding ContrFti, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>-->
-                    <TextBox Grid.Row="9" Grid.Column="3" Name="txtContrUea"  VerticalAlignment="Center" Margin="5,0"
-                             Text="{Binding ContrUea, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
-                    <TextBox Grid.Row="10" Grid.Column="3" Name="txtIiSuspenso"  VerticalAlignment="Center" Margin="5,0"
-                             Text="{Binding IiSuspenso, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
-                    <TextBox Grid.Row="11" Grid.Column="3" Name="txtIpiSuspenso"  VerticalAlignment="Center" Margin="5,0"
-                             Text="{Binding IpiSuspenso, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
-                    <TextBox Grid.Row="12" Grid.Column="3" Name="txtCustoReposicao" VerticalAlignment="Center" Margin="5,0">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
-                                <Binding Path="Text" ElementName="txtValorLiquido"/>
-                                <Binding Path="Text" ElementName="txtFrete"/>
-                                <Binding Path="Text" ElementName="txtOutrasDespesas"/>
-                                <Binding Path="Text" ElementName="txtPisImp"/>
-                                <Binding Path="Text" ElementName="txtCofinsImp"/>
-                                <Binding Path="Text" ElementName="txtCapatazia"/>
-                                <Binding Path="Text" ElementName="txtContrFti"/>
-                                <Binding Path="Text" ElementName="txtContrUea"/>
-                                <Binding Path="Text" ElementName="txtIiSuspenso"/>
-                                <Binding Path="Text" ElementName="txtIpiSuspenso"/>
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" Name="txtPercentIcms"  VerticalAlignment="Center" Margin="5,0" PreviewTextInput="NumberValidationTextBox">
+
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtSusbsTribut"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-                                <Setter Property="Text" Value="{Binding ElementName=cbolistaUfForn, Path=SelectedItem.AliquotaInterestadual, 
-                                    Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
-                                <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Text" Value="0,00"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkMicroempresa}" Value="True">
-                                        <Setter Property="IsEnabled" Value="True"/>
+                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkSubstTribut}" Value="True">
+                                        <Setter Property="Text" Value="{Binding ElementName=txtNcm, Path=DataContext.SubstTribut, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBox.Style>
-                        
                     </TextBox>
-                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtPercentPis"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
+
+                    <TextBox Grid.Row="6" Grid.Column="1" Name="txtPercentPis"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Text>
                             <MultiBinding Converter="{StaticResource myPisConverter}" ConverterParameter='n2'>
                                 <Binding Path="IsChecked"  ElementName="radForEstrangeiro"/>
@@ -274,7 +283,7 @@
                         </TextBox.Text>
                     </TextBox>
 
-                    <TextBox Grid.Row="6" Grid.Column="1" Name="txtPercentCofins" VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
+                    <TextBox Grid.Row="7" Grid.Column="1" Name="txtPercentCofins" VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Text>
                             <MultiBinding Converter="{StaticResource myCofinsConverter}" ConverterParameter='n2'>
                                 <Binding Path="IsChecked"  ElementName="radForEstrangeiro"/>
@@ -283,7 +292,7 @@
                         </TextBox.Text>
                     </TextBox>
 
-                    <TextBox Grid.Row="7" Grid.Column="1" Name="txtPercentCapatazia"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
+                    <TextBox Grid.Row="8" Grid.Column="1" Name="txtPercentCapatazia"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                 <Setter Property="Text" Value="0,00"/>
@@ -297,7 +306,7 @@
                         </TextBox.Style>
                     </TextBox>
 
-                    <TextBox Grid.Row="8" Grid.Column="1" Name="txtPercentFti"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
+                    <TextBox Grid.Row="9" Grid.Column="1" Name="txtPercentFti"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                 <Setter Property="Text" Value="0,00"/>
@@ -311,28 +320,157 @@
                         </TextBox.Style>
                     </TextBox>
 
-                    <TextBox Grid.Row="9" Grid.Column="1" Name="txtPercentIof"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
+                    
+
+                    <TextBox Grid.Row="10" Grid.Column="1" Name="txtPercentIiSuspenso"  VerticalAlignment="Center" Margin="5,0">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                 <Setter Property="Text" Value="0,00"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsChecked, ElementName=radForEstrangeiro}" Value="True">
-                                        <Setter Property="Text" Value="{Binding Source={StaticResource Settings}, Path=Default.Iof, 
-                                                Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkCorredor}" Value="True">
+                                        <Setter Property="Text" Value="{Binding ElementName=txtNcm, Path=DataContext.ImpImportacao, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                    </DataTrigger>
+                                    </Style.Triggers>
+                            </Style>
+                            </TextBox.Style>
+                    </TextBox>
+
+                    <TextBox Grid.Row="11" Grid.Column="1" Name="txtPercentIpiSuspenso"  VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                <Setter Property="Text" Value="0,00"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkCorredor}" Value="True">
+                                        <Setter Property="Text" Value="{Binding ElementName=txtNcm, Path=DataContext.Ipi, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBox.Style>
+
                     </TextBox>
-                             
-                    <TextBox Grid.Row="10" Grid.Column="1" Name="txtPercentIiSuspenso"  VerticalAlignment="Center" Margin="5,0"
-                             Text="0,00"/>
-                    <TextBox Grid.Row="11" Grid.Column="1" Name="txtPercentIpiSuspenso"  VerticalAlignment="Center" Margin="5,0"
-                             Text="0,00"/>
+
+                    <!--<TextBox com Valores>-->
+
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtValorNF" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding ValorNota, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox" 
+                             LostFocus="txtValorNF_LostFocus" TextChanged="txtValorNF_TextChanged"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Name="txtIcms"  VerticalAlignment="Center" Margin="5,0">
+                        
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource myIcmsConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtPercentIcms"/>
+                                <Binding Path="IsChecked" ElementName="chkPpb"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                        
+                    </TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="3" Name="txtValorLiquido"  VerticalAlignment="Center" Margin="5,7,5,2">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource myMinusConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtIcms"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+                    
+                    <TextBox Grid.Row="3" Grid.Column="3" Name="txtFrete"  VerticalAlignment="Center" Margin="5,0"
+                             Text="{Binding Frete, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
+                    
+                    <TextBox Grid.Row="4" Grid.Column="3" Name="txtOutrasDespesas"  VerticalAlignment="Center" Margin="5,0"
+                             Text="{Binding OutrasDespesas, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" PreviewTextInput="NumberValidationTextBox"/>
+
+                    <TextBox Grid.Row="5" Grid.Column="3" Name="txtIof"  VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtSusbsTribut"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+
+
+                    <TextBox Grid.Row="6" Grid.Column="3" Name="txtPisImp"  VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorNF"/>
+                            <Binding Path="Text" ElementName="txtFrete"/>
+                            <Binding Path="Text" ElementName="txtPercentPis"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                    </TextBox>
+
+
+                    <TextBox Grid.Row="7" Grid.Column="3" Name="txtCofinsImp"  VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtFrete"/>
+                                <Binding Path="Text" ElementName="txtPercentCofins"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+                    
+                    <TextBox Grid.Row="8" Grid.Column="3" Name="txtCapatazia" VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtFrete"/>
+                                <Binding Path="Text" ElementName="txtPercentCapatazia"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+                    
+                    <TextBox Grid.Row="9" Grid.Column="3" Name="txtContrFti"  VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtFrete"/>
+                                <Binding Path="Text" ElementName="txtPercentFti"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBox Grid.Row="10" Grid.Column="3" Name="txtIiSuspenso"  VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtPercentIiSuspenso"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBox Grid.Row="11" Grid.Column="3" Name="txtIpiSuspenso"  VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource MyMultiplyConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorNF"/>
+                                <Binding Path="Text" ElementName="txtPercentIpiSuspenso"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBox Grid.Row="12" Grid.Column="3" Name="txtCustoReposicao" VerticalAlignment="Center" Margin="5,0">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
+                                <Binding Path="Text" ElementName="txtValorLiquido"/>
+                                <Binding Path="Text" ElementName="txtFrete"/>
+                                <Binding Path="Text" ElementName="txtOutrasDespesas"/>
+                                <Binding Path="Text" ElementName="txtPisImp"/>
+                                <Binding Path="Text" ElementName="txtCofinsImp"/>
+                                <Binding Path="Text" ElementName="txtCapatazia"/>
+                                <Binding Path="Text" ElementName="txtContrFti"/>
+                                <Binding Path="Text" ElementName="txtIof"/>
+                                <Binding Path="Text" ElementName="txtIiSuspenso"/>
+                                <Binding Path="Text" ElementName="txtIpiSuspenso"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+                    
+                    
                 </Grid>
             </GroupBox>
 
-            <GroupBox Name="grpPrecoVenda" Header="Preço Sugerido" Width="800" Height="300" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <GroupBox Name="grpPrecoVenda" Header="Preço Sugerido" Width="900" Height="300" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
@@ -345,12 +483,15 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="80"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
                     </Grid.ColumnDefinitions>
+                    
                     <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido"  VerticalAlignment="Center"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido"  VerticalAlignment="Center"/>
                     <Label Grid.Row="2" Grid.Column="0" Content="(-) Custo de Reposição"  VerticalAlignment="Center"/>
@@ -358,53 +499,65 @@
                     <Label Grid.Row="4" Grid.Column="0" Content="(-) Impostos Federais"  VerticalAlignment="Center"/>
                     <Label Grid.Row="5" Grid.Column="0" Content="(-) Despesas Operacionais"  VerticalAlignment="Center"/>
                     <Label Grid.Row="6" Grid.Column="0" Content="(=) Lucro Líquido"  VerticalAlignment="Center"/>
+                    
 
-                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtPercLucro1" VerticalAlignment="Center" Margin="30,0" 
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro1" VerticalAlignment="Center" Width="70"  
                              Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro1, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="2" Name="txtPercLucro2" VerticalAlignment="Center" Margin="30,0" 
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro2" VerticalAlignment="Center" Width="70"   
                              Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro2, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="3" Name="txtPercLucro3" VerticalAlignment="Center" Margin="30,0" 
+                    <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro3" VerticalAlignment="Center" Width="70" 
                              Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro3, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="4" Name="txtPercLucro4" VerticalAlignment="Center" Margin="30,0" 
+                    <TextBox Grid.Row="0" Grid.Column="6" Name="txtPercLucro4" VerticalAlignment="Center" Width="70" 
                              Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro4, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="5" Name="txtPercLucro5" VerticalAlignment="Center" Margin="30,0" 
+                    <TextBox Grid.Row="0" Grid.Column="7" Name="txtPercLucro5" VerticalAlignment="Center" Width="70" 
                              Text="{Binding Source={StaticResource Settings}, Path=Default.Lucro5, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
 
-                    <TextBox Grid.Row="1" Grid.Column="1" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="1" Grid.Column="2" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="1" Grid.Column="6" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="1" Grid.Column="7" Name="txtValorSugerido5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
 
-                    <TextBox Grid.Row="2" Grid.Column="1" Name="txtCustoReposicao1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="2" Grid.Column="2" Name="txtCustoReposicao2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="2" Grid.Column="3" Name="txtCustoReposicao3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="2" Grid.Column="4" Name="txtCustoReposicao4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="2" Grid.Column="5" Name="txtCustoReposicao5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="2" Grid.Column="3" Name="txtCustoReposicao1" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding Path=Text, ElementName=txtCustoReposicao}"/>
+                    <TextBox Grid.Row="2" Grid.Column="4" Name="txtCustoReposicao2" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding Path=Text, ElementName=txtCustoReposicao}"/>
+                    <TextBox Grid.Row="2" Grid.Column="5" Name="txtCustoReposicao3" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding Path=Text, ElementName=txtCustoReposicao}"/>
+                    <TextBox Grid.Row="2" Grid.Column="6" Name="txtCustoReposicao4" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding Path=Text, ElementName=txtCustoReposicao}"/>
+                    <TextBox Grid.Row="2" Grid.Column="7" Name="txtCustoReposicao5" VerticalAlignment="Center" Margin="5,0" 
+                             Text="{Binding Path=Text, ElementName=txtCustoReposicao}"/>
 
-                    <TextBox Grid.Row="3" Grid.Column="1" Name="txtIcmsVendas1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="3" Grid.Column="2" Name="txtIcmsVendas2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="3" Grid.Column="3" Name="txtIcmsVendas3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="3" Grid.Column="4" Name="txtIcmsVendas4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="3" Grid.Column="5" Name="txtIcmsVendas5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="txtPercentIcmsVendas" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <Label Grid.Row="3" Grid.Column="2" Content="%"  VerticalAlignment="Center" />
+                    <TextBox Grid.Row="3" Grid.Column="3" Name="txtIcmsVendas1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="3" Grid.Column="4" Name="txtIcmsVendas2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="3" Grid.Column="5" Name="txtIcmsVendas3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="3" Grid.Column="6" Name="txtIcmsVendas4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="3" Grid.Column="7" Name="txtIcmsVendas5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
 
-                    <TextBox Grid.Row="4" Grid.Column="1" Name="txtImpostosFed1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="4" Grid.Column="2" Name="txtImpostosFed2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="4" Grid.Column="3" Name="txtImpostosFed3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="4" Grid.Column="4" Name="txtImpostosFed4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="4" Grid.Column="5" Name="txtImpostosFed5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="txtPercentImpostosFed" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <Label Grid.Row="4" Grid.Column="2" Content="%"  VerticalAlignment="Center" />
+                    <TextBox Grid.Row="4" Grid.Column="3" Name="txtImpostosFed1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="4" Grid.Column="4" Name="txtImpostosFed2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="4" Grid.Column="5" Name="txtImpostosFed3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="4" Grid.Column="6" Name="txtImpostosFed4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="4" Grid.Column="7" Name="txtImpostosFed5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
 
-                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtDesOperacinais1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="5" Grid.Column="2" Name="txtDesOperacinais2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="5" Grid.Column="3" Name="txtDesOperacinais3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="5" Grid.Column="4" Name="txtDesOperacinais4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="5" Grid.Column="5" Name="txtDesOperacinais5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtPercentDesOperacinais" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <Label Grid.Row="5" Grid.Column="2" Content="%"  VerticalAlignment="Center" />
+                    <TextBox Grid.Row="5" Grid.Column="3" Name="txtDesOperacinais1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="5" Grid.Column="4" Name="txtDesOperacinais2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="5" Grid.Column="5" Name="txtDesOperacinais3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="5" Grid.Column="6" Name="txtDesOperacinais4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="5" Grid.Column="7" Name="txtDesOperacinais5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
 
-                    <TextBox Grid.Row="6" Grid.Column="1" Name="txtLucro1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="6" Grid.Column="2" Name="txtLucro2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="6" Grid.Column="3" Name="txtLucro3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="6" Grid.Column="4" Name="txtLucro4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
-                    <TextBox Grid.Row="6" Grid.Column="5" Name="txtLucro5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="6" Grid.Column="3" Name="txtLucro1" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="6" Grid.Column="4" Name="txtLucro2" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="6" Grid.Column="5" Name="txtLucro3" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="6" Grid.Column="6" Name="txtLucro4" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
+                    <TextBox Grid.Row="6" Grid.Column="7" Name="txtLucro5" VerticalAlignment="Center" Margin="5,0" Text="0,00"/>
                 </Grid>
             </GroupBox>
             <StackPanel Grid.Row="1" Grid.Column="1">
@@ -419,8 +572,36 @@
                     <Button Name="btnCadastroNcm" Content="Cadastro NCM" Width="120" Height="35" VerticalAlignment="Top" Margin="20,0,10,0" Click="btnCadastroNcm_Click"/>
                     <Button Name="btnSobre" Content="Sobre" Width="120" Height="35" VerticalAlignment="Top" Margin="20,0,10,0" Click="btnSobre_Click"/>
                 </StackPanel>
-                <StatusBar  VerticalAlignment="Top" Margin="0,10,0,0">
-                    <TextBlock Text="TIPO DE OPERAÇÃO" FontSize="16" FontWeight="Bold"/>
+                <!--Textblock com Avisos-->
+
+                <Label Name="lblAviso" FontWeight="Bold" FontSize="18" Foreground="Red" 
+                               HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Visibility" Value="Hidden" />
+                            
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsChecked, ElementName=chkMicroempresa}" Value="True"/>
+                                        <Condition Binding="{Binding Text, ElementName=txtPercentIcms}" Value=""/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Setter Property="Content" Value="Aviso: Informe o crédito da Microempresa!"/>
+                                    <MultiDataTrigger.EnterActions>
+                                        <BeginStoryboard Name="flash" Storyboard="{StaticResource flashAnimation}" />
+                                    </MultiDataTrigger.EnterActions>
+                                    <MultiDataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="flash"/>
+                                    </MultiDataTrigger.ExitActions>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+
+                <StatusBar  VerticalAlignment="Bottom" Margin="0,20,0,0">
+                    <TextBlock Text="TIPO DE OPERAÇÃO: " FontSize="16" FontWeight="Bold"/>
                 </StatusBar>
             </StackPanel>
         </Grid>

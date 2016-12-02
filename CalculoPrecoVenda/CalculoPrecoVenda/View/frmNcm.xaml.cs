@@ -81,6 +81,7 @@ namespace CalculoPrecoVenda.View
             txtIpi.Clear();
             txtNcmId.Clear();
             txtNomeNcm.Clear();
+            txtSubstTribut.Clear();
             AlterarBotoes(1);
 
         }
@@ -102,7 +103,8 @@ namespace CalculoPrecoVenda.View
                     CodNcm = txtCodNcm.Text,
                     NomeNcm = txtNomeNcm.Text.ToUpper(),
                     ImpImportacao = Convert.ToDouble(txtImpImportacao.Text),
-                    Ipi = Convert.ToDouble(txtIpi.Text)
+                    Ipi = Convert.ToDouble(txtIpi.Text),
+                    SubstTribut = Convert.ToDouble(txtSubstTribut.Text)
                 });
 
                 ctx.SaveChanges();
@@ -116,6 +118,7 @@ namespace CalculoPrecoVenda.View
                 ncmToUpdate.NomeNcm = txtNomeNcm.Text.ToUpper();
                 ncmToUpdate.ImpImportacao = Convert.ToDouble(txtImpImportacao.Text);
                 ncmToUpdate.Ipi = Convert.ToDouble(txtIpi.Text);
+                ncmToUpdate.SubstTribut = Convert.ToDouble(txtSubstTribut.Text);
 
                 ctx.SaveChanges();
 
@@ -127,6 +130,7 @@ namespace CalculoPrecoVenda.View
             txtIpi.Clear();
             txtNcmId.Clear();
             txtNomeNcm.Clear();
+            txtSubstTribut.Clear();
             AlterarBotoes(1);
             
         }
@@ -138,6 +142,7 @@ namespace CalculoPrecoVenda.View
             txtIpi.Clear();
             txtNcmId.Clear();
             txtNomeNcm.Clear();
+            txtSubstTribut.Clear();
             AlterarBotoes(1);
         }
 

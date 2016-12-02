@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using System;
+using System.Windows.Data;
 
 namespace CalculoPrecoVenda.View
 {
@@ -83,8 +84,8 @@ namespace CalculoPrecoVenda.View
 
             ncm = frm.selectedNcm;
 
-            txtNcm.DataContext = ncm;
-            txbNomeNcm.DataContext = ncm;
+            this.DataContext = ncm;
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -108,6 +109,8 @@ namespace CalculoPrecoVenda.View
             radForNacional.IsChecked = true;
             radProdNacional.IsChecked = true;
             radPessoaJurídica.IsChecked = true;
+
+            
         }
 
         private void txtValorNF_LostFocus(object sender, RoutedEventArgs e)
@@ -145,6 +148,10 @@ namespace CalculoPrecoVenda.View
                 chkPpb.IsEnabled = true;
                 chkImportadoZfm.IsEnabled = true;
                 chkCorredor.IsEnabled = true;
+                radForEstrangeiro.IsChecked = false;
+                radForNacional.IsChecked = true;
+                cbolistaUfForn.SelectedValue = "AM";
+
                 if ((bool)radProdEstrangeiro.IsChecked)
                 {
                     chkPpb.IsChecked = false;
@@ -160,6 +167,10 @@ namespace CalculoPrecoVenda.View
                 chkPpb.IsChecked= false;
                 chkImportadoZfm.IsChecked = false;
                 chkCorredor.IsChecked = false;
+
+                radForEstrangeiro.IsChecked = false;
+                radForNacional.IsChecked = true;
+                cbolistaUfForn.SelectedValue = value;
 
             }
                 
@@ -179,13 +190,18 @@ namespace CalculoPrecoVenda.View
 
             chkImportadoZfm.IsEnabled = true;
             chkCorredor.IsEnabled = true;
+
+            chkMicroempresa.IsChecked = false;
+            chkMicroempresa.IsEnabled = false;
         }
 
         private void radForNacional_Checked(object sender, RoutedEventArgs e)
         {
-            cbolistaUfForn.SelectedValue = "AM";
+            cbolistaUfForn.SelectedValue = "";
 
             radProdNacional.IsEnabled = true;
+
+            chkMicroempresa.IsEnabled = true;
 
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
             
@@ -206,11 +222,13 @@ namespace CalculoPrecoVenda.View
         private void chkCorredor_Checked(object sender, RoutedEventArgs e)
         {
             chkImportadoZfm.IsChecked = false;
+            radProdEstrangeiro.IsChecked = true;
         }
 
         private void chkImportadoZfm_Checked(object sender, RoutedEventArgs e)
         {
             chkCorredor.IsChecked = false;
+            radProdEstrangeiro.IsChecked = true;
         }
 
         private void chkMotores_Checked(object sender, RoutedEventArgs e)
@@ -241,7 +259,7 @@ namespace CalculoPrecoVenda.View
                 chkCorredor.IsEnabled = true;
                 chkImportadoZfm.IsEnabled = true;
             }
-            else
+            else if(value != "EX")
             {
                 chkCorredor.IsEnabled = false;
                 chkImportadoZfm.IsEnabled = false;
@@ -251,23 +269,27 @@ namespace CalculoPrecoVenda.View
         private void radProdNacional_Checked(object sender, RoutedEventArgs e)
         {
             chkCorredor.IsEnabled = false;
+            chkCorredor.IsChecked = false;
+
             chkImportadoZfm.IsEnabled = false;
+            chkImportadoZfm.IsChecked = false;
 
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
 
             if (value == "AM")
             {
-                chkCorredor.IsEnabled = true;
-                chkImportadoZfm.IsEnabled = true;
                 chkPpb.IsEnabled = true;
-
             }
             else
             {
                 chkPpb.IsEnabled = false;
-                chkCorredor.IsEnabled = false;
-                chkImportadoZfm.IsEnabled = false;
+                chkPpb.IsChecked = false;
             }
         }
+
+        //private void chkMicroempresa_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    string teste = txtPercentIcms.Text;
+        //}
     }
 }

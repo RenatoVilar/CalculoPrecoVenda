@@ -99,6 +99,10 @@
     <Compile Include="Migrations\201611231641376_InsereFieldAliquotaInteres.Designer.cs">
       <DependentUpon>201611231641376_InsereFieldAliquotaInteres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612021510407_InsertFieldSusbtTrubt.cs" />
+    <Compile Include="Migrations\201612021510407_InsertFieldSusbtTrubt.Designer.cs">
+      <DependentUpon>201612021510407_InsertFieldSusbtTrubt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MinusConverter.cs" />
     <Compile Include="Model\Ncm.cs" />
@@ -203,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611231641376_InsereFieldAliquotaInteres.resx">
       <DependentUpon>201611231641376_InsereFieldAliquotaInteres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021510407_InsertFieldSusbtTrubt.resx">
+      <DependentUpon>201612021510407_InsertFieldSusbtTrubt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

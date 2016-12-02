@@ -17,6 +17,7 @@ namespace CalculoPrecoVenda.Model
         private string nomeNCm;
         private double? impImportacao;
         private double? ipi;
+        private double? substTribut;
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
@@ -73,6 +74,12 @@ namespace CalculoPrecoVenda.Model
         {
             get { return ipi; }
             set { ipi = value; }
+        }
+
+        public double? SubstTribut
+        {
+            get { return substTribut; }
+            set { substTribut = value; }
         }
 
         public bool HasErrors
