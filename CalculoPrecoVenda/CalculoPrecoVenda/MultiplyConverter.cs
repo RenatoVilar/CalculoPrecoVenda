@@ -10,32 +10,26 @@ namespace CalculoPrecoVenda
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             double result = 0;
+
             if (values == null )
             {
                 return result;
             }
 
-            for (int i = 0; i < values.Length-1; i++)
+            for (int i = 0; i < values.Length; i++)
             {
                 if ((string)values[i] == "")
                 {
                     values[i] = "0,00";
                 }
-
-                double sum = System.Convert.ToDouble(values[i]);
-                result += sum;
             }
 
-            //if ((string)values[0] == "" || (string)values[1] == "")
-            //{
-            //    return values;
-            //}
+            for (int i = 0; i < values.Length-1; i++)
+            {
+                double sum = System.Convert.ToDouble(values[i]);
 
-            //decimal valorNf = System.Convert.ToDecimal(values[0]);
-            //decimal valorFrete = System.Convert.ToDecimal(values[1]);
-            //decimal percentual = System.Convert.ToDecimal(values[2]);
-
-            //result = (valorNf + valorFrete) * (percentual / 100);
+                result += sum;
+            }
 
             double percentual = System.Convert.ToDouble(values[values.Length - 1]) / 100;
 

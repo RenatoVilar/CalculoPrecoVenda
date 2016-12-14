@@ -16,14 +16,10 @@ namespace CalculoPrecoVenda.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-
         CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
         List<UnidadeFederada> listaUf = new List<UnidadeFederada>();
 
         private Ncm ncm;
-
-       
         public MainWindow()
         {
             InitializeComponent();
@@ -83,11 +79,8 @@ namespace CalculoPrecoVenda.View
             frm.ShowDialog();
 
             ncm = frm.selectedNcm;
-
             this.DataContext = ncm;
-            
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             PrecoReposicao precoReposicao = new PrecoReposicao();
@@ -106,75 +99,51 @@ namespace CalculoPrecoVenda.View
 
             cbolistaUfForn.SelectedIndex = 0;
 
-            radForNacional.IsChecked = true;
+            radForLocal.IsChecked = true;
             radProdNacional.IsChecked = true;
             radPessoaJurídica.IsChecked = true;
+            radClienteLocal.IsChecked = true;
+            radPessoaFisica.IsChecked = true;
 
-            
+            chkPpb.IsEnabled = true;
         }
-
-        private void txtValorNF_LostFocus(object sender, RoutedEventArgs e)
-        {
-            
-
-           
-        }
-
-        private void txtValorNF_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-                        
-        }
-
         private void cbolistaUfForn_DropDownClosed(object sender, System.EventArgs e)
         {
-
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
 
             if (value == "EX")
             {
                 radForEstrangeiro.IsChecked = true;
-                radForNacional.IsChecked = false;
+                //radForNacional.IsChecked = false;
                 chkPpb.IsChecked = false;
+                chkPpb.IsEnabled = false;
 
                 chkImportadoZfm.IsEnabled = true;
                 chkCorredor.IsEnabled = true;
-                chkPpb.IsEnabled = false;
 
                 radProdNacional.IsEnabled = false;
 
             }
             else if (value == "AM")
             {
-                chkPpb.IsEnabled = true;
-                chkImportadoZfm.IsEnabled = true;
-                chkCorredor.IsEnabled = true;
-                radForEstrangeiro.IsChecked = false;
-                radForNacional.IsChecked = true;
-                cbolistaUfForn.SelectedValue = "AM";
-
-                if ((bool)radProdEstrangeiro.IsChecked)
-                {
-                    chkPpb.IsChecked = false;
-                    chkPpb.IsEnabled = false;
-                }
+                radForLocal_Checked(radForLocal, null);
+                radForLocal.IsChecked = true;
             }
             else
             {
                 chkPpb.IsEnabled = false;
-                chkImportadoZfm.IsEnabled = false;
-                chkCorredor.IsEnabled = false;
+                chkPpb.IsChecked = false;
 
-                chkPpb.IsChecked= false;
+                chkImportadoZfm.IsEnabled = false;
                 chkImportadoZfm.IsChecked = false;
+
+                chkCorredor.IsEnabled = false;
                 chkCorredor.IsChecked = false;
 
                 radForEstrangeiro.IsChecked = false;
                 radForNacional.IsChecked = true;
                 cbolistaUfForn.SelectedValue = value;
-
             }
-                
-
         }
         private void radForEstrangeiro_Checked(object sender, RoutedEventArgs e)
         {
@@ -183,10 +152,8 @@ namespace CalculoPrecoVenda.View
             radProdNacional.IsEnabled = false;
             radProdEstrangeiro.IsChecked = true;
 
-            chkPpb.IsChecked= false;
+            chkPpb.IsChecked = false;
             chkPpb.IsEnabled = false;
-
-            chkPecas.IsEnabled = true;
 
             chkImportadoZfm.IsEnabled = true;
             chkCorredor.IsEnabled = true;
@@ -200,57 +167,57 @@ namespace CalculoPrecoVenda.View
             cbolistaUfForn.SelectedValue = "";
 
             radProdNacional.IsEnabled = true;
+            chkMicroempresa.IsEnabled = true;
+
+            chkCorredor.IsChecked = false;
+            chkCorredor.IsEnabled = false;
+
+            chkImportadoZfm.IsChecked = false;
+            chkImportadoZfm.IsEnabled = false;
+
+            chkPpb.IsEnabled = false;
+            chkPpb.IsChecked = false;
+
+        }
+        private void radForLocal_Checked(object sender, RoutedEventArgs e)
+        {
+            cbolistaUfForn.SelectedValue = "AM";
+
+            radProdNacional.IsEnabled = true;
 
             chkMicroempresa.IsEnabled = true;
 
+            chkCorredor.IsEnabled = true;
+            chkImportadoZfm.IsEnabled = true;
+            chkPpb.IsEnabled = true;
+
+        }
+        private void chkMicroempresa_Checked(object sender, RoutedEventArgs e)
+        {
+            chkPpb.IsEnabled = false;
+            chkPpb.IsChecked = false;
+
+            chkSubstTribut.IsEnabled = false;
+            chkSubstTribut.IsChecked = false;
+        }
+        private void chkMicroempresa_Unchecked(object sender, RoutedEventArgs e)
+        {
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
-            
+
             if (value == "AM")
             {
-                chkCorredor.IsEnabled = true;
-                chkImportadoZfm.IsEnabled = true;
-
+                chkPpb.IsEnabled = true;
             }
-            else
-            {
-                chkPpb.IsEnabled = false;
-                chkCorredor.IsEnabled = false;
-                chkImportadoZfm.IsEnabled = false;
-            }
-        }
 
-        private void chkCorredor_Checked(object sender, RoutedEventArgs e)
-        {
-            chkImportadoZfm.IsChecked = false;
-            radProdEstrangeiro.IsChecked = true;
-        }
+            chkSubstTribut.IsEnabled = true;
 
-        private void chkImportadoZfm_Checked(object sender, RoutedEventArgs e)
-        {
-            chkCorredor.IsChecked = false;
-            radProdEstrangeiro.IsChecked = true;
         }
-
-        private void chkMotores_Checked(object sender, RoutedEventArgs e)
-        {
-            chkPecas.IsChecked = false;
-        }
-
-        private void chkPecas_Checked(object sender, RoutedEventArgs e)
-        {
-            chkMotores.IsChecked = false;
-        }
-
-        private void radEstrangeiro_Checked(object sender, RoutedEventArgs e)
-        {
-            cbolistaUf.SelectedValue = "AM";
-        }
-
         private void radProdEstrangeiro_Checked(object sender, RoutedEventArgs e)
         {
             chkImportadoZfm.IsEnabled = true;
             chkCorredor.IsEnabled = true;
             chkPpb.IsEnabled = false;
+            chkPpb.IsChecked = false;
 
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
 
@@ -259,13 +226,12 @@ namespace CalculoPrecoVenda.View
                 chkCorredor.IsEnabled = true;
                 chkImportadoZfm.IsEnabled = true;
             }
-            else if(value != "EX")
+            else if (value != "EX")
             {
                 chkCorredor.IsEnabled = false;
                 chkImportadoZfm.IsEnabled = false;
             }
         }
-
         private void radProdNacional_Checked(object sender, RoutedEventArgs e)
         {
             chkCorredor.IsEnabled = false;
@@ -286,10 +252,122 @@ namespace CalculoPrecoVenda.View
                 chkPpb.IsChecked = false;
             }
         }
+        private void chkMotoresAte90Hp_Checked(object sender, RoutedEventArgs e)
+        {
+            chkMotoresAcima90Hp.IsChecked = false;
+            chkPecas.IsChecked = false;
+            chkEmbarcacoes.IsChecked = false;
 
-        //private void chkMicroempresa_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    string teste = txtPercentIcms.Text;
-        //}
+            string value = Convert.ToString(cbolistaUfForn.SelectedValue);
+
+            if (value == "AM" && (bool)radProdNacional.IsChecked)
+            {
+                chkPpb.IsChecked = true;
+            }
+        }
+        private void chkMotoresAcima90Hp_Checked(object sender, RoutedEventArgs e)
+        {
+            chkMotoresAte90Hp.IsChecked = false;
+            chkPecas.IsChecked = false;
+            chkEmbarcacoes.IsChecked = false;
+            radProdEstrangeiro.IsChecked = true;
+                
+
+            string value = Convert.ToString(cbolistaUfForn.SelectedValue);
+
+            if (value == "AM")
+            {
+                chkPpb.IsEnabled = false;
+                chkPpb.IsEnabled = false;
+            }
+        }
+        private void chkPecas_Checked(object sender, RoutedEventArgs e)
+        {
+            chkMotoresAcima90Hp.IsChecked = false;
+            chkMotoresAte90Hp.IsChecked = false;
+            chkEmbarcacoes.IsChecked = false;
+        }
+        private void chkEmbarcacoes_Checked(object sender, RoutedEventArgs e)
+        {
+            chkMotoresAcima90Hp.IsChecked = false;
+            chkMotoresAte90Hp.IsChecked = false;
+            chkPecas.IsChecked = false;
+        }
+        private void chkCorredor_Checked(object sender, RoutedEventArgs e)
+        {
+            chkImportadoZfm.IsChecked = false;
+            radProdEstrangeiro.IsChecked = true;
+        }
+        private void chkImportadoZfm_Checked(object sender, RoutedEventArgs e)
+        {
+            chkCorredor.IsChecked = false;
+            radProdEstrangeiro.IsChecked = true;
+        }
+        private void radClienteEstrangeiro_Checked(object sender, RoutedEventArgs e)
+        {
+            cbolistaUf.SelectedValue = "EX";
+
+            chkClienteZfm.IsEnabled = false;
+            chkClienteZfm.IsChecked = false;
+
+            chkContribuinte.IsEnabled = false;
+            chkContribuinte.IsChecked = false;
+
+            radPessoaJurídica.IsEnabled = false;
+            radPessoaJurídica.IsChecked = false;
+
+            radPessoaFisica.IsEnabled = false;
+            radPessoaFisica.IsChecked = false;
+
+        }
+        private void radClienteNacional_Checked(object sender, RoutedEventArgs e)
+        {
+            cbolistaUf.SelectedValue = "";
+            chkClienteZfm.IsEnabled = false;
+            chkClienteZfm.IsChecked = false;
+
+            radPessoaJurídica.IsEnabled = true;
+            radPessoaFisica.IsEnabled = true;
+            radPessoaFisica.IsChecked = true;
+        }
+        private void radClienteLocal_Checked(object sender, RoutedEventArgs e)
+        {
+            cbolistaUf.SelectedValue = "AM";
+
+            chkClienteZfm.IsEnabled = true;
+            radPessoaJurídica.IsEnabled = true;
+            radPessoaFisica.IsEnabled = true;
+            radPessoaFisica.IsChecked = true;
+        }
+
+        private void radPessoaJurídica_Checked(object sender, RoutedEventArgs e)
+        {
+            chkContribuinte.IsEnabled = true;
+        }
+
+        private void radPessoaFisica_Checked(object sender, RoutedEventArgs e)
+        {
+            chkContribuinte.IsEnabled = false;
+            chkContribuinte.IsChecked = false;
+        }
+
+        private void cbolistaUf_DropDownClosed(object sender, EventArgs e)
+        {
+            string value = Convert.ToString(cbolistaUf.SelectedValue);
+
+            if (value == "EX")
+            {
+                radClienteEstrangeiro.IsChecked = true;
+
+            }
+            else if (value == "AM")
+            {
+                radClienteLocal.IsChecked = true;
+            }
+            else
+            {
+                radClienteNacional.IsChecked = true;
+            }
+        }
     }
 }

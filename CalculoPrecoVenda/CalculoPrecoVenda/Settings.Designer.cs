@@ -157,49 +157,49 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public float Iof {
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public float AliquotaIcmsEmbarcacoes {
             get {
-                return ((float)(this["Iof"]));
+                return ((float)(this["AliquotaIcmsEmbarcacoes"]));
             }
             set {
-                this["Iof"] = value;
+                this["AliquotaIcmsEmbarcacoes"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public float IcmsMicro {
+        public float AliquotaIcmsMicro {
             get {
-                return ((float)(this["IcmsMicro"]));
+                return ((float)(this["AliquotaIcmsMicro"]));
             }
             set {
-                this["IcmsMicro"] = value;
+                this["AliquotaIcmsMicro"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public float IcmsInterImp {
+        public float AliquotaIcmsInterImportados {
             get {
-                return ((float)(this["IcmsInterImp"]));
+                return ((float)(this["AliquotaIcmsInterImportados"]));
             }
             set {
-                this["IcmsInterImp"] = value;
+                this["AliquotaIcmsInterImportados"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7")]
-        public float IcmsZonaFranca {
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public float AliquotaIcmsInterNacionais {
             get {
-                return ((float)(this["IcmsZonaFranca"]));
+                return ((float)(this["AliquotaIcmsInterNacionais"]));
             }
             set {
-                this["IcmsZonaFranca"] = value;
+                this["AliquotaIcmsInterNacionais"] = value;
             }
         }
     }

@@ -35,17 +35,17 @@
     <Setting Name="Fti" Type="System.Single" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Iof" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">10</Value>
+    <Setting Name="AliquotaIcmsEmbarcacoes" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="IcmsMicro" Type="System.Single" Scope="User">
+    <Setting Name="AliquotaIcmsMicro" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="IcmsInterImp" Type="System.Single" Scope="User">
+    <Setting Name="AliquotaIcmsInterImportados" Type="System.Single" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
-    <Setting Name="IcmsZonaFranca" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">7</Value>
+    <Setting Name="AliquotaIcmsInterNacionais" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">12</Value>
     </Setting>
   </Settings>
 </SettingsFile>
