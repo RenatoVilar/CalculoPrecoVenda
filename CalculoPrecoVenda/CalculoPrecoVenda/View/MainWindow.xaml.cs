@@ -27,14 +27,22 @@ namespace CalculoPrecoVenda.View
         }
         private void btnImpostosFederais_Click(object sender, RoutedEventArgs e)
         {
-            frmImpostosFederais frm = new frmImpostosFederais();
+            frmImpostosFederais frm = new frmImpostosFederais(txtValorSugerido1.Text,
+                                                              txtValorSugerido2.Text,
+                                                              txtValorSugerido3.Text,
+                                                              txtValorSugerido4.Text,
+                                                              txtValorSugerido5.Text);
             frm.ShowDialog();
             frm.Close();
         }
 
         private void btnIcms_Click_1(object sender, RoutedEventArgs e)
         {
-            frmCalculoICMS frm = new frmCalculoICMS();
+            frmCalculoICMS frm = new frmCalculoICMS(txtValorSugerido1.Text,
+                                                    txtValorSugerido2.Text,
+                                                    txtValorSugerido3.Text,
+                                                    txtValorSugerido4.Text,
+                                                    txtValorSugerido5.Text);
             frm.ShowDialog();
             frm.Close();
         }
@@ -286,6 +294,13 @@ namespace CalculoPrecoVenda.View
             chkMotoresAcima90Hp.IsChecked = false;
             chkMotoresAte90Hp.IsChecked = false;
             chkEmbarcacoes.IsChecked = false;
+
+            if ((bool)chkSubstTribut.IsChecked && (bool)chkPecas.IsChecked)
+            {
+                MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Mensagem", MessageBoxButton.OK, MessageBoxImage.Error);
+                chkSubstTribut.IsChecked = false;
+
+            }
         }
         private void chkEmbarcacoes_Checked(object sender, RoutedEventArgs e)
         {
@@ -368,6 +383,22 @@ namespace CalculoPrecoVenda.View
             {
                 radClienteNacional.IsChecked = true;
             }
+        }
+
+        private void chkSubstTribut_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)chkSubstTribut.IsChecked && (bool)chkPecas.IsChecked)
+            {
+                MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Mensagem", MessageBoxButton.OK, MessageBoxImage.Error);
+                chkPecas.IsChecked = false;
+               
+            }
+        }
+
+        private void chkPpb_Checked(object sender, RoutedEventArgs e)
+        {
+            radForLocal.IsChecked = true;
+            radProdNacional.IsChecked = true;
         }
     }
 }

@@ -125,7 +125,7 @@
                 <TextBox Grid.Row="6" Grid.Column="6" Name="txtFcp4" VerticalAlignment="Center" Margin="5,0"/>
                 <TextBox Grid.Row="6" Grid.Column="7" Name="txtFcp5" VerticalAlignment="Center" Margin="5,0"/>
 
-                <TextBox Grid.Row="7" Grid.Column="3" Name="txtTotalIcms1" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="7" Grid.Column="3" Name="txtTotalIcms1" VerticalAlignment="Center" Margin="5,0" Text="100,00"/>
                 <TextBox Grid.Row="7" Grid.Column="4" Name="txtTotalIcms2" VerticalAlignment="Center" Margin="5,0"/>
                 <TextBox Grid.Row="7" Grid.Column="5" Name="txtTotalIcms3" VerticalAlignment="Center" Margin="5,0"/>
                 <TextBox Grid.Row="7" Grid.Column="6" Name="txtTotalIcms4" VerticalAlignment="Center" Margin="5,0"/>

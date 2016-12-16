@@ -9,6 +9,8 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:NumberFormatter x:Key="myNumberFormatter"/>
+        <local:MultiplyConverter x:Key="myMultiplyConverter"/>
+        <local:SumConverter x:Key="mySumConverter"/>
     </Window.Resources>
     <StackPanel Margin="10" HorizontalAlignment="Center">
         <GroupBox Name="grpPrecoVenda" Header="Impostos Federais" Width="900" Height="330" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
@@ -32,7 +34,7 @@
                     <ColumnDefinition Width="125"/>
                     <ColumnDefinition Width="125"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Label Grid.Row="0" Grid.Column="0" Content="Lucro Pretendido"  VerticalAlignment="Center"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Valor Sugerido"  VerticalAlignment="Center"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="Imposto de Renda"  VerticalAlignment="Center"/>
@@ -76,7 +78,12 @@
                     <Label Content="%" Margin="5,0"/>
                 </StackPanel>
 
-                <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido1" VerticalAlignment="Center" Margin="5,0"/>
+                <Label Grid.Row="2" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
+                <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
+                <Label Grid.Row="4" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
+                <Label Grid.Row="5" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="1" Grid.Column="3" Name="txtValorSugerido1" VerticalAlignment="Bottom" Margin="5,0,5,5"/>
                 <TextBox Grid.Row="1" Grid.Column="4" Name="txtValorSugerido2" VerticalAlignment="Center" Margin="5,0"/>
                 <TextBox Grid.Row="1" Grid.Column="5" Name="txtValorSugerido3" VerticalAlignment="Center" Margin="5,0"/>
                 <TextBox Grid.Row="1" Grid.Column="6" Name="txtValorSugerido4" VerticalAlignment="Center" Margin="5,0"/>
@@ -84,45 +91,251 @@
 
                 <TextBox Grid.Row="2" Grid.Column="1" Name="txtAliquotaIR" VerticalAlignment="Center" Margin="5,0" 
                          Text="{Binding Source={StaticResource Settings}, Path=Default.Irpj, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                <Label Grid.Row="2" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="3" Name="txtImposotoRenda1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="4" Name="txtImposotoRenda2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="5" Name="txtImposotoRenda4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="6" Name="txtImposotoRenda5" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="2" Grid.Column="7" Name="txtImposotoRenda6" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="2" Grid.Column="3" Name="txtImpostoRenda1" VerticalAlignment="Top" Margin="5,5,5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido1"/>
+                            <Binding Path="Text" ElementName="txtAliquotaIR"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="2" Grid.Column="4" Name="txtImpostoRenda2" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido2"/>
+                            <Binding Path="Text" ElementName="txtAliquotaIR"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="2" Grid.Column="5" Name="txtImpostoRenda3" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido3"/>
+                            <Binding Path="Text" ElementName="txtAliquotaIR"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="2" Grid.Column="6" Name="txtImpostoRenda4" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido4"/>
+                            <Binding Path="Text" ElementName="txtAliquotaIR"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="2" Grid.Column="7" Name="txtImpostoRenda5" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido5"/>
+                            <Binding Path="Text" ElementName="txtAliquotaIR"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <TextBox Grid.Row="3" Grid.Column="1" Name="txtAliquotaCofins" VerticalAlignment="Center" Margin="5,0" 
                          Text="{Binding Source={StaticResource Settings}, Path=Default.Cofins, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="3" Name="txtCofins1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="4" Name="txtCofins2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="5" Name="txtCofins3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="6" Name="txtCofins4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="3" Grid.Column="7" Name="txtCofins5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="3" Grid.Column="3" Name="txtCofins1" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido1"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCofins"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="3" Grid.Column="4" Name="txtCofins2" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido2"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCofins"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="3" Grid.Column="5" Name="txtCofins3" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido3"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCofins"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="3" Grid.Column="6" Name="txtCofins4" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido4"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCofins"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="3" Grid.Column="7" Name="txtCofins5" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido5"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCofins"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <TextBox Grid.Row="4" Grid.Column="1" Name="txtAliquotaPis" VerticalAlignment="Center" Margin="5,0" 
                          Text="{Binding Source={StaticResource Settings}, Path=Default.Pis, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                <Label Grid.Row="4" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="3" Name="txtPis1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="4" Name="txtPis2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="5" Name="txtPis3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="6" Name="txtPis4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="4" Grid.Column="7" Name="txtPis5" VerticalAlignment="Center" Margin="5,0"/>
+
+                <TextBox Grid.Row="4" Grid.Column="3" Name="txtPis1" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido1"/>
+                            <Binding Path="Text" ElementName="txtAliquotaPis"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="4" Grid.Column="4" Name="txtPis2" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido2"/>
+                            <Binding Path="Text" ElementName="txtAliquotaPis"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="4" Grid.Column="5" Name="txtPis3" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido3"/>
+                            <Binding Path="Text" ElementName="txtAliquotaPis"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="4" Grid.Column="6" Name="txtPis4" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido4"/>
+                            <Binding Path="Text" ElementName="txtAliquotaPis"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="4" Grid.Column="7" Name="txtPis5" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido5"/>
+                            <Binding Path="Text" ElementName="txtAliquotaPis"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <TextBox Grid.Row="5" Grid.Column="1" Name="txtAliquotaCsll" VerticalAlignment="Center" Margin="5,0"
                          Text="{Binding Source={StaticResource Settings}, Path=Default.Csll, Mode=OneWay, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                <Label Grid.Row="5" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="3" Name="txtCsll1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="4" Name="txtCsll2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="5" Name="txtCsll3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="6" Name="txtCsll4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="5" Grid.Column="7" Name="txtCsll5" VerticalAlignment="Center" Margin="5,0"/>
 
-                <TextBox Grid.Row="6" Grid.Column="3" Name="txtTotalImpostos1" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="6" Grid.Column="4" Name="txtTotalImpostos2" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="6" Grid.Column="5" Name="txtTotalImpostos3" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="6" Grid.Column="6" Name="txtTotalImpostos4" VerticalAlignment="Center" Margin="5,0"/>
-                <TextBox Grid.Row="6" Grid.Column="7" Name="txtTotalImpostos5" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox Grid.Row="5" Grid.Column="3" Name="txtCsll1" VerticalAlignment="Center" Margin="5,4,5,8">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido1"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCsll"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="5" Grid.Column="4" Name="txtCsll2" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido2"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCsll"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="5" Grid.Column="5" Name="txtCsll3" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido3"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCsll"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="5" Grid.Column="6" Name="txtCsll4" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido4"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCsll"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="5" Grid.Column="7" Name="txtCsll5" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource myMultiplyConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtValorSugerido5"/>
+                            <Binding Path="Text" ElementName="txtAliquotaCsll"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="6" Grid.Column="3" Name="txtTotalImpostos1" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtImpostoRenda1"/>
+                            <Binding Path="Text" ElementName="txtCofins1"/>
+                            <Binding Path="Text" ElementName="txtPis1"/>
+                            <Binding Path="Text" ElementName="txtCsll1"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="6" Grid.Column="4" Name="txtTotalImpostos2" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtImpostoRenda2"/>
+                            <Binding Path="Text" ElementName="txtCofins2"/>
+                            <Binding Path="Text" ElementName="txtPis2"/>
+                            <Binding Path="Text" ElementName="txtCsll2"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="6" Grid.Column="5" Name="txtTotalImpostos3" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtImpostoRenda3"/>
+                            <Binding Path="Text" ElementName="txtCofins3"/>
+                            <Binding Path="Text" ElementName="txtPis3"/>
+                            <Binding Path="Text" ElementName="txtCsll3"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="6" Grid.Column="6" Name="txtTotalImpostos4" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtImpostoRenda4"/>
+                            <Binding Path="Text" ElementName="txtCofins4"/>
+                            <Binding Path="Text" ElementName="txtPis4"/>
+                            <Binding Path="Text" ElementName="txtCsll4"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="6" Grid.Column="7" Name="txtTotalImpostos5" VerticalAlignment="Center" Margin="5,0">
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource mySumConverter}" ConverterParameter='n2'>
+                            <Binding Path="Text" ElementName="txtImpostoRenda5"/>
+                            <Binding Path="Text" ElementName="txtCofins5"/>
+                            <Binding Path="Text" ElementName="txtPis5"/>
+                            <Binding Path="Text" ElementName="txtCsll5"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+                
             </Grid>
         </GroupBox>
         <Button Name="btnFechar" Content="Fechar"  Width="100" Height="35" HorizontalAlignment="Right" Margin="10" Click="btnFechar_Click"/>

@@ -12,16 +12,36 @@ namespace CalculoPrecoVenda
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
+            decimal result = 0;
 
-            if ((string)values[0] == "" || (string)values[1] == "")
+            for (int i = 0; i < values.Length; i++)
             {
-                return string.Empty;
+                if ((string)values[i] == "")
+                {
+                    values[i] = "0,00";
+                }
+            }
+            for (int i = 1; i < values.Length; i++)
+            {
+                decimal sum = System.Convert.ToDecimal(values[i]);
+
+                result += sum;
             }
 
-            decimal value1 = System.Convert.ToDecimal(values[0]);
-            decimal value2 = System.Convert.ToDecimal(values[1]);
+            decimal valorSugerido = System.Convert.ToDecimal(values[0]);
 
-            decimal result = value1 - value2;
+            result = valorSugerido - result;
+
+
+            //if ((string)values[0] == "" || (string)values[1] == "")
+            //{
+            //    return string.Empty;
+            //}
+
+
+            //decimal value2 = System.Convert.ToDecimal(values[1]);
+
+            //decimal result = value1 - value2;
 
             return System.Convert.ToDecimal(result).ToString(parameter as string);
           

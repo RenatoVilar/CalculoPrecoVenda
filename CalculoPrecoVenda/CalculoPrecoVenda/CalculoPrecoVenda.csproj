@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AliquotaIcmsConverter.cs" />
     <Compile Include="CalcPrecoRepoConverter.cs" />
     <Compile Include="CofinsConverter.cs" />
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
