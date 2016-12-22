@@ -114,6 +114,7 @@ namespace CalculoPrecoVenda.View
                     AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text),
                     AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text),
                     AliquotaFcp = Convert.ToDouble(txtAlFcp.Text),
+                    AliquotaEmbarcacoes = Convert.ToDouble(txtAlEmbarcacoes.Text),
                     ItensFcp = txtItensFcp.Text
 
                 });
@@ -130,6 +131,7 @@ namespace CalculoPrecoVenda.View
                 ufToUpdate.AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text);
                 ufToUpdate.AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text);
                 ufToUpdate.AliquotaFcp = Convert.ToDouble(txtAlFcp.Text);
+                ufToUpdate.AliquotaEmbarcacoes = Convert.ToDouble(txtAlEmbarcacoes.Text);
                 ufToUpdate.ItensFcp = txtItensFcp.Text;
 
                 ctx.SaveChanges();
@@ -191,6 +193,7 @@ namespace CalculoPrecoVenda.View
             txtAlIcmsInterna.Clear();
             txtAlIcmsInterestadual.Clear();
             txtAlFcp.Clear();
+            txtAlEmbarcacoes.Clear();
             txtItensFcp.Clear();
         }
 

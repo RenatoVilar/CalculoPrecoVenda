@@ -42,9 +42,13 @@ namespace CalculoPrecoVenda
             {
                 return 0.00.ToString(parameter as string);
             }
-            else if (embarcacoes && !forEstrangeiro)
+            else if (embarcacoes && forLocal && ppb)
             {
-                return Settings.Default.AliquotaIcmsEmbarcacoes.ToString(parameter as string);
+                return unidadeFederada.AliquotaInterna.ToString(parameter as string);
+            }
+            else if (embarcacoes && forLocal)
+            {
+                return unidadeFederada.AliquotaEmbarcacoes.ToString(parameter as string);
             }
             else if (forNacional && prodEstrangeiro)
             {

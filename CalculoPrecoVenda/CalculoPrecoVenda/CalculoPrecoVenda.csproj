@@ -91,6 +91,11 @@
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
     <Compile Include="Data\NcmConfiguration.cs" />
     <Compile Include="Data\UnidadeFederadaConfiguration.cs" />
+    <Compile Include="DifalConverter.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="View\frmConfigGerais.xaml.cs">
+      <DependentUpon>frmConfigGerais.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IcmsEntradaConverter.cs" />
     <Compile Include="IcmsSaidaConverter.cs" />
     <Compile Include="Migrations\201611051438455_Initial.cs" />
@@ -105,6 +110,10 @@
     <Compile Include="Migrations\201612021510407_InsertFieldSusbtTrubt.Designer.cs">
       <DependentUpon>201612021510407_InsertFieldSusbtTrubt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201229000_InsereFieldAliquotaEmbarcacoes.cs" />
+    <Compile Include="Migrations\201612201229000_InsereFieldAliquotaEmbarcacoes.Designer.cs">
+      <DependentUpon>201612201229000_InsereFieldAliquotaEmbarcacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SubtractConverter.cs" />
     <Compile Include="Model\Ncm.cs" />
@@ -117,6 +126,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Page Include="View\frmConfigGerais.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\frmCalculoICMS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\frmNcm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\frmSobre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +189,9 @@
     </Compile>
     <Compile Include="View\frmNcm.xaml.cs">
       <DependentUpon>frmNcm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSobre.xaml.cs">
+      <DependentUpon>frmSobre.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\frmUnidadeFederada.xaml.cs">
       <DependentUpon>frmUnidadeFederada.xaml</DependentUpon>
@@ -213,6 +233,9 @@
     <EmbeddedResource Include="Migrations\201612021510407_InsertFieldSusbtTrubt.resx">
       <DependentUpon>201612021510407_InsertFieldSusbtTrubt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201229000_InsereFieldAliquotaEmbarcacoes.resx">
+      <DependentUpon>201612201229000_InsereFieldAliquotaEmbarcacoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -233,7 +256,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\find.ico" />
   </ItemGroup>

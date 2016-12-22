@@ -1,0 +1,148 @@
+﻿<Window x:Class="CalculoPrecoVenda.frmConfigGerais"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculoPrecoVenda"
+        mc:Ignorable="d"
+        Title="Cadastros Gerais" Height="540" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
+    <Window.Resources>
+        <local:NumberFormatter x:Key="myNumberFormatter"/>
+        <local:ValueIsNotNull x:Key="valueIsNotNull"/>
+    </Window.Resources>
+
+    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0">
+        <GroupBox Header="Impostos Federais" Height="100" Width="750"
+                  VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="IRPJ" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtIrpj" Text="{Binding Source={StaticResource Settings}, Path=Irpj, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                    PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+                
+                <Label Content="CSLL" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtCsll" Text="{Binding Source={StaticResource Settings}, Path=Csll, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="PIS" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtPis" Text="{Binding Source={StaticResource Settings}, Path=Pis, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="Cofins" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtCofins" Text="{Binding Source={StaticResource Settings}, Path=Cofins, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Indíces de Lucro Pretendido" Height="100" Width="750"
+                  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="01" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtLucro01" Text="{Binding Source={StaticResource Settings}, Path=Lucro1, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="02" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtLucro02" Text="{Binding Source={StaticResource Settings}, Path=Lucro2, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="03" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtLucro03" Text="{Binding Source={StaticResource Settings}, Path=Lucro3, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="04" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtLucro04" Text="{Binding Source={StaticResource Settings}, Path=Lucro4, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="05" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtLucro05" Text="{Binding Source={StaticResource Settings}, Path=Lucro5, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+                
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Despesas Gerais" Height="100" Width="750"
+                  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Capatazia" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtCapatazia" Text="{Binding Source={StaticResource Settings}, Path=Capatazia, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="FTI" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtFti" Text="{Binding Source={StaticResource Settings}, Path=Fti, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="Frete Restos Motor" VerticalAlignment="Center" Margin="5"/>
+                <Label Content="R$" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtFrete" 
+                         Text="{Binding Source={StaticResource Settings}, Path=FreteMotAcima90HP, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
+                             PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+
+                <Label Content="Despeas Op." VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtDespesasOp" Text="{Binding Source={StaticResource Settings}, Path=DespesasOp, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+                
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Alíquota de ICMS Gerais" Height="100" Width="750"
+                  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Al. ICMS Microempresa" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtAlMicroempresa" Text="{Binding Source={StaticResource Settings}, Path=AliquotaIcmsMicro, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+                <Label Content="Al. ICMS Interestadual (Prod. Importados)" VerticalAlignment="Center" Margin="5"/>
+                <TextBox VerticalAlignment="Center" TextAlignment="Center" Width="70" Margin="5" 
+                         Name="txtAlIcmsProdImportados" Text="{Binding Source={StaticResource Settings}, Path=AliquotaIcmsInterImportados, 
+                    Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"
+                         PreviewTextInput="NumberValidationTextBox" TextChanged="textChangedEventHandler"/>
+                <Label Content="%" VerticalAlignment="Center" Margin="5"/>
+
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="btnSalvar" Content="Salvar" Width="100" Height="35" VerticalAlignment="Top" Margin="20,10,10,0" Click="btnSalvar_Click" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>

@@ -10,6 +10,7 @@ namespace CalculoPrecoVenda.Model
         private double aliquotaInterna;
         private double aliquotaFcp;
         private double aliquotaInterestadual;
+        private double aliquotaEmbarcacoes;
         private string itensFcp;
         public int UfId
         {
@@ -41,6 +42,12 @@ namespace CalculoPrecoVenda.Model
         {
             get { return aliquotaInterestadual; }
             set { aliquotaInterestadual = value; }
+        }
+
+        public double AliquotaEmbarcacoes
+        {
+            get { return aliquotaEmbarcacoes; }
+            set { aliquotaEmbarcacoes = value; }
         }
         public string ItensFcp
         {

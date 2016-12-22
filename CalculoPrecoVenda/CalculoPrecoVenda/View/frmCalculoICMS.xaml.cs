@@ -24,12 +24,12 @@ namespace CalculoPrecoVenda.View
             InitializeComponent();
         }
 
-        public frmCalculoICMS(string valorSugerido1, 
-                              string valorSugerido2, 
-                              string valorSugerido3, 
-                              string valorSugerido4, 
+        public frmCalculoICMS(string valorSugerido1,
+                              string valorSugerido2,
+                              string valorSugerido3,
+                              string valorSugerido4,
                               string valorSugerido5)
-            :this()
+            : this()
         {
             this.txtValorSugerido1.Text = valorSugerido1;
             this.txtValorSugerido2.Text = valorSugerido2;
@@ -37,7 +37,6 @@ namespace CalculoPrecoVenda.View
             this.txtValorSugerido4.Text = valorSugerido4;
             this.txtValorSugerido5.Text = valorSugerido5;
         }
-
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             Close();

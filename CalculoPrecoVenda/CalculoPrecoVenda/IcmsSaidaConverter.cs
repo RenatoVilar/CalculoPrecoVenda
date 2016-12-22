@@ -26,13 +26,14 @@ namespace CalculoPrecoVenda
             bool chkClienteZfm = System.Convert.ToBoolean(values[4]);
             bool radClienteNacional = System.Convert.ToBoolean(values[5]);
             bool chkImportadoZfm = System.Convert.ToBoolean(values[6]);
+            bool radClienteLocal = System.Convert.ToBoolean(values[7]);
 
             if (chkPpb && radPessoaFisica && radClienteNacional)
             {
                 valorSugerido = valorSugerido - (valorSugerido * (decimal)0.41665);
             }
 
-            if (chkImportadoZfm && chkClienteZfm || chkPpb)
+            if (chkImportadoZfm && chkClienteZfm || chkPpb && radClienteLocal)
             {
                 valorSugerido = valorSugerido - (valorSugerido * (decimal)0.6111);
             }

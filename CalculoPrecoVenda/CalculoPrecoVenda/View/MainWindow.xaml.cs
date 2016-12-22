@@ -23,7 +23,6 @@ namespace CalculoPrecoVenda.View
         public MainWindow()
         {
             InitializeComponent();
-
         }
         private void btnImpostosFederais_Click(object sender, RoutedEventArgs e)
         {
@@ -36,27 +35,35 @@ namespace CalculoPrecoVenda.View
             frm.Close();
         }
 
-        private void btnIcms_Click_1(object sender, RoutedEventArgs e)
-        {
-            frmCalculoICMS frm = new frmCalculoICMS(txtValorSugerido1.Text,
-                                                    txtValorSugerido2.Text,
-                                                    txtValorSugerido3.Text,
-                                                    txtValorSugerido4.Text,
-                                                    txtValorSugerido5.Text);
-            frm.ShowDialog();
-            frm.Close();
-        }
+        //A ser implantado
+        //private void btnIcms_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    frmCalculoICMS frm = new frmCalculoICMS(txtValorSugerido1.Text,
+        //                                            txtValorSugerido2.Text,
+        //                                            txtValorSugerido3.Text,
+        //                                            txtValorSugerido4.Text,
+        //                                            txtValorSugerido5.Text);
 
-        private void btnDespOp_Click_2(object sender, RoutedEventArgs e)
-        {
-            frmDespesasOperacionais frm = new frmDespesasOperacionais();
-            frm.ShowDialog();
-            frm.Close();
-        }
+        //    frm.ShowDialog();
+        //    frm.Close();
+        //}
+
+        //private void btnDespOp_Click_2(object sender, RoutedEventArgs e)
+        //{
+        //    frmDespesasOperacionais frm = new frmDespesasOperacionais();
+        //    frm.ShowDialog();
+        //    frm.Close();
+        //}
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9\n]");
+            //Regex regex = new Regex("[^0-9]{1,2}([,.][0-9]{1,2})?$");
+            //Regex regex = new Regex(@"[^0-9]"); //aceita somente numeros sem a vírgula
+            //Regex regex = new Regex(@"\d{1,2}([\.,][\d{1,2}])?");
+            //Regex regex = new Regex("^d +,d{2}$"); //Aceita letras
+            //Regex regex = new Regex("[^0-9],[0-9][0-9]$"); //Aceita letras
+
+            Regex regex = new Regex(@"[^0-9\,]+[0-9]*$"); //Não aceita letras, mas aceita a vírgula mais de uma vez e dá erro
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -70,6 +77,13 @@ namespace CalculoPrecoVenda.View
         private void btnCadastroNcm_Click(object sender, RoutedEventArgs e)
         {
             frmNcm frm = new frmNcm();
+            frm.ShowDialog();
+            frm.Close();
+        }
+
+        private void btnConfiguracoes_Click(object sender, RoutedEventArgs e)
+        {
+            frmConfigGerais frm = new frmConfigGerais();
             frm.ShowDialog();
             frm.Close();
         }
@@ -114,6 +128,8 @@ namespace CalculoPrecoVenda.View
             radPessoaFisica.IsChecked = true;
 
             chkPpb.IsEnabled = true;
+
+
         }
         private void cbolistaUfForn_DropDownClosed(object sender, System.EventArgs e)
         {
@@ -279,7 +295,7 @@ namespace CalculoPrecoVenda.View
             chkPecas.IsChecked = false;
             chkEmbarcacoes.IsChecked = false;
             radProdEstrangeiro.IsChecked = true;
-                
+
 
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
 
@@ -358,12 +374,15 @@ namespace CalculoPrecoVenda.View
         private void radPessoaJurídica_Checked(object sender, RoutedEventArgs e)
         {
             chkContribuinte.IsEnabled = true;
+            chkItensFcp.IsEnabled = false;
+            chkItensFcp.IsChecked = false;
         }
 
         private void radPessoaFisica_Checked(object sender, RoutedEventArgs e)
         {
             chkContribuinte.IsEnabled = false;
             chkContribuinte.IsChecked = false;
+            chkItensFcp.IsEnabled = true;
         }
 
         private void cbolistaUf_DropDownClosed(object sender, EventArgs e)
@@ -391,7 +410,7 @@ namespace CalculoPrecoVenda.View
             {
                 MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Mensagem", MessageBoxButton.OK, MessageBoxImage.Error);
                 chkPecas.IsChecked = false;
-               
+
             }
         }
 

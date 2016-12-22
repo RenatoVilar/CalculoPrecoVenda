@@ -26,9 +26,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public float Irpj {
+        public double Irpj {
             get {
-                return ((float)(this["Irpj"]));
+                return ((double)(this["Irpj"]));
             }
             set {
                 this["Irpj"] = value;
@@ -38,9 +38,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public float Csll {
+        public double Csll {
             get {
-                return ((float)(this["Csll"]));
+                return ((double)(this["Csll"]));
             }
             set {
                 this["Csll"] = value;
@@ -50,9 +50,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.65")]
-        public float Pis {
+        public double Pis {
             get {
-                return ((float)(this["Pis"]));
+                return ((double)(this["Pis"]));
             }
             set {
                 this["Pis"] = value;
@@ -62,9 +62,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public float Cofins {
+        public double Cofins {
             get {
-                return ((float)(this["Cofins"]));
+                return ((double)(this["Cofins"]));
             }
             set {
                 this["Cofins"] = value;
@@ -74,9 +74,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public float Lucro1 {
+        public double Lucro1 {
             get {
-                return ((float)(this["Lucro1"]));
+                return ((double)(this["Lucro1"]));
             }
             set {
                 this["Lucro1"] = value;
@@ -86,9 +86,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public float Lucro2 {
+        public double Lucro2 {
             get {
-                return ((float)(this["Lucro2"]));
+                return ((double)(this["Lucro2"]));
             }
             set {
                 this["Lucro2"] = value;
@@ -98,9 +98,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public float Lucro3 {
+        public double Lucro3 {
             get {
-                return ((float)(this["Lucro3"]));
+                return ((double)(this["Lucro3"]));
             }
             set {
                 this["Lucro3"] = value;
@@ -110,9 +110,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("15")]
-        public float Lucro4 {
+        public double Lucro4 {
             get {
-                return ((float)(this["Lucro4"]));
+                return ((double)(this["Lucro4"]));
             }
             set {
                 this["Lucro4"] = value;
@@ -122,9 +122,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public float Lucro5 {
+        public double Lucro5 {
             get {
-                return ((float)(this["Lucro5"]));
+                return ((double)(this["Lucro5"]));
             }
             set {
                 this["Lucro5"] = value;
@@ -134,9 +134,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public float Capatazia {
+        public double Capatazia {
             get {
-                return ((float)(this["Capatazia"]));
+                return ((double)(this["Capatazia"]));
             }
             set {
                 this["Capatazia"] = value;
@@ -146,9 +146,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public float Fti {
+        public double Fti {
             get {
-                return ((float)(this["Fti"]));
+                return ((double)(this["Fti"]));
             }
             set {
                 this["Fti"] = value;
@@ -157,22 +157,10 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
-        public float AliquotaIcmsEmbarcacoes {
-            get {
-                return ((float)(this["AliquotaIcmsEmbarcacoes"]));
-            }
-            set {
-                this["AliquotaIcmsEmbarcacoes"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public float AliquotaIcmsMicro {
+        public double AliquotaIcmsMicro {
             get {
-                return ((float)(this["AliquotaIcmsMicro"]));
+                return ((double)(this["AliquotaIcmsMicro"]));
             }
             set {
                 this["AliquotaIcmsMicro"] = value;
@@ -182,9 +170,9 @@ namespace CalculoPrecoVenda {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public float AliquotaIcmsInterImportados {
+        public double AliquotaIcmsInterImportados {
             get {
-                return ((float)(this["AliquotaIcmsInterImportados"]));
+                return ((double)(this["AliquotaIcmsInterImportados"]));
             }
             set {
                 this["AliquotaIcmsInterImportados"] = value;
@@ -193,13 +181,25 @@ namespace CalculoPrecoVenda {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
-        public float AliquotaIcmsInterNacionais {
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double FreteMotAcima90HP {
             get {
-                return ((float)(this["AliquotaIcmsInterNacionais"]));
+                return ((double)(this["FreteMotAcima90HP"]));
             }
             set {
-                this["AliquotaIcmsInterNacionais"] = value;
+                this["FreteMotAcima90HP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double DespesasOp {
+            get {
+                return ((double)(this["DespesasOp"]));
+            }
+            set {
+                this["DespesasOp"] = value;
             }
         }
     }

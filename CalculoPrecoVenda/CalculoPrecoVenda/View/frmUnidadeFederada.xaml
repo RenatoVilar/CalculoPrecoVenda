@@ -35,33 +35,45 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0" Content="Código :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="1" Grid.Column="0" Content="Sigla :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Nome da UF :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="3" Grid.Column="0" Content="Al. ICMS Interna :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="3" Grid.Column="3" Content="Al. ICMS Interesdual :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="3" Grid.Column="7" Content="Al. FCP :"  VerticalAlignment="Center" Margin="0,5"/>
-                <Label Grid.Row="5" Grid.Column="0" Content="Itens da FCP :"  VerticalAlignment="Top" Margin="0,5"/>
-                <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
-                <Label Grid.Row="3" Grid.Column="5" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
-                <Label Grid.Row="3" Grid.Column="9" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
-
-
                 <TextBox Grid.Row="0" Grid.Column="1" Name="txtUfId" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="9"
                      Text="{Binding UfId, Mode=OneWay}" IsEnabled="False" TextAlignment="Center"/>
+                
+                <Label Grid.Row="1" Grid.Column="0" Content="Sigla :"  VerticalAlignment="Center" Margin="0,5"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Name="txtSiglaUf" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,7,0,6" Grid.ColumnSpan="9"
                      Text="{Binding SiglaUf}" TextAlignment="Center" MaxLength="2" PreviewTextInput="LetterValidationTextBox"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Nome da UF :"  VerticalAlignment="Center" Margin="0,5"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Name="txtNomeUf" Width="300" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" Grid.ColumnSpan="9"
                      Text="{Binding NomeUf}" TextAlignment="Left"/>
+                
+                <Label Grid.Row="3" Grid.Column="0" Content="Al. Interna :"  VerticalAlignment="Center" Margin="0,5"/>
                 <TextBox Grid.Row="3" Grid.Column="1" Name="txtAlIcmsInterna" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" 
                      Text="{Binding AliquotaInterna, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="2" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
+                
+                <Label Grid.Row="3" Grid.Column="3" Content="Al. Interesdual :"  VerticalAlignment="Center" Margin="0,5"/>
                 <TextBox Grid.Row="3" Grid.Column="4" Name="txtAlIcmsInterestadual" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,7,0,6" 
                      Text="{Binding AliquotaInterestadual, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
-                <TextBox Grid.Row="3" Grid.Column="8" Name="txtAlFcp" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" 
+                <Label Grid.Row="3" Grid.Column="5" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
+
+                <Label Grid.Row="3" Grid.Column="6" Content="Al. FCP :"  VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox Grid.Row="3" Grid.Column="7" Name="txtAlFcp" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" 
                      Text="{Binding AliquotaFcp, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="8" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
+                
+                <Label Grid.Row="3" Grid.Column="9" Content="Al. Embarcações :"  VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox Grid.Row="3" Grid.Column="10" Name="txtAlEmbarcacoes" Width="50"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,6,0,7" 
+                     Text="{Binding AliquotaEmbarcacoes, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" TextAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="11" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
+                
+                <Label Grid.Row="5" Grid.Column="0" Content="Itens da FCP :"  VerticalAlignment="Top" Margin="0,5"/>
+                
                 <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="170" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="9"
                      Text="{Binding ItensFcp}" TextAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap"/>
             </Grid>

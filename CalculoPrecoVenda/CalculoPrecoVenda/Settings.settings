@@ -2,50 +2,50 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CalculoPrecoVenda" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Irpj" Type="System.Single" Scope="User">
+    <Setting Name="Irpj" Type="System.Double" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="Csll" Type="System.Single" Scope="User">
+    <Setting Name="Csll" Type="System.Double" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="Pis" Type="System.Single" Scope="User">
+    <Setting Name="Pis" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.65</Value>
     </Setting>
-    <Setting Name="Cofins" Type="System.Single" Scope="User">
+    <Setting Name="Cofins" Type="System.Double" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="Lucro1" Type="System.Single" Scope="User">
+    <Setting Name="Lucro1" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Lucro2" Type="System.Single" Scope="User">
+    <Setting Name="Lucro2" Type="System.Double" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
-    <Setting Name="Lucro3" Type="System.Single" Scope="User">
+    <Setting Name="Lucro3" Type="System.Double" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="Lucro4" Type="System.Single" Scope="User">
+    <Setting Name="Lucro4" Type="System.Double" Scope="User">
       <Value Profile="(Default)">15</Value>
     </Setting>
-    <Setting Name="Lucro5" Type="System.Single" Scope="User">
+    <Setting Name="Lucro5" Type="System.Double" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="Capatazia" Type="System.Single" Scope="User">
+    <Setting Name="Capatazia" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Fti" Type="System.Single" Scope="User">
+    <Setting Name="Fti" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="AliquotaIcmsEmbarcacoes" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">25</Value>
-    </Setting>
-    <Setting Name="AliquotaIcmsMicro" Type="System.Single" Scope="User">
+    <Setting Name="AliquotaIcmsMicro" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="AliquotaIcmsInterImportados" Type="System.Single" Scope="User">
+    <Setting Name="AliquotaIcmsInterImportados" Type="System.Double" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
-    <Setting Name="AliquotaIcmsInterNacionais" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">12</Value>
+    <Setting Name="FreteMotAcima90HP" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="DespesasOp" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">2</Value>
     </Setting>
   </Settings>
 </SettingsFile>

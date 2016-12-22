@@ -44,6 +44,7 @@ namespace CalculoPrecoVenda.View
             }
 
             dtgUf.ItemsSource = ufs;
+            
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
