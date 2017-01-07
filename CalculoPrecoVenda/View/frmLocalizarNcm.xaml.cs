@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System;
 
 namespace CalculoPrecoVenda.View
 {
@@ -30,21 +31,36 @@ namespace CalculoPrecoVenda.View
 
             if (indexCboBox == 0) // 0 = NCM | 1 = Descrição
             {
-                var query = from n in ctx.Ncms
-                            where n.CodNcm.Contains(txtPesquisa.Text)
-                            select n;
 
-                ncms = query.ToList();
+                try
+                {
+                    var query = from n in ctx.Ncms
+                                where n.CodNcm.Contains(txtPesquisa.Text)
+                                select n;
+
+                    ncms = query.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                
             }
             else if (indexCboBox == 1)
             {
-                var query = from n in ctx.Ncms
-                            where n.NomeNcm.Contains(txtPesquisa.Text)
-                            select n;
+                try
+                {
+                    var query = from n in ctx.Ncms
+                                where n.NomeNcm.Contains(txtPesquisa.Text)
+                                select n;
 
-                ncms = query.ToList();
-                
+                    ncms = query.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
 
             if (ncms.Count == 0)

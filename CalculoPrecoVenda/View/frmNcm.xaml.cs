@@ -98,31 +98,45 @@ namespace CalculoPrecoVenda.View
 
             if (operacao == "Novo")
             {
-                ctx.Ncms.Add(new Ncm()
+                try
                 {
-                    CodNcm = txtCodNcm.Text,
-                    NomeNcm = txtNomeNcm.Text.ToUpper(),
-                    ImpImportacao = Convert.ToDouble(txtImpImportacao.Text),
-                    Ipi = Convert.ToDouble(txtIpi.Text),
-                    SubstTribut = Convert.ToDouble(txtSubstTribut.Text)
-                });
+                    ctx.Ncms.Add(new Ncm()
+                    {
+                        CodNcm = txtCodNcm.Text,
+                        NomeNcm = txtNomeNcm.Text.ToUpper(),
+                        ImpImportacao = Convert.ToDouble(txtImpImportacao.Text),
+                        Ipi = Convert.ToDouble(txtIpi.Text),
+                        SubstTribut = Convert.ToDouble(txtSubstTribut.Text)
+                    });
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
 
-                MessageBox.Show(String.Format($"Cadastro efetuado com sucesso!\n NCM {txtCodNcm.Text.ToUpper()} - {txtNomeNcm.Text.ToUpper()}"));
+                    MessageBox.Show(String.Format($"Cadastro efetuado com sucesso!\n NCM {txtCodNcm.Text.ToUpper()} - {txtNomeNcm.Text.ToUpper()}"));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
-                Ncm ncmToUpdate = ncms.Where(n => n.NcmId == Convert.ToInt32(txtNcmId.Text)).FirstOrDefault<Ncm>();
-                ncmToUpdate.CodNcm = txtCodNcm.Text;
-                ncmToUpdate.NomeNcm = txtNomeNcm.Text.ToUpper();
-                ncmToUpdate.ImpImportacao = Convert.ToDouble(txtImpImportacao.Text);
-                ncmToUpdate.Ipi = Convert.ToDouble(txtIpi.Text);
-                ncmToUpdate.SubstTribut = Convert.ToDouble(txtSubstTribut.Text);
+                try
+                {
+                    Ncm ncmToUpdate = ncms.Where(n => n.NcmId == Convert.ToInt32(txtNcmId.Text)).FirstOrDefault<Ncm>();
+                    ncmToUpdate.CodNcm = txtCodNcm.Text;
+                    ncmToUpdate.NomeNcm = txtNomeNcm.Text.ToUpper();
+                    ncmToUpdate.ImpImportacao = Convert.ToDouble(txtImpImportacao.Text);
+                    ncmToUpdate.Ipi = Convert.ToDouble(txtIpi.Text);
+                    ncmToUpdate.SubstTribut = Convert.ToDouble(txtSubstTribut.Text);
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
 
-                MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n NCM {txtCodNcm.Text.ToUpper()} - {txtNomeNcm.Text.ToUpper()}"));
+                    MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n NCM {txtCodNcm.Text.ToUpper()} - {txtNomeNcm.Text.ToUpper()}"));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             txtCodNcm.Clear();
@@ -176,7 +190,6 @@ namespace CalculoPrecoVenda.View
             }
 
         }
-
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

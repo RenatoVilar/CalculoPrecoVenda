@@ -32,17 +32,6 @@ namespace CalculoPrecoVenda
 
             result = valorSugerido - result;
 
-
-            //if ((string)values[0] == "" || (string)values[1] == "")
-            //{
-            //    return string.Empty;
-            //}
-
-
-            //decimal value2 = System.Convert.ToDecimal(values[1]);
-
-            //decimal result = value1 - value2;
-
             return System.Convert.ToDecimal(result).ToString(parameter as string);
           
         }

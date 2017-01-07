@@ -32,11 +32,18 @@ namespace CalculoPrecoVenda.View
         {
             List<UnidadeFederada> ufs = new List<UnidadeFederada>();
 
+            try
+            {
                 var query = from n in ctx.UFs
                             where n.NomeUf.Contains(txtPesquisar.Text)
                             select n;
 
                 ufs = query.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             if (ufs.Count == 0)
             {

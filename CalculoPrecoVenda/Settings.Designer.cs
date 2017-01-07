@@ -202,5 +202,17 @@ namespace CalculoPrecoVenda {
                 this["DespesasOp"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public double AliquotaIcmsInterNacionais {
+            get {
+                return ((double)(this["AliquotaIcmsInterNacionais"]));
+            }
+            set {
+                this["AliquotaIcmsInterNacionais"] = value;
+            }
+        }
     }
 }

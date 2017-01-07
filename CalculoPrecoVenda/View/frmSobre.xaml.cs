@@ -23,5 +23,10 @@ namespace CalculoPrecoVenda.View
         {
             InitializeComponent();
         }
+
+        private void btnOK_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

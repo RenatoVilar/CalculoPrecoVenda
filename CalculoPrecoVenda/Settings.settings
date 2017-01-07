@@ -47,5 +47,8 @@
     <Setting Name="DespesasOp" Type="System.Double" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="AliquotaIcmsInterNacionais" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

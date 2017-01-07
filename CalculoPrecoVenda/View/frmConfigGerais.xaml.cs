@@ -28,12 +28,6 @@ namespace CalculoPrecoVenda
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            //Regex regex = new Regex("[^0-9]{1,2}([,.][0-9]{1,2})?$");
-            //Regex regex = new Regex(@"[^0-9]"); //aceita somente numeros sem a vírgula
-            //Regex regex = new Regex(@"\d{1,2}([\.,][\d{1,2}])?");
-            //Regex regex = new Regex("^d +,d{2}$"); //Aceita letras
-            //Regex regex = new Regex("[^0-9],[0-9][0-9]$"); //Aceita letras
-
             Regex regex = new Regex(@"[^0-9\,]+[0-9]*$"); //Não aceita letras, mas aceita a vírgula mais de uma vez e dá erro
             e.Handled = regex.IsMatch(e.Text);
         }
@@ -59,18 +53,13 @@ namespace CalculoPrecoVenda
             MessageBox.Show("As Configurações foram gravadas com sucesso!", "Mensagem", MessageBoxButton.OK, MessageBoxImage.Information);
            
         }
-
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            txtIrpj.Text = Settings.Default.Irpj.ToString();
-        }
         private void textChangedEventHandler(object sender, TextChangedEventArgs args)
         {
             if (btnSalvar != null)
             {
                 btnSalvar.IsEnabled = true;
             }
-            
+
         }
     }
 }

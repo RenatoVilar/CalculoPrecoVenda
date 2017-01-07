@@ -68,9 +68,17 @@ namespace CalculoPrecoVenda.View
 
             if (result == MessageBoxResult.Yes)
             {
-                uf = ctx.UFs.Find(ufId);
-                ctx.UFs.Remove(uf);
-                ctx.SaveChanges();
+                try
+                {
+                    uf = ctx.UFs.Find(ufId);
+                    ctx.UFs.Remove(uf);
+                    ctx.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
             }
 
             LimparTela();
@@ -107,36 +115,52 @@ namespace CalculoPrecoVenda.View
 
             if (operacao == "Novo")
             {
-                ctx.UFs.Add(new UnidadeFederada()
+                try
                 {
-                    NomeUf = txtNomeUf.Text.ToUpper(),
-                    SiglaUf = txtSiglaUf.Text.ToUpper(),
-                    AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text),
-                    AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text),
-                    AliquotaFcp = Convert.ToDouble(txtAlFcp.Text),
-                    AliquotaEmbarcacoes = Convert.ToDouble(txtAlEmbarcacoes.Text),
-                    ItensFcp = txtItensFcp.Text
+                    ctx.UFs.Add(new UnidadeFederada()
+                    {
+                        NomeUf = txtNomeUf.Text.ToUpper(),
+                        SiglaUf = txtSiglaUf.Text.ToUpper(),
+                        AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text),
+                        AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text),
+                        AliquotaFcp = Convert.ToDouble(txtAlFcp.Text),
+                        AliquotaEmbarcacoes = Convert.ToDouble(txtAlEmbarcacoes.Text),
+                        ItensFcp = txtItensFcp.Text
 
-                });
+                    });
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
 
-                MessageBox.Show(String.Format($"Cadastro efetuado com sucesso!\n UF {txtSiglaUf.Text.ToUpper()} - {txtNomeUf.Text.ToUpper()}"));
+                    MessageBox.Show(String.Format($"Cadastro efetuado com sucesso!\n UF {txtSiglaUf.Text.ToUpper()} - {txtNomeUf.Text.ToUpper()}"));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    
+                }
             }
             else
             {
-                UnidadeFederada ufToUpdate = ufs.Where(n => n.UfId == Convert.ToInt32(txtUfId.Text)).FirstOrDefault<UnidadeFederada>();
-                ufToUpdate.NomeUf = txtNomeUf.Text.ToUpper();
-                ufToUpdate.SiglaUf = txtSiglaUf.Text.ToUpper();
-                ufToUpdate.AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text);
-                ufToUpdate.AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text);
-                ufToUpdate.AliquotaFcp = Convert.ToDouble(txtAlFcp.Text);
-                ufToUpdate.AliquotaEmbarcacoes = Convert.ToDouble(txtAlEmbarcacoes.Text);
-                ufToUpdate.ItensFcp = txtItensFcp.Text;
+                try
+                {
+                    UnidadeFederada ufToUpdate = ufs.Where(n => n.UfId == Convert.ToInt32(txtUfId.Text)).FirstOrDefault<UnidadeFederada>();
+                    ufToUpdate.NomeUf = txtNomeUf.Text.ToUpper();
+                    ufToUpdate.SiglaUf = txtSiglaUf.Text.ToUpper();
+                    ufToUpdate.AliquotaInterna = Convert.ToDouble(txtAlIcmsInterna.Text);
+                    ufToUpdate.AliquotaInterestadual = Convert.ToDouble(txtAlIcmsInterestadual.Text);
+                    ufToUpdate.AliquotaFcp = Convert.ToDouble(txtAlFcp.Text);
+                    ufToUpdate.AliquotaEmbarcacoes = Convert.ToDouble(txtAlEmbarcacoes.Text);
+                    ufToUpdate.ItensFcp = txtItensFcp.Text;
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
 
-                MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n UF {txtSiglaUf.Text.ToUpper()} - {txtNomeUf.Text.ToUpper()}"));
+                    MessageBox.Show(String.Format($"Cadastro alterado com sucesso!\n UF {txtSiglaUf.Text.ToUpper()} - {txtNomeUf.Text.ToUpper()}"));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
             }
 
             LimparTela();

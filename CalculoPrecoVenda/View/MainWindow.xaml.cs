@@ -8,18 +8,48 @@ using System.Linq;
 using System.Windows.Controls;
 using System;
 using System.Windows.Data;
+using System.Text;
+using System.ComponentModel;
 
 namespace CalculoPrecoVenda.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
         List<UnidadeFederada> listaUf = new List<UnidadeFederada>();
 
+        private StringBuilder operacao = new StringBuilder();
+
+        // A ser implantando
+        public StringBuilder MyOperacao
+        {
+            get
+            {
+                return operacao.Append("");
+
+            }
+            set
+            {
+                operacao = value;
+                OnPropertyChanged("MyOperacao");
+            }
+        }
+
         private Ncm ncm;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -57,12 +87,6 @@ namespace CalculoPrecoVenda.View
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            //Regex regex = new Regex("[^0-9]{1,2}([,.][0-9]{1,2})?$");
-            //Regex regex = new Regex(@"[^0-9]"); //aceita somente numeros sem a vírgula
-            //Regex regex = new Regex(@"\d{1,2}([\.,][\d{1,2}])?");
-            //Regex regex = new Regex("^d +,d{2}$"); //Aceita letras
-            //Regex regex = new Regex("[^0-9],[0-9][0-9]$"); //Aceita letras
-
             Regex regex = new Regex(@"[^0-9\,]+[0-9]*$"); //Não aceita letras, mas aceita a vírgula mais de uma vez e dá erro
             e.Handled = regex.IsMatch(e.Text);
         }
@@ -90,9 +114,10 @@ namespace CalculoPrecoVenda.View
 
         private void btnSobre_Click(object sender, RoutedEventArgs e)
         {
-
+            frmSobre frm = new frmSobre();
+            frm.ShowDialog();
+            frm.Close();
         }
-
         private void btnPesquisarNcm_Click(object sender, RoutedEventArgs e)
         {
             ncm = new Ncm();
@@ -107,17 +132,27 @@ namespace CalculoPrecoVenda.View
         {
             PrecoReposicao precoReposicao = new PrecoReposicao();
 
-            var query = from n in ctx.UFs
-                        select n;
-
-            foreach (var item in query)
+            try
             {
-                listaUf.Add(item);
+                var query = from n in ctx.UFs
+                            select n;
+
+                foreach (var item in query)
+                {
+                    listaUf.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
 
             cbolistaUf.DataContext = listaUf;
             cbolistaUfForn.DataContext = listaUf;
             grdPrecoReposicao.DataContext = precoReposicao;
+            DataContext = this;
+            
 
             cbolistaUfForn.SelectedIndex = 0;
 
@@ -138,7 +173,6 @@ namespace CalculoPrecoVenda.View
             if (value == "EX")
             {
                 radForEstrangeiro.IsChecked = true;
-                //radForNacional.IsChecked = false;
                 chkPpb.IsChecked = false;
                 chkPpb.IsEnabled = false;
 
@@ -184,6 +218,7 @@ namespace CalculoPrecoVenda.View
 
             chkMicroempresa.IsChecked = false;
             chkMicroempresa.IsEnabled = false;
+
         }
 
         private void radForNacional_Checked(object sender, RoutedEventArgs e)
@@ -263,6 +298,8 @@ namespace CalculoPrecoVenda.View
 
             chkImportadoZfm.IsEnabled = false;
             chkImportadoZfm.IsChecked = false;
+
+            chkMotoresAcima90Hp.IsChecked = false;
 
             string value = Convert.ToString(cbolistaUfForn.SelectedValue);
 
@@ -413,7 +450,6 @@ namespace CalculoPrecoVenda.View
 
             }
         }
-
         private void chkPpb_Checked(object sender, RoutedEventArgs e)
         {
             radForLocal.IsChecked = true;
