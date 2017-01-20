@@ -28,17 +28,15 @@ namespace CalculoPrecoVenda
             bool chkPecas = System.Convert.ToBoolean(values[6]);
 
 
-            if (chkEmbarcacoes || chkMotoresAte90Hp)
-            {
-                result = valorNf * (percentual / 100);
-            }
-            else if (chkPpb || chkImportadoZfm)
+            if (chkPpb || chkImportadoZfm || (chkEmbarcacoes && chkPpb))
             {
                 valorNf = valorNf - (valorNf * (decimal)0.6111);
             }
-
-
-
+            else if (chkEmbarcacoes || (chkMotoresAte90Hp && !chkPpb))
+            {
+                result = valorNf * (percentual / 100);
+            }
+           
 
             result = valorNf * (percentual / 100);
 

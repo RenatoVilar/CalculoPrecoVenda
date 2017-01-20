@@ -42,7 +42,7 @@
       <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="FreteMotAcima90HP" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">125</Value>
     </Setting>
     <Setting Name="DespesasOp" Type="System.Double" Scope="User">
       <Value Profile="(Default)">2</Value>

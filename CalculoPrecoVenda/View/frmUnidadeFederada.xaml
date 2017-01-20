@@ -73,8 +73,8 @@
                 <Label Grid.Row="3" Grid.Column="11" Content="%" VerticalAlignment="Center" Margin="5,0,15,0"/>
                 
                 <Label Grid.Row="5" Grid.Column="0" Content="Itens da FCP :"  VerticalAlignment="Top" Margin="0,5"/>
-                
-                <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="170" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="9"
+
+                <TextBox Grid.Row="5" Grid.Column="1" Name="txtItensFcp" Height="170" MaxWidth="500" VerticalAlignment="Top" Margin="10,0" Grid.ColumnSpan="9"
                      Text="{Binding ItensFcp}" TextAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap"/>
             </Grid>
         </GroupBox>

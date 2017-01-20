@@ -16,7 +16,7 @@
         <DockPanel Grid.Row="0" LastChildFill="True">
             <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
                 <Label VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Image Source="/Images/Logo.png" Stretch="None"/>
+                    <Image Source="/Imagens/Logo.png" Stretch="None"/>
                 </Label>
                 <Separator Height="5" Margin="0,5,0,0"/>
             </StackPanel>

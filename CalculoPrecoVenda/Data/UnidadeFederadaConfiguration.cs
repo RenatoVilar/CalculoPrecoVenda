@@ -12,15 +12,19 @@ namespace CalculoPrecoVenda.Data
 
             Property(u => u.NomeUf)
                 .IsRequired()
+                .HasColumnType("NVARCHAR")
                 .HasMaxLength(30);
+
 
             Property(u => u.SiglaUf)
                 .IsRequired()
+                 .HasColumnType("NVARCHAR")
                 .HasMaxLength(2);
 
             Property(u => u.ItensFcp)
                 .IsRequired()
-                .HasMaxLength(300);
+                 .HasColumnType("NVARCHAR")
+                .HasMaxLength(500);
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using CalculoPrecoVenda.Data;
 using CalculoPrecoVenda.Model;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -10,8 +11,8 @@ namespace CalculoPrecoVenda
         public CalculoPreçoVendaContext()
             : base("CalculoPrecoVendaDb")
         {
-            
-            Database.SetInitializer<CalculoPreçoVendaContext>(new CreateDatabaseIfNotExists<CalculoPreçoVendaContext>());
+            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            Database.SetInitializer<CalculoPreçoVendaContext>(null);
         }
 
         public virtual DbSet<UnidadeFederada> UFs { get; set; }
@@ -28,7 +29,7 @@ namespace CalculoPrecoVenda
                 .Configure(p => p.IsKey());
 
             modelBuilder.Properties<string>()
-                .Configure(p => p.HasColumnType("varchar"));
+                .Configure(p => p.HasColumnType("nvarchar"));
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));

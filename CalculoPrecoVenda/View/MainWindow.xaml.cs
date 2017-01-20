@@ -10,6 +10,8 @@ using System;
 using System.Windows.Data;
 using System.Text;
 using System.ComponentModel;
+using System.Data.Linq;
+using System.Data.SqlServerCe;
 
 namespace CalculoPrecoVenda.View
 {
@@ -18,7 +20,8 @@ namespace CalculoPrecoVenda.View
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
+        //CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext();
+
         List<UnidadeFederada> listaUf = new List<UnidadeFederada>();
 
         private StringBuilder operacao = new StringBuilder();
@@ -134,13 +137,21 @@ namespace CalculoPrecoVenda.View
 
             try
             {
-                var query = from n in ctx.UFs
-                            select n;
-
-                foreach (var item in query)
+                using (CalculoPreçoVendaContext ctx = new CalculoPreçoVendaContext())
                 {
-                    listaUf.Add(item);
+
+                   ctx.Database.Connection.Open();
+
+                    var query = from n in ctx.UFs
+                                orderby n.NomeUf
+                                select n;
+
+                    foreach (var item in query)
+                    {
+                        listaUf.Add(item);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -154,7 +165,7 @@ namespace CalculoPrecoVenda.View
             DataContext = this;
             
 
-            cbolistaUfForn.SelectedIndex = 0;
+            //cbolistaUfForn.SelectedIndex = 0;
 
             radForLocal.IsChecked = true;
             radProdNacional.IsChecked = true;
