@@ -17,7 +17,10 @@ namespace CalculoPrecoVenda.Model
         private string nomeNCm;
         private double? impImportacao;
         private double? ipi;
-        private double? substTribut;
+        private double? mva;
+        private int? autopecas;
+        private int? semSimilar;
+        private string cest;
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
@@ -76,10 +79,28 @@ namespace CalculoPrecoVenda.Model
             set { ipi = value; }
         }
 
-        public double? SubstTribut
+        public double? Mva
         {
-            get { return substTribut; }
-            set { substTribut = value; }
+            get { return mva; }
+            set { mva = value; }
+        }
+
+        public int? Autopecas
+        {
+            get { return autopecas; }
+            set { autopecas = value; }
+        }
+
+        public int? SemSimilar
+        {
+            get { return semSimilar; }
+            set { semSimilar= value; }
+        }
+
+        public string Cest
+        {
+            get { return cest; }
+            set { cest = value; }
         }
 
         public bool HasErrors

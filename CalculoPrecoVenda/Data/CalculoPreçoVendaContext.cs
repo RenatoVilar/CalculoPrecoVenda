@@ -11,7 +11,7 @@ namespace CalculoPrecoVenda
         public CalculoPreçoVendaContext()
             : base("CalculoPrecoVendaDb")
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            //AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
             Database.SetInitializer<CalculoPreçoVendaContext>(null);
         }
 

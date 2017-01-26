@@ -45,15 +45,21 @@
                   Name="dtgNcm">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding NcmId}" Width="50" Header="Cod" />
-                <DataGridTextColumn Binding="{Binding CodNcm}" Width="115" Header="NCM" />
-                <DataGridTextColumn Binding="{Binding NomeNcm}" Width="440" Header="Nome NCM " />
+                <!--<DataGridTextColumn Binding="{Binding NcmId}" Width="50" Header="Cod" />-->
+                <DataGridTextColumn Binding="{Binding CodNcm}" 
+                                    Width="70" Header="NCM" />
+                <DataGridTextColumn Binding="{Binding NomeNcm}" 
+                                    Width="370" Header="Nome NCM " />
                 <DataGridTextColumn Binding="{Binding ImpImportacao, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
                                     Width="50" Header="II" CellStyle="{StaticResource CellRightAlign}"/>
                 <DataGridTextColumn Binding="{Binding Ipi, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
                                     Width="50" Header="IPI" CellStyle="{StaticResource CellRightAlign}"/>
-                <DataGridTextColumn Binding="{Binding SubstTribut, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
-                                    Width="50" Header="ST" CellStyle="{StaticResource CellRightAlign}"/>
+                <DataGridTextColumn Binding="{Binding Mva, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}" 
+                                    Width="50" Header="MVA" CellStyle="{StaticResource CellRightAlign}"/>
+                <DataGridCheckBoxColumn Binding="{Binding Autopecas, Mode=TwoWay}"
+                                    Header="Autopeças"/>
+                <DataGridCheckBoxColumn Binding="{Binding SemSimilar, Mode=TwoWay}"
+                                    Header="SemSimilar"/>
             </DataGrid.Columns>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">

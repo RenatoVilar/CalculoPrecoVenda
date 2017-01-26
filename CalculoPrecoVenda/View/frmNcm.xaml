@@ -12,7 +12,8 @@
         ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <Window.Resources>
         <nf:NumberFormatter x:Key="myNumberFormatter"/>
-        <nf:ValueIsNotNull x:Key="valueIsNotNull"/>
+        <nf:ValueIsNotNull x:Key="myvalueIsNotNull"/>
+        <nf:CkeckBoxConverter x:Key="myCheckBoxConverter"/>
     </Window.Resources>
   
 <StackPanel Margin="10" >
@@ -57,10 +58,14 @@
 
                     <Label Content="MVA Subst Tribut :"  VerticalAlignment="Center" Margin="0,5"/>
                     <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Width="70" Margin="10,6,0,7" Padding="2"
-                         Name="txtSubstTribut" Text="{Binding SubstTribut, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                         Name="txtMva" Text="{Binding Mva, Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                     <Label Content="%" VerticalAlignment="Center" Margin="10,5"/>
-
-
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+                    <CheckBox Name="chkAutopecas" Content="Autopecas" Margin="10,5"
+                              IsChecked="{Binding Autopecas, Mode=TwoWay, Converter={StaticResource myCheckBoxConverter}}"/>
+                    <CheckBox Name="chkSemSimilar" Content="Sem Similar Nacional" Margin="10,5,0,0"
+                              IsChecked="{Binding SemSimilar , Mode=TwoWay, Converter={StaticResource myCheckBoxConverter}}"/>
                 </StackPanel>
 
             </Grid>

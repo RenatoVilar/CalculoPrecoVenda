@@ -55,8 +55,11 @@ namespace CalculoPrecoVenda.View
         }
         public MainWindow()
         {
+           
             InitializeComponent();
+            
         }
+
         private void btnImpostosFederais_Click(object sender, RoutedEventArgs e)
         {
             frmImpostosFederais frm = new frmImpostosFederais(txtValorSugerido1.Text,
@@ -129,7 +132,7 @@ namespace CalculoPrecoVenda.View
             frm.ShowDialog();
 
             ncm = frm.selectedNcm;
-            this.DataContext = ncm;
+            grpProduto.DataContext = ncm;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -162,10 +165,6 @@ namespace CalculoPrecoVenda.View
             cbolistaUf.DataContext = listaUf;
             cbolistaUfForn.DataContext = listaUf;
             grdPrecoReposicao.DataContext = precoReposicao;
-            DataContext = this;
-            
-
-            //cbolistaUfForn.SelectedIndex = 0;
 
             radForLocal.IsChecked = true;
             radProdNacional.IsChecked = true;
@@ -389,9 +388,6 @@ namespace CalculoPrecoVenda.View
             chkClienteZfm.IsEnabled = false;
             chkClienteZfm.IsChecked = false;
 
-            chkContribuinte.IsEnabled = false;
-            chkContribuinte.IsChecked = false;
-
             radPessoaJurídica.IsEnabled = false;
             radPessoaJurídica.IsChecked = false;
 
@@ -421,15 +417,12 @@ namespace CalculoPrecoVenda.View
 
         private void radPessoaJurídica_Checked(object sender, RoutedEventArgs e)
         {
-            chkContribuinte.IsEnabled = true;
             chkItensFcp.IsEnabled = false;
             chkItensFcp.IsChecked = false;
         }
 
         private void radPessoaFisica_Checked(object sender, RoutedEventArgs e)
         {
-            chkContribuinte.IsEnabled = false;
-            chkContribuinte.IsChecked = false;
             chkItensFcp.IsEnabled = true;
         }
 

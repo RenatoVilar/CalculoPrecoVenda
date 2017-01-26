@@ -1,9 +1,9 @@
 ﻿using CalculoPrecoVenda.Model;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using System.Text.RegularExpressions;
 
 
 namespace CalculoPrecoVenda.View
@@ -81,7 +81,9 @@ namespace CalculoPrecoVenda.View
             txtIpi.Clear();
             txtNcmId.Clear();
             txtNomeNcm.Clear();
-            txtSubstTribut.Clear();
+            txtMva.Clear();
+            chkAutopecas.IsChecked = false;
+            chkSemSimilar.IsChecked = false;
             AlterarBotoes(1);
 
         }
@@ -106,7 +108,10 @@ namespace CalculoPrecoVenda.View
                         NomeNcm = txtNomeNcm.Text.ToUpper(),
                         ImpImportacao = Convert.ToDouble(txtImpImportacao.Text),
                         Ipi = Convert.ToDouble(txtIpi.Text),
-                        SubstTribut = Convert.ToDouble(txtSubstTribut.Text)
+                        Mva = Convert.ToDouble(txtMva.Text),
+                        Autopecas = Convert.ToInt32(chkAutopecas.IsChecked),
+                        SemSimilar = Convert.ToInt32(chkSemSimilar.IsChecked)
+                        
                     });
 
                     ctx.SaveChanges();
@@ -127,7 +132,9 @@ namespace CalculoPrecoVenda.View
                     ncmToUpdate.NomeNcm = txtNomeNcm.Text.ToUpper();
                     ncmToUpdate.ImpImportacao = Convert.ToDouble(txtImpImportacao.Text);
                     ncmToUpdate.Ipi = Convert.ToDouble(txtIpi.Text);
-                    ncmToUpdate.SubstTribut = Convert.ToDouble(txtSubstTribut.Text);
+                    ncmToUpdate.Mva = Convert.ToDouble(txtMva.Text);
+                    ncmToUpdate.Autopecas = Convert.ToInt32(chkAutopecas.IsChecked);
+                    ncmToUpdate.SemSimilar = Convert.ToInt32(chkSemSimilar.IsChecked);
 
                     ctx.SaveChanges();
 
@@ -144,7 +151,9 @@ namespace CalculoPrecoVenda.View
             txtIpi.Clear();
             txtNcmId.Clear();
             txtNomeNcm.Clear();
-            txtSubstTribut.Clear();
+            txtMva.Clear();
+            chkAutopecas.IsChecked = false;
+            chkSemSimilar.IsChecked = false;
             AlterarBotoes(1);
             
         }
@@ -156,7 +165,9 @@ namespace CalculoPrecoVenda.View
             txtIpi.Clear();
             txtNcmId.Clear();
             txtNomeNcm.Clear();
-            txtSubstTribut.Clear();
+            txtMva.Clear();
+            chkAutopecas.IsChecked = false;
+            chkSemSimilar.IsChecked = false;
             AlterarBotoes(1);
         }
 

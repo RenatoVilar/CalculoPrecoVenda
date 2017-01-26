@@ -8,7 +8,7 @@
         Title="Cálculo do Preço de Venda" 
         Width="1380" 
         Height="840" 
-        ResizeMode="CanMinimize"
+        
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded" d:DesignWidth="1380" d:DesignHeight="840">
     <Window.Resources>
@@ -120,8 +120,23 @@
                     <CheckBox Grid.Row="6" Grid.Column="1" Name="chkSubstTribut" Content="Substituição Tributária" Margin="10,5,0,0" Checked="chkSubstTribut_Checked"
                               IsChecked="{Binding chkSubstTribut_Checked}"/>
 
-                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtNcm" Text="{Binding CodNcm}" BorderThickness="2" Margin="0,0,10,0" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding NomeNcm}" Foreground="Black" FontSize="20" Name="txbNomeNcm" VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="txtNcm" BorderThickness="2" Margin="0,0,10,0">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                <Setter Property="Text" Value="{Binding CodNcm}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkMotoresAte90Hp}" Value="True">
+                                        <Setter Property="Text" Value="90148010"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    
+                    
+                    
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding NomeNcm}" Foreground="Black" FontSize="12" Name="txbNomeNcm" VerticalAlignment="Center"/>
                     <Button Grid.Row="0" Grid.Column="2" Name="btnPesquisarNcm" Height="30" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" 
                             Content="NCM" Click="btnPesquisarNcm_Click">
                     </Button>
@@ -253,14 +268,13 @@
                         </TextBox.Text>
                     </TextBox>
 
-                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtPercentSusbsTribut"  VerticalAlignment="Center" Margin="5,0" 
-                             PreviewTextInput="NumberValidationTextBox" Text="0,00" IsEnabled="False">
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtPercentSusbsTribut"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                <Setter Property="Text" Value="0,00"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsChecked, ElementName=chkSubstTribut}" Value="True">
-                                        <Setter Property="IsEnabled" Value="True"/>
-                                        <Setter Property="Text" Value="{Binding ElementName=txtNcm, Path=DataContext.SubstTribut, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                        <Setter Property="Text" Value="{Binding ElementName=grpProduto, Path=DataContext.Mva, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -315,27 +329,37 @@
 
 
 
-                    <TextBox Grid.Row="10" Grid.Column="1" Name="txtPercentIiSuspenso"  VerticalAlignment="Center" Margin="5,0">
+                    <TextBox Grid.Row="10" Grid.Column="1" Name="txtPercentIiSuspenso"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                 <Setter Property="Text" Value="0,00"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkCorredor}" Value="True">
-                                        <Setter Property="Text" Value="{Binding ElementName=txtNcm, Path=DataContext.ImpImportacao, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
-                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsChecked, ElementName=radProdEstrangeiro}" Value="True"/>
+                                            <Condition Binding="{Binding IsChecked, ElementName=chkImportadoZfm}" Value="True"/>
+                                            <Condition Binding="{Binding IsChecked, ElementName=radClienteNacional}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Text" Value="{Binding ElementName=grpProduto, Path=DataContext.ImpImportacao, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                    </MultiDataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBox.Style>
                     </TextBox>
 
-                    <TextBox Grid.Row="11" Grid.Column="1" Name="txtPercentIpiSuspenso"  VerticalAlignment="Center" Margin="5,0">
+                    <TextBox Grid.Row="11" Grid.Column="1" Name="txtPercentIpiSuspenso"  VerticalAlignment="Center" Margin="5,0" IsEnabled="False">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                 <Setter Property="Text" Value="0,00"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkCorredor}" Value="True">
-                                        <Setter Property="Text" Value="{Binding ElementName=txtNcm, Path=DataContext.Ipi, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
-                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsChecked, ElementName=radProdEstrangeiro}" Value="True"/>
+                                            <Condition Binding="{Binding IsChecked, ElementName=chkImportadoZfm}" Value="True"/>
+                                            <Condition Binding="{Binding IsChecked, ElementName=radClienteNacional}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Text" Value="{Binding ElementName=grpProduto, Path=DataContext.Ipi, FallbackValue='0,00', TargetNullValue='0,00', Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
+                                    </MultiDataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBox.Style>
@@ -374,6 +398,7 @@
                                             <Condition Binding="{Binding IsChecked, ElementName=radForLocal}" Value="True"/>
                                             <Condition Binding="{Binding IsChecked, ElementName=chkMotoresAte90Hp}" Value="False"/>
                                             <Condition Binding="{Binding IsChecked, ElementName=chkEmbarcacoes}" Value="False"/>
+                                            <Condition Binding="{Binding IsChecked, ElementName=chkSubstTribut}" Value="False"/>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Foreground" Value="Red"/>
                                         <Setter Property="FontWeight" Value="ExtraBold"/>
@@ -406,16 +431,6 @@
                                 <Binding Path="Text" ElementName="txtPercentSusbsTribut"/>
                             </MultiBinding>
                         </TextBox.Text>
-                        <TextBox.Style>
-                            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsChecked, ElementName=chkSubstTribut}" Value="True">
-                                        <Setter Property="Foreground"  Value="Red"/>
-                                        <Setter Property="FontWeight" Value="ExtraBold"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
                     </TextBox>
 
                     <TextBox Grid.Row="6" Grid.Column="3" Name="txtPisImp"  VerticalAlignment="Center" Margin="5,0">
@@ -648,11 +663,6 @@
                                         <Setter Property="Text" Value="{Binding SelectedItem.AliquotaInterna, ElementName=cbolistaUf,   
                                             Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
                                     </DataTrigger>
-
-                                    <!--<DataTrigger Binding="{Binding IsChecked, ElementName=chkEmbarcacoes}" Value="True">
-                                        <Setter Property="Text" Value="{Binding Source={StaticResource Settings}, Path=AliquotaIcmsEmbarcacoes, 
-                                            Converter={StaticResource myNumberFormatter}, ConverterParameter='n2'}"/>
-                                    </DataTrigger>-->
 
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
@@ -1215,6 +1225,7 @@
                                             <Condition Binding="{Binding IsChecked, ElementName=radForLocal}" Value="True"/>
                                             <Condition Binding="{Binding IsChecked, ElementName=chkMotoresAte90Hp}" Value="False"/>
                                             <Condition Binding="{Binding IsChecked, ElementName=chkEmbarcacoes}" Value="False"/>
+                                            <Condition Binding="{Binding IsChecked, ElementName=chkSubstTribut}" Value="False"/>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Visibility" Value="Visible"/>
                                         <Setter Property="Content" Value="Base de Cálculo Reduzida - Carga Tributária de 7%"/>

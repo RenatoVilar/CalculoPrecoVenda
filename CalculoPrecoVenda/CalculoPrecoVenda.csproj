@@ -117,6 +117,7 @@
     </ApplicationDefinition>
     <Compile Include="AliquotaIcmsConverter.cs" />
     <Compile Include="CalcPrecoRepoConverter.cs" />
+    <Compile Include="CkeckBoxConverter.cs" />
     <Compile Include="CofinsConverter.cs" />
     <Compile Include="Data\CalculoPreçoVendaContext.cs" />
     <Compile Include="Data\NcmConfiguration.cs" />
@@ -125,6 +126,10 @@
     <Compile Include="Migrations\201701111343487_AumentaCampoItensFcp.cs" />
     <Compile Include="Migrations\201701111343487_AumentaCampoItensFcp.Designer.cs">
       <DependentUpon>201701111343487_AumentaCampoItensFcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701251804460_InsereCamposNcm.cs" />
+    <Compile Include="Migrations\201701251804460_InsereCamposNcm.Designer.cs">
+      <DependentUpon>201701251804460_InsereCamposNcm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="TotalImpostosConverter.cs" />
@@ -274,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701111343487_AumentaCampoItensFcp.resx">
       <DependentUpon>201701111343487_AumentaCampoItensFcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701251804460_InsereCamposNcm.resx">
+      <DependentUpon>201701251804460_InsereCamposNcm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
