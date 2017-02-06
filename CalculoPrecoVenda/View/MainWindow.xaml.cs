@@ -1,17 +1,15 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System.Text.RegularExpressions;
-using CalculoPrecoVenda.View;
-using CalculoPrecoVenda.Model;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Controls;
+﻿using CalculoPrecoVenda.Model;
 using System;
-using System.Windows.Data;
-using System.Text;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.Linq;
-using System.Data.SqlServerCe;
+using System.Linq;
+using System.Printing;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace CalculoPrecoVenda.View
 {
@@ -174,7 +172,6 @@ namespace CalculoPrecoVenda.View
 
             chkPpb.IsEnabled = true;
 
-
         }
         private void cbolistaUfForn_DropDownClosed(object sender, System.EventArgs e)
         {
@@ -260,6 +257,8 @@ namespace CalculoPrecoVenda.View
             chkImportadoZfm.IsEnabled = true;
             chkPpb.IsEnabled = true;
 
+            AlertaZfm();
+
         }
         private void chkMicroempresa_Checked(object sender, RoutedEventArgs e)
         {
@@ -335,6 +334,8 @@ namespace CalculoPrecoVenda.View
             {
                 chkPpb.IsChecked = true;
             }
+
+            AlertaZfm();
         }
         private void chkMotoresAcima90Hp_Checked(object sender, RoutedEventArgs e)
         {
@@ -351,6 +352,8 @@ namespace CalculoPrecoVenda.View
                 chkPpb.IsEnabled = false;
                 chkPpb.IsEnabled = false;
             }
+
+            AlertaZfm();
         }
         private void chkPecas_Checked(object sender, RoutedEventArgs e)
         {
@@ -360,7 +363,7 @@ namespace CalculoPrecoVenda.View
 
             if ((bool)chkSubstTribut.IsChecked && (bool)chkPecas.IsChecked)
             {
-                MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Mensagem", MessageBoxButton.OK, MessageBoxImage.Error);
+                Xceed.Wpf.Toolkit.MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Aviso", MessageBoxButton.OK, MessageBoxImage.Error);
                 chkSubstTribut.IsChecked = false;
 
             }
@@ -376,11 +379,15 @@ namespace CalculoPrecoVenda.View
             chkImportadoZfm.IsChecked = false;
             radProdEstrangeiro.IsChecked = true;
         }
+
         private void chkImportadoZfm_Checked(object sender, RoutedEventArgs e)
         {
             chkCorredor.IsChecked = false;
             radProdEstrangeiro.IsChecked = true;
+
+            AlertaZfm();
         }
+
         private void radClienteEstrangeiro_Checked(object sender, RoutedEventArgs e)
         {
             cbolistaUf.SelectedValue = "EX";
@@ -404,6 +411,8 @@ namespace CalculoPrecoVenda.View
             radPessoaJurídica.IsEnabled = true;
             radPessoaFisica.IsEnabled = true;
             radPessoaFisica.IsChecked = true;
+
+            AlertaZfm();
         }
         private void radClienteLocal_Checked(object sender, RoutedEventArgs e)
         {
@@ -447,9 +456,9 @@ namespace CalculoPrecoVenda.View
 
         private void chkSubstTribut_Checked(object sender, RoutedEventArgs e)
         {
-            if ((bool)chkSubstTribut.IsChecked && (bool)chkPecas.IsChecked)
+            if ((bool)chkPecas.IsChecked)
             {
-                MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Mensagem", MessageBoxButton.OK, MessageBoxImage.Error);
+                Xceed.Wpf.Toolkit.MessageBox.Show("As peças de motor de popa não seguem o regima de Substituição Tributária", "Aviso", MessageBoxButton.OK, MessageBoxImage.Error);
                 chkPecas.IsChecked = false;
 
             }
@@ -458,6 +467,109 @@ namespace CalculoPrecoVenda.View
         {
             radForLocal.IsChecked = true;
             radProdNacional.IsChecked = true;
+        }
+
+        private void AlertaZfm()
+        {
+
+            if ((bool)chkImportadoZfm.IsChecked)
+            {
+                if (((bool)radProdEstrangeiro.IsChecked) && (bool)(radClienteNacional.IsChecked))
+                {
+                    if ((bool)chkMotoresAcima90Hp.IsChecked || (bool)chkMotoresAte90Hp.IsChecked)
+                    {
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Foi selecionada a operação:\n" +
+                        "PRODUTO ESTRANGEIRO ADQUIRIDO PARA A ZFM VENDIDO PARA OUTRA UF (MOTOR DE POPA).\nInforme a NCM para cálculo do II e do IPI Suspensos.\n" +
+                        "---------------------------------------\n" + "NCM 84072190 - QQ.OUTRO MOTOR P/EMBARC.FIX.EXT. AO CASCO", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Foi selecionada a operação:\n" +
+                            "PRODUTO ESTRANGEIRO ADQUIRIDO PARA A ZFM VENDIDO PARA OUTRA UF.\nInforme a NCM para cálculo do II e do IPI Suspensos.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+                } 
+            }
+
+            if ((bool)radForLocal.IsChecked && (bool)chkMotoresAcima90Hp.IsChecked)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Foi selecionada a operação:\n" +
+                            "REVENDA DE MOTOR ACIMA DE 90HP COMPRADO NO AM.\nSerá incluido no Custo o frete no valor de R$ " + Settings.Default.FreteMotAcima90HP.ToString("n2") + " , ref. aos acessórios saindo de SP.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void txtNcm_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtNcm.Text == "")
+            {
+                grpProduto.DataContext = null;
+            }
+        }
+
+        private void btnImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement c = grpCusto;
+            FrameworkElement v = grpPrecoVenda;
+
+            if (c == null || v == null)
+            {
+                return;
+            }
+
+            PrintDialog print = new PrintDialog();
+            if (print.ShowDialog() == true)
+            {
+                //Pega a capacidade da Impressora
+                PrintCapabilities capabilities = print.PrintQueue.GetPrintCapabilities(print.PrintTicket);
+
+                //Transforma as medidas do control proporcional a do página da impressora
+                double escalaCusto = Math.Min(
+                    capabilities.PageImageableArea.ExtentWidth / c.ActualWidth,
+                    capabilities.PageImageableArea.ExtentHeight / c.ActualHeight);
+
+                double escalaVenda = Math.Min(
+                   capabilities.PageImageableArea.ExtentWidth / v.ActualWidth,
+                   capabilities.PageImageableArea.ExtentHeight / v.ActualHeight);
+
+                //Armazena  o layout original do control
+                Transform tamanhoGrupoCustoOriginal = c.LayoutTransform;
+                Transform tamanhoGrupoVendaOriginal = v.LayoutTransform;
+
+                //Alterar o control para a nova escala
+                c.LayoutTransform = new ScaleTransform(escalaCusto, escalaCusto);
+                v.LayoutTransform = new ScaleTransform(escalaVenda, escalaVenda);
+
+                //Armazena o tamnho origianl do control
+                Size oldSizeCusto = new Size(c.ActualWidth, c.ActualHeight);
+                Size oldSizeVenda = new Size(v.ActualWidth, v.ActualHeight);
+
+                //Tamaho do papel configurado na Impressora
+                Size size = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+
+                //Atualiza o tamnho para caber na pagina
+                c.Measure(size);
+                c.Arrange(new Rect(new Point(
+                    capabilities.PageImageableArea.OriginWidth,
+                    capabilities.PageImageableArea.OriginHeight), size));
+
+                v.Measure(size);
+                v.Arrange(new Rect(new Point(
+                    capabilities.PageImageableArea.OriginWidth,
+                    capabilities.PageImageableArea.OriginHeight), size));
+
+                //print.PrintTicket.PageOrientation = PageOrientation.Landscape;
+
+                //Imprime
+                print.PrintVisual(c, "Mémoria de Cálculo Custo");
+                print.PrintVisual(v, "Mémoria de Cálculo Venda");
+
+                //Volta o tamanho original do control
+                c.LayoutTransform = tamanhoGrupoCustoOriginal;
+                c.Measure(oldSizeCusto);
+                c.Arrange(new Rect(new Point(0, 0), oldSizeCusto));
+
+                v.LayoutTransform = tamanhoGrupoVendaOriginal;
+                v.Measure(oldSizeVenda);
+                v.Arrange(new Rect(new Point(0, 0), oldSizeVenda));
+
+            }
         }
     }
 }

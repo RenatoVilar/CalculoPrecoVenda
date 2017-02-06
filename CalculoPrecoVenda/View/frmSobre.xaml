@@ -22,7 +22,7 @@
             </StackPanel>
             <TextBlock DockPanel.Dock="Bottom" Text="Desenvolvido por Renato Vilar" TextWrapping="Wrap"
                        HorizontalAlignment="Center" Margin="0,5,0,0"/>
-            <TextBlock DockPanel.Dock="Bottom" Text="Versão 1.0.0.0" TextWrapping="Wrap"
+            <TextBlock DockPanel.Dock="Bottom" Text="Versão 1.1.0.0" TextWrapping="Wrap"
                        HorizontalAlignment="Center" Margin="0,5,0,0"/>
             <Label Content="Cálculo de Preço de Venda" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </DockPanel>
