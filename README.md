@@ -10,5 +10,7 @@ Para resolver essa dificuldade e poder tomar uma melhor decisão na minha empres
 
 Trata-se do segundo sistema que criei. Nesse utilizei WPF (O primeiro foi [“Cadastros”](https://github.com/RenatoVilar/Cadastros-) e fiz em WinForms). Devido à falta de conhecimentos técnicos não utilizei o padrão MVVM. Tive muita dificuldade com a interface gráfica, mas acho que atingi o resultado esperado.
 
+O Sistema possui um banco de dados com algumas informações básicas da maioria das NCM. O SGBD utilizado foi o SQLCE e o mesmo deve ser instalado na máquina.
+
 Estou aberto para críticas e sugestões.
 
