@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Data;
 
@@ -35,7 +31,7 @@ namespace CalculoPrecoVenda
 
             if (chkImportadoZfm && chkClienteZfm || chkPpb && radClienteLocal)
             {
-                valorSugerido = valorSugerido - (valorSugerido * (decimal)0.6111);
+                valorSugerido = valorSugerido - (valorSugerido * (decimal)0.65);
             }
 
             result = valorSugerido * (percentual / 100);

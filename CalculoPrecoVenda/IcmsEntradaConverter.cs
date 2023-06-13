@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Data;
 
@@ -30,13 +26,13 @@ namespace CalculoPrecoVenda
 
             if (chkPpb || chkImportadoZfm || (chkEmbarcacoes && chkPpb))
             {
-                valorNf = valorNf - (valorNf * (decimal)0.6111);
+                valorNf = valorNf - (valorNf * (decimal)0.65);
             }
             else if (chkEmbarcacoes || (chkMotoresAte90Hp && !chkPpb))
             {
                 result = valorNf * (percentual / 100);
             }
-           
+
 
             result = valorNf * (percentual / 100);
 
